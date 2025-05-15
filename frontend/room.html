@@ -1,0 +1,1201 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>실시간 화이트보드</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            background-color: #f5f5f5;
+        }
+        
+        .header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .room-info {
+            display: flex;
+            align-items: center
+        }
+        
+        .room-code {
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 18px;
+            cursor: pointer;
+        }
+        
+        .copy-tooltip {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .tooltip-text {
+            visibility: hidden;
+            width: 140px;
+            background-color: #555;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px;
+            position: absolute;
+            z-index: 1;
+            bottom: 150%;
+            left: 50%;
+            margin-left: -75px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .tooltip-text::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: #555 transparent transparent transparent;
+        }
+        
+        .copy-tooltip:hover .tooltip-text {
+            visibility: visible;
+            opacity: 1;
+        }
+        
+        .users-count {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            background-color: rgba(0, 0, 0, 0.1);
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 14px;
+        }
+        
+        #usersCount {
+            font-weight: bold;
+            color: #4CAF50;
+        }
+        
+        .status-indicator {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: orange;
+            margin-right: 5px;
+        }
+        
+        .connection-status {
+            display: flex;
+            align-items: center;
+            background-color: rgba(0, 0, 0, 0.1);
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 14px;
+        }
+        
+        .tools {
+            background-color: white;
+            padding: 10px;
+            display: flex;
+            gap: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .tool-btn {
+            padding: 8px 12px;
+            border: none;
+            border-radius: 4px;
+            background-color: #f1f1f1;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .tool-btn:hover {
+            background-color: #e0e0e0;
+        }
+        
+        .tool-btn.active {
+            background-color: #4CAF50;
+            color: white;
+        }
+        
+        .color-picker {
+            width: 30px;
+            height: 30px;
+            border: none;
+            padding: 0;
+            border-radius: 50%;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        
+        .color-picker input {
+            width: 150%;
+            height: 150%;
+            margin: -25%;
+            padding: 0;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .size-slider {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .canvas-container {
+            flex: 1;
+            overflow: hidden;
+            position: relative;
+            background-color: white;
+        }
+        
+        canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            cursor: crosshair;
+            transition: border 0.3s;
+        }
+        
+        .error-container {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #f44336;
+            color: white;
+            padding: 15px 20px;
+            border-radius: 4px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            z-index: 1000;
+            display: none;
+        }
+        
+        .info-message {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 4px;
+            font-size: 14px;
+            z-index: 1000;
+        }
+        
+        /* 드래그 앤 드롭 스타일 */
+        canvas.drag-over {
+            border: 2px dashed #4CAF50 !important;
+        }
+        
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                gap: 10px;
+                padding: 10px;
+            }
+            
+            .tools {
+                flex-wrap: wrap;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="room-info">
+            <h1>화이트보드</h1>
+            <div class="room-code-container">
+                <span>방 코드: </span>
+                <span id="roomCode" class="room-code"></span>
+                <button id="showQrBtn" class="qr-btn">QR 코드 보기</button>
+            </div>
+            <div class="connection-status">
+                <span>상태: </span>
+                <span id="connectionStatus">연결 중...</span>
+            </div>
+        </div>
+        <div class="status-bar">
+            <div class="users-count">
+                <span>참가자:</span>
+                <span id="usersCount">0</span>
+                <span>명</span>
+            </div>
+            <div class="connection-status">
+                <div class="status-indicator" id="connectionIndicator"></div>
+                <span id="connectionStatus">연결 중...</span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="tools">
+        <button class="tool-btn active" id="penTool">
+            <span>펜</span>
+        </button>
+        <button class="tool-btn" id="eraserTool">
+            <span>지우개</span>
+        </button>
+        <div class="color-picker">
+            <input type="color" id="colorPicker" value="#000000">
+        </div>
+        <div class="size-slider">
+            <span>크기:</span>
+            <input type="range" id="sizeSlider" min="1" max="20" value="3">
+        </div>
+        <button class="tool-btn" id="clearBtn">
+            <span>모두 지우기</span>
+        </button>
+        <button class="tool-btn" id="homeBtn">
+            <span>홈으로</span>
+        </button>
+        원하시는 이미지를 붙여넣거나 이미지 파일을 드래그하여 놓으세요.
+    </div>
+    
+    <div class="canvas-container">
+        <canvas id="canvas"></canvas>
+    </div>
+    
+    <!-- 오류 메시지 컨테이너 -->
+    <div id="errorContainer" class="error-container">
+        <div id="errorMessage" class="error-message"></div>
+    </div>
+
+    <!-- 로딩 표시기 -->
+    <div id="loadingIndicator" class="loading-indicator">
+        <div class="loading-spinner"></div>
+        <div id="loadingMessage">이미지 처리 중...</div>
+    </div>
+
+    <style>
+        .error-container {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(255, 0, 0, 0.8);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            z-index: 1000;
+            display: none;
+            max-width: 80%;
+            text-align: center;
+        }
+        .loading-indicator {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: none;
+            z-index: 1000;
+        }
+        .loading-spinner {
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            border-top: 4px solid #3498db;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .qr-btn {
+            padding: 8px 12px;
+            border: none;
+            border-radius: 4px;
+            background-color: #f1f1f1;
+            cursor: pointer;
+            display: column;
+            align-items: center;
+            gap: 5px;
+        }
+        .qr-btn:hover {
+            background-color: #e0e0e0;
+        }
+    </style>
+    
+    <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // 서버 URL 설정 - 개발 환경에서는 명시적으로 3000 포트 사용
+            const serverUrl = 'http://localhost:3000';
+            
+            console.log('서버 URL:', serverUrl);
+            
+            // 방 코드 가져오기
+            const pathParts = window.location.pathname.split('/');
+            const roomCode = pathParts[pathParts.length - 1];
+            const roomCodeElement = document.getElementById('roomCode');
+            roomCodeElement.textContent = roomCode;
+            
+            // QR 코드 모달 요소
+            const qrModal = document.getElementById('qrModal');
+            const showQrBtn = document.getElementById('showQrBtn');
+            const closeBtn = document.querySelector('.close-btn');
+            const qrcodeContainer = document.getElementById('qrcode');
+            
+            // 현재 방 URL 생성
+            const roomUrl = `${window.location.origin}/room/${roomCode}`;
+            
+            // QR 코드 버튼 클릭 이벤트
+            showQrBtn.addEventListener('click', () => {
+                // QR 코드 컨테이너 초기화
+                qrcodeContainer.innerHTML = '';
+                
+                // QRCode.js 라이브러리를 사용하여 QR 코드 생성
+                try {
+                    new QRCode(qrcodeContainer, {
+                        text: roomUrl,
+                        width: 200,
+                        height: 200,
+                        colorDark: "#000000",
+                        colorLight: "#ffffff",
+                        correctLevel: QRCode.CorrectLevel.H
+                    });
+                    console.log('QR 코드 생성 완료');
+                } catch (error) {
+                    console.error('QR 코드 생성 오류:', error);
+                    qrcodeContainer.innerHTML = '<p style="color: red;">QR 코드 생성 실패</p>';
+                }
+                
+                // 모달 표시 - flex로 설정하여 중앙 정렬
+                qrModal.style.display = 'flex';
+            });
+            
+            // 모달 닫기 버튼 클릭 이벤트
+            closeBtn.addEventListener('click', () => {
+                qrModal.style.display = 'none';
+            });
+            
+            // 모달 외부 클릭 시 닫기
+            window.addEventListener('click', (event) => {
+                if (event.target === qrModal) {
+                    qrModal.style.display = 'none';
+                }
+            });
+            
+            // ESC 키 누를 때 모달 닫기
+            window.addEventListener('keydown', (event) => {
+                if (event.key === 'Escape' && qrModal.style.display === 'flex') {
+                    qrModal.style.display = 'none';
+                }
+            });
+            
+            // 기존 방 코드 복사 기능 제거 (QR 코드로 대체)
+            roomCodeElement.removeEventListener('click', () => {});
+            
+            // 홈으로 버튼 이벤트 리스너
+            document.getElementById('homeBtn').addEventListener('click', () => {
+                window.location.href = serverUrl;
+            });
+            
+            // 에러 표시 함수
+            function showError(message) {
+                const errorContainer = document.getElementById('errorContainer');
+                const errorMessage = document.getElementById('errorMessage');
+                
+                errorMessage.textContent = message;
+                errorContainer.style.display = 'block';
+                
+                setTimeout(() => {
+                    errorContainer.style.display = 'none';
+                }, 5000);
+            }
+            
+            // 소켓 연결 설정
+            let socket;
+            let reconnectAttempts = 0;
+            const maxReconnectAttempts = 5;
+
+            function connectSocket() {
+                try {
+                    // 소켓 연결 시도
+                    socket = io({
+                        reconnectionAttempts: 5,
+                        reconnectionDelay: 1000,
+                        timeout: 10000
+                    });
+                    
+                    // 소켓 이벤트 리스너
+                    socket.on('connect', () => {
+                        updateConnectionStatus('연결됨', 'green');
+                        console.log('서버에 연결되었습니다.');
+                        reconnectAttempts = 0;
+                        
+                        // 방 입장
+                        socket.emit('joinRoom', roomCode);
+                        
+                        // 주기적으로 연결 상태 확인
+                        setInterval(() => {
+                            if (socket.connected) {
+                                socket.emit('ping', (data) => {
+                                    console.log('서버 ping 응답 수신:', data);
+                                    // 사용자 수 업데이트
+                                    if (data && data.roomUsers) {
+                                        usersCount.textContent = data.roomUsers;
+                                    }
+                                });
+                            }
+                        }, 30000); // 30초마다 ping
+                    });
+                    
+                    socket.on('connect_error', (error) => {
+                        updateConnectionStatus('연결 오류', 'red');
+                        console.error('연결 오류:', error);
+                        
+                        reconnectAttempts++;
+                        if (reconnectAttempts > maxReconnectAttempts) {
+                            showError('서버 연결에 실패했습니다. 페이지를 새로고침하거나 나중에 다시 시도해주세요.');
+                        }
+                    });
+                    
+                    socket.on('disconnect', (reason) => {
+                        updateConnectionStatus('연결 끊김', 'red');
+                        console.log('연결이 끊어졌습니다:', reason);
+                    });
+                    
+                    socket.on('error', (data) => {
+                        console.error('서버 오류:', data);
+                        showError(data.message || '오류가 발생했습니다.');
+                    });
+                    
+                    // 오류 발생 시 자동 재연결 시도
+                    socket.io.on('reconnect_attempt', (attempt) => {
+                        console.log(`재연결 시도 중... (${attempt}/${socket.io.reconnectionAttempts})`);
+                        updateConnectionStatus(`재연결 중... (${attempt})`, 'orange');
+                    });
+                    
+                    socket.io.on('reconnect', () => {
+                        console.log('서버에 재연결되었습니다.');
+                        updateConnectionStatus('연결됨', 'green');
+                        
+                        // 방 재입장
+                        socket.emit('joinRoom', roomCode);
+                    });
+                    
+                    socket.io.on('reconnect_failed', () => {
+                        console.error('재연결 실패');
+                        updateConnectionStatus('재연결 실패', 'red');
+                        showError('서버 연결에 실패했습니다. 페이지를 새로고침해 주세요.');
+                    });
+                } catch (error) {
+                    console.error('소켓 연결 초기화 오류:', error);
+                    updateConnectionStatus('연결 오류', 'red');
+                    showError('서버 연결 초기화 중 오류가 발생했습니다. 페이지를 새로고침해 주세요.');
+                }
+            }
+
+            // 페이지 로드 시 소켓 연결
+            connectSocket();
+
+            // 오류 메시지 표시 함수
+            function showError(message) {
+                const errorContainer = document.getElementById('errorContainer') || createErrorContainer();
+                errorContainer.textContent = message;
+                errorContainer.style.display = 'block';
+                
+                // 5초 후 자동으로 숨김
+                setTimeout(() => {
+                    errorContainer.style.display = 'none';
+                }, 5000);
+            }
+
+            // 오류 컨테이너 생성 함수
+            function createErrorContainer() {
+                const container = document.createElement('div');
+                container.id = 'errorContainer';
+                container.style.position = 'fixed';
+                container.style.top = '10px';
+                container.style.left = '50%';
+                container.style.transform = 'translateX(-50%)';
+                container.style.backgroundColor = 'rgba(255, 0, 0, 0.8)';
+                container.style.color = 'white';
+                container.style.padding = '10px 20px';
+                container.style.borderRadius = '5px';
+                container.style.zIndex = '1000';
+                container.style.display = 'none';
+                document.body.appendChild(container);
+                return container;
+            }
+            
+            // 연결 상태 표시 요소
+            const connectionStatus = document.getElementById('connectionStatus');
+            const connectionIndicator = document.getElementById('connectionIndicator');
+            const usersCount = document.getElementById('usersCount');
+            
+            // 연결 상태 표시 함수
+            function updateConnectionStatus(status, color) {
+                connectionStatus.textContent = status;
+                connectionIndicator.style.backgroundColor = color;
+            }
+            
+            // 소켓 이벤트 리스너
+            socket.on('connect', () => {
+                updateConnectionStatus('연결됨', 'green');
+                console.log('서버에 연결되었습니다.');
+                
+                // 방 입장
+                socket.emit('joinRoom', roomCode);
+                
+                // 주기적으로 연결 상태 확인
+                setInterval(() => {
+                    if (socket.connected) {
+                        socket.emit('ping', (data) => {
+                            console.log('서버 ping 응답 수신:', data);
+                            // 사용자 수 업데이트
+                            if (data && data.roomUsers) {
+                                usersCount.textContent = data.roomUsers;
+                            }
+                        });
+                    }
+                }, 30000); // 30초마다 ping
+            });
+            
+            socket.on('connect_error', (error) => {
+                updateConnectionStatus('연결 오류', 'red');
+                console.error('연결 오류:', error);
+                showError('서버 연결에 실패했습니다. 페이지를 새로고침하거나 나중에 다시 시도해주세요.');
+            });
+            
+            socket.on('disconnect', (reason) => {
+                updateConnectionStatus('연결 끊김', 'red');
+                console.log('연결이 끊어졌습니다:', reason);
+            });
+            
+            socket.on('roomJoined', (data) => {
+                console.log('방에 입장했습니다:', data);
+                usersCount.textContent = data.users;
+            });
+            
+            socket.on('userJoined', (data) => {
+                console.log('새 사용자가 입장했습니다:', data);
+                usersCount.textContent = data.users;
+            });
+            
+            socket.on('userLeft', (data) => {
+                console.log('사용자가 퇴장했습니다:', data);
+                usersCount.textContent = data.users;
+            });
+            
+            socket.on('userCountUpdated', (data) => {
+                console.log('사용자 수 업데이트:', data);
+                usersCount.textContent = data.users;
+            });
+            
+            socket.on('pong', (data) => {
+                console.log('서버 pong 응답 수신:', data);
+                if (data && data.roomUsers) {
+                    usersCount.textContent = data.roomUsers;
+                }
+            });
+            
+            socket.on('error', (data) => {
+                console.error('서버 오류:', data);
+                showError(data.message || '오류가 발생했습니다.');
+            });
+            
+            // 페이지 가시성 변경 감지
+            document.addEventListener('visibilitychange', () => {
+                if (document.visibilityState === 'visible') {
+                    console.log('페이지가 다시 보이게 됨, 연결 확인 중...');
+                    if (socket && !socket.connected) {
+                        console.log('연결이 끊어진 상태, 재연결 시도...');
+                        socket.connect();
+                    } else if (socket && socket.connected) {
+                        // 연결이 있더라도 방 정보 요청
+                        socket.emit('requestRoomInfo');
+                    }
+                }
+            });
+            
+            // 네트워크 상태 변경 감지
+            window.addEventListener('online', () => {
+                console.log('네트워크 연결됨, 소켓 재연결 시도...');
+                if (socket && !socket.connected) {
+                    socket.connect();
+                }
+            });
+            
+            // 캔버스 설정
+            const canvas = document.getElementById('canvas');
+            const ctx = canvas.getContext('2d');
+            
+            // 캔버스 크기 설정
+            function resizeCanvas() {
+                const container = document.querySelector('.canvas-container');
+                canvas.width = container.clientWidth;
+                canvas.height = container.clientHeight;
+            }
+            
+            // 초기 캔버스 크기 설정 및 리사이즈 이벤트 리스너 추가
+            resizeCanvas();
+            window.addEventListener('resize', resizeCanvas);
+            
+            // 그리기 도구 설정
+            let isDrawing = false;
+            let lastX = 0;
+            let lastY = 0;
+            let currentTool = 'pen';
+            let currentColor = '#000000';
+            let currentSize = 3;
+            
+            // 도구 버튼 요소
+            const penTool = document.getElementById('penTool');
+            const eraserTool = document.getElementById('eraserTool');
+            const colorPicker = document.getElementById('colorPicker');
+            const sizeSlider = document.getElementById('sizeSlider');
+            const clearBtn = document.getElementById('clearBtn');
+            
+            // 도구 선택 이벤트 리스너
+            penTool.addEventListener('click', () => {
+                currentTool = 'pen';
+                penTool.classList.add('active');
+                eraserTool.classList.remove('active');
+            });
+            
+            eraserTool.addEventListener('click', () => {
+                currentTool = 'eraser';
+                eraserTool.classList.add('active');
+                penTool.classList.remove('active');
+            });
+            
+            colorPicker.addEventListener('input', (e) => {
+                currentColor = e.target.value;
+                if (currentTool === 'eraser') {
+                    currentTool = 'pen';
+                    penTool.classList.add('active');
+                    eraserTool.classList.remove('active');
+                }
+            });
+            
+            sizeSlider.addEventListener('input', (e) => {
+                currentSize = e.target.value;
+            });
+            
+            clearBtn.addEventListener('click', () => {
+                if (confirm('정말로 모든 내용을 지우시겠습니까?')) {
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    socket.emit('clearCanvas');
+                }
+            });
+            
+            // 그리기 함수
+            function startDrawing(e) {
+                isDrawing = true;
+                [lastX, lastY] = getMousePosition(e);
+            }
+            
+            function draw(e) {
+                if (!isDrawing) return;
+                
+                const [x, y] = getMousePosition(e);
+                
+                // 그리기 설정
+                ctx.lineJoin = 'round';
+                ctx.lineCap = 'round';
+                ctx.lineWidth = currentSize;
+                
+                if (currentTool === 'pen') {
+                    ctx.strokeStyle = currentColor;
+                    ctx.globalCompositeOperation = 'source-over';
+                } else if (currentTool === 'eraser') {
+                    ctx.strokeStyle = '#ffffff';
+                    ctx.globalCompositeOperation = 'destination-out';
+                }
+                
+                // 그리기
+                ctx.beginPath();
+                ctx.moveTo(lastX, lastY);
+                ctx.lineTo(x, y);
+                ctx.stroke();
+                
+                // 소켓으로 그리기 데이터 전송
+                socket.emit('draw', {
+                    x1: lastX,
+                    y1: lastY,
+                    x2: x,
+                    y2: y,
+                    color: currentTool === 'pen' ? currentColor : '#ffffff',
+                    size: currentSize,
+                    tool: currentTool
+                });
+                
+                [lastX, lastY] = [x, y];
+            }
+            
+            function stopDrawing() {
+                isDrawing = false;
+            }
+            
+            // 마우스 위치 계산 함수
+            function getMousePosition(e) {
+                const rect = canvas.getBoundingClientRect();
+                return [
+                    e.clientX - rect.left,
+                    e.clientY - rect.top
+                ];
+            }
+            
+            // 터치 이벤트 처리
+            function getTouchPosition(e) {
+                const rect = canvas.getBoundingClientRect();
+                return [
+                    e.touches[0].clientX - rect.left,
+                    e.touches[0].clientY - rect.top
+                ];
+            }
+            
+            // 마우스 이벤트 리스너
+            canvas.addEventListener('mousedown', startDrawing);
+            canvas.addEventListener('mousemove', draw);
+            canvas.addEventListener('mouseup', stopDrawing);
+            canvas.addEventListener('mouseout', stopDrawing);
+            
+            // 터치 이벤트 리스너
+            canvas.addEventListener('touchstart', (e) => {
+                e.preventDefault();
+                [lastX, lastY] = getTouchPosition(e);
+                isDrawing = true;
+            });
+            
+            canvas.addEventListener('touchmove', (e) => {
+                e.preventDefault();
+                if (!isDrawing) return;
+                
+                const [x, y] = getTouchPosition(e);
+                
+                // 그리기 설정
+                ctx.lineJoin = 'round';
+                ctx.lineCap = 'round';
+                ctx.lineWidth = currentSize;
+                
+                if (currentTool === 'pen') {
+                    ctx.strokeStyle = currentColor;
+                    ctx.globalCompositeOperation = 'source-over';
+                } else if (currentTool === 'eraser') {
+                    ctx.strokeStyle = '#ffffff';
+                    ctx.globalCompositeOperation = 'destination-out';
+                }
+                
+                // 그리기
+                ctx.beginPath();
+                ctx.moveTo(lastX, lastY);
+                ctx.lineTo(x, y);
+                ctx.stroke();
+                
+                // 소켓으로 그리기 데이터 전송
+                socket.emit('draw', {
+                    x1: lastX,
+                    y1: lastY,
+                    x2: x,
+                    y2: y,
+                    color: currentTool === 'pen' ? currentColor : '#ffffff',
+                    size: currentSize,
+                    tool: currentTool
+                });
+                
+                [lastX, lastY] = [x, y];
+            });
+            
+            canvas.addEventListener('touchend', (e) => {
+                e.preventDefault();
+                isDrawing = false;
+            });
+            
+            // 다른 사용자의 그리기 데이터 처리 함수
+            function drawPoint(data) {
+                ctx.lineJoin = 'round';
+                ctx.lineCap = 'round';
+                ctx.lineWidth = data.size;
+                
+                if (data.tool === 'pen') {
+                    ctx.strokeStyle = data.color;
+                    ctx.globalCompositeOperation = 'source-over';
+                } else if (data.tool === 'eraser') {
+                    ctx.strokeStyle = '#ffffff';
+                    ctx.globalCompositeOperation = 'destination-out';
+                }
+                
+                ctx.beginPath();
+                ctx.moveTo(data.x1, data.y1);
+                ctx.lineTo(data.x2, data.y2);
+                ctx.stroke();
+            }
+            
+            // 다른 사용자의 그리기 이벤트 수신
+            socket.on('draw', (data) => {
+                drawPoint(data);
+            });
+            
+            // 캔버스 지우기 이벤트 수신
+            socket.on('clearCanvas', () => {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+            });
+            
+            // 그리기 데이터 로드 이벤트 수신
+            socket.on('loadDrawing', (points) => {
+                console.log(`${points.length}개의 그리기 데이터 수신`);
+                
+                for (const point of points) {
+                    drawPoint(point);
+                }
+            });
+            
+            // 이미지 붙여넣기 처리
+            document.addEventListener('paste', (e) => {
+                if (e.clipboardData && e.clipboardData.items) {
+                    const items = e.clipboardData.items;
+                    
+                    for (let i = 0; i < items.length; i++) {
+                        if (items[i].type.indexOf('image') !== -1) {
+                            e.preventDefault(); // 기본 붙여넣기 동작 방지
+                            
+                            const blob = items[i].getAsFile();
+                            const reader = new FileReader();
+                            
+                            reader.onload = function(event) {
+                                const img = new Image();
+                                
+                                img.onload = function() {
+                                    // 이미지 크기 조정 (너무 크면)
+                                    let width = img.width;
+                                    let height = img.height;
+                                    
+                                    if (width > canvas.width * 0.8) {
+                                        const ratio = canvas.width * 0.8 / width;
+                                        width *= ratio;
+                                        height *= ratio;
+                                    }
+                                    
+                                    if (height > canvas.height * 0.8) {
+                                        const ratio = canvas.height * 0.8 / height;
+                                        width *= ratio;
+                                        height *= ratio;
+                                    }
+                                    
+                                    // 이미지 중앙에 배치
+                                    const x = (canvas.width - width) / 2;
+                                    const y = (canvas.height - height) / 2;
+                                    
+                                    // 이미지 그리기
+                                    ctx.drawImage(img, x, y, width, height);
+                                    
+                                    // 이미지 데이터 전송
+                                    const imageData = {
+                                        imageData: event.target.result,
+                                        x: x,
+                                        y: y,
+                                        width: width,
+                                        height: height,
+                                        timestamp: Date.now(),
+                                        userId: socket.id
+                                    };
+                                    
+                                    console.log('이미지 붙여넣기 데이터 전송 중...');
+                                    // 소켓이 연결되어 있는지 확인 후 전송
+                                    if (socket && socket.connected) {
+                                        socket.emit('pasteImage', imageData);
+                                    } else {
+                                        console.error('소켓이 연결되어 있지 않습니다.');
+                                        showError('서버 연결이 끊어졌습니다. 페이지를 새로고침해 주세요.');
+                                    }
+                                };
+                                
+                                img.src = event.target.result;
+                            };
+                            
+                            reader.readAsDataURL(blob);
+                            break;
+                        }
+                    }
+                }
+            });
+            
+            // 이미지 붙여넣기 이벤트 수신 - 명확하게 분리
+            socket.on('pasteImage', (data) => {
+                console.log('이미지 붙여넣기 이벤트 수신', data.userId);
+                
+                // 자신이 보낸 이미지는 이미 그려져 있으므로 건너뜀
+                if (data.userId === socket.id) {
+                    console.log('자신이 붙여넣은 이미지는 이미 표시되어 있습니다.');
+                    return;
+                }
+                
+                const img = new Image();
+                
+                img.onload = function() {
+                    ctx.drawImage(img, data.x, data.y, data.width, data.height);
+                    console.log('다른 사용자의 이미지 그리기 완료:', data.width, 'x', data.height);
+                };
+                
+                img.onerror = function(error) {
+                    console.error('이미지 로드 오류:', error);
+                    showError('이미지를 로드할 수 없습니다.');
+                };
+                
+                img.src = data.imageData;
+            });
+            
+            // 이미지 데이터 로드 이벤트 수신
+            socket.on('loadImages', (images) => {
+                console.log(`${images.length}개의 이미지 데이터 수신`);
+                
+                for (const imageData of images) {
+                    const img = new Image();
+                    
+                    img.onload = function() {
+                        ctx.drawImage(img, imageData.x, imageData.y, imageData.width, imageData.height);
+                    };
+                    
+                    img.onerror = function(error) {
+                        console.error('이미지 로드 오류:', error);
+                    };
+                    
+                    img.src = imageData.imageData;
+                }
+            });
+            
+            // 드래그 앤 드롭으로 이미지 추가 지원
+            canvas.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                canvas.style.border = '2px dashed #4CAF50';
+            });
+            
+            canvas.addEventListener('dragleave', (e) => {
+                e.preventDefault();
+                canvas.style.border = 'none';
+            });
+            
+            canvas.addEventListener('drop', (e) => {
+                e.preventDefault();
+                canvas.style.border = 'none';
+                
+                const files = e.dataTransfer.files;
+                
+                if (files.length > 0) {
+                    const file = files[0];
+                    
+                    if (file.type.indexOf('image') !== -1) {
+                        console.log('이미지 파일 드롭됨:', file.name);
+                        
+                        const reader = new FileReader();
+                        
+                        reader.onload = function(event) {
+                            const img = new Image();
+                            
+                            img.onload = function() {
+                                // 이미지 크기 조정 (너무 크면)
+                                let width = img.width;
+                                let height = img.height;
+                                
+                                if (width > canvas.width * 0.8) {
+                                    const ratio = canvas.width * 0.8 / width;
+                                    width *= ratio;
+                                    height *= ratio;
+                                }
+                                
+                                if (height > canvas.height * 0.8) {
+                                    const ratio = canvas.height * 0.8 / height;
+                                    width *= ratio;
+                                    height *= ratio;
+                                }
+                                
+                                // 드롭된 위치에 이미지 그리기
+                                const rect = canvas.getBoundingClientRect();
+                                const x = e.clientX - rect.left - (width / 2);
+                                const y = e.clientY - rect.top - (height / 2);
+                                
+                                // 캔버스에 이미지 그리기
+                                ctx.drawImage(img, x, y, width, height);
+                                
+                                // 이미지 데이터 전송
+                                const imageData = {
+                                    imageData: event.target.result,
+                                    x: x,
+                                    y: y,
+                                    width: width,
+                                    height: height
+                                };
+                                
+                                socket.emit('pasteImage', imageData);
+                            };
+                            
+                            img.src = event.target.result;
+                        };
+                        
+                        reader.readAsDataURL(file);
+                    }
+                }
+            });
+            
+            // 이미지 붙여넣기 안내 메시지 추가
+            const infoMessage = document.createElement('div');
+            infoMessage.className = 'info-message';
+            infoMessage.innerHTML = '이미지를 복사한 후 <strong>Ctrl+V</strong>로 붙여넣거나 이미지 파일을 드래그하여 놓으세요.';
+            infoMessage.style.position = 'absolute';
+            infoMessage.style.bottom = '10px';
+            infoMessage.style.left = '50%';
+            infoMessage.style.transform = 'translateX(-50%)';
+            infoMessage.style.backgroundColor = 'rgba(0, 0, 0, 0.7)';
+            infoMessage.style.color = 'white';
+            infoMessage.style.padding = '8px 16px';
+            infoMessage.style.borderRadius = '4px';
+            infoMessage.style.fontSize = '14px';
+            infoMessage.style.zIndex = '1000';
+            document.body.appendChild(infoMessage);
+            
+            // 5초 후 안내 메시지 숨기기
+            setTimeout(() => {
+                infoMessage.style.opacity = '0';
+                infoMessage.style.transition = 'opacity 1s';
+                setTimeout(() => {
+                    infoMessage.remove();
+                }, 1000);
+            }, 5000);
+        });
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- QR 코드 모달 -->
+<div id="qrModal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn">&times;</span>
+        <h2>방 QR 코드</h2>
+        <div id="qrcode" class="qr-code-container"></div>
+        <p class="qr-info">QR 코드를 스캔하여 이 화이트보드에 접속하세요</p>
+        
+    </div>
+</div>
+
+<!-- QR 코드 생성 라이브러리 추가 -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+<style>
+    /* 모달 스타일 */
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        /* 플렉스 컨테이너로 변경하여 중앙 정렬 */
+        display: none;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .modal-content {
+        background-color: white;
+        padding: 25px;
+        border-radius: 8px;
+        width: 350px;
+        max-width: 90%;
+        text-align: center;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        /* 마진 제거 (플렉스로 중앙 정렬) */
+        margin: 0;
+        /* 애니메이션 추가 */
+        animation: modalFadeIn 0.3s ease-out;
+    }
+    
+    @keyframes modalFadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    .close-btn {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+        cursor: pointer;
+        margin-top: -15px;
+        margin-right: -15px;
+    }
+    
+    .close-btn:hover {
+        color: #333;
+    }
+    
+    .qr-code-container {
+        margin: 20px auto;
+        width: 200px;
+        height: 200px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .qr-info {
+        margin: 15px 0;
+        color: #555;
+        font-size: 14px;
+    }
+    
+    /* 모바일 환경을 위한 반응형 스타일 */
+    @media (max-width: 768px) {
+        .modal-content {
+            width: 90%;
+            padding: 20px;
+        }
+        
+        .qr-code-container {
+            width: 180px;
+            height: 180px;
+        }
+    }
+</style>
+
+
+
+
+
+
+
+

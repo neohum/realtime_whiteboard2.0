@@ -1,0 +1,16 @@
+{
+  "name": "realtime-whiteboard",
+  "version": "1.0.0",
+  "description": "실시간 화이트보드 공유 애플리케이션",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
+    "redis": "^5.0.1",
+    "socket.io": "^4.8.1",
+    "sqlite3": "^5.1.7"
+  }
+}

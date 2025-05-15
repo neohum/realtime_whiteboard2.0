@@ -1,0 +1,7 @@
+{
+  "scripts": {
+    "start": "node backend/server.js",
+    "dev": "nodemon backend/server.js",
+    "start:no-redis": "REDIS_DISABLED=true node backend/server.js"
+  }
+}

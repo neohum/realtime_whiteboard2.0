@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>실시간 화이트보드</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f5f5f5;
+        }
+        
+        .container {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            width: 400px;
+            text-align: center;
+        }
+        
+        h1 {
+            color: #333;
+            margin-bottom: 30px;
+        }
+        
+        .button-group {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        
+        button {
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .create-btn {
+            background-color: #4CAF50;
+            color: white;
+        }
+        
+        .create-btn:hover {
+            background-color: #45a049;
+        }
+        
+        .join-section {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+        
+        .room-input {
+            display: flex;
+            margin-top: 15px;
+        }
+        
+        input {
+            flex: 1;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px 0 0 5px;
+            font-size: 16px;
+        }
+        
+        .join-btn {
+            background-color: #2196F3;
+            color: white;
+            border-radius: 0 5px 5px 0;
+        }
+        
+        .join-btn:hover {
+            background-color: #0b7dda;
+        }
+        
+        .error-message {
+            color: #f44336;
+            margin-top: 10px;
+            font-size: 14px;
+            display: none;
+        }
+        
+        .loading {
+            display: none;
+            margin: 20px 0;
+        }
+        
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #3498db;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>실시간 화이트보드</h1>
+        
+        <div class="button-group">
+            <button class="create-btn" id="createRoomBtn">새 화이트보드 만들기</button>
+        </div>
+        
+        <div class="join-section">
+            <h2>기존 화이트보드 입장</h2>
+            <p>6자리 방 코드를 입력하세요</p>
+            
+            <div class="room-input">
+                <input type="text" id="roomCodeInput" placeholder="예: 123456" maxlength="6" pattern="[0-9]{6}">
+                <button class="join-btn" id="joinRoomBtn">입장</button>
+            </div>
+            
+            <div class="error-message" id="errorMessage">
+                존재하지 않는 방 코드입니다.
+            </div>
+        </div>
+        
+        <div class="loading" id="loading">
+            <div class="spinner"></div>
+            <p>처리 중...</p>
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const createRoomBtn = document.getElementById('createRoomBtn');
+            const joinRoomBtn = document.getElementById('joinRoomBtn');
+            const roomCodeInput = document.getElementById('roomCodeInput');
+            const errorMessage = document.getElementById('errorMessage');
+            const loading = document.getElementById('loading');
+            
+            // 서버 URL 설정 - 현재 호스트 기반으로 자동 설정
+            // 프로토콜 포함하여 완전한 URL 사용
+            const serverUrl = window.location.origin;
+            
+            console.log('서버 URL:', serverUrl);
+            
+            // 서버 연결 확인 (재시도 로직 추가)
+            async function checkServerConnection(retries = 3) {
+                for (let attempt = 1; attempt <= retries; attempt++) {
+                    try {
+                        console.log(`서버 상태 확인 중... (시도 ${attempt}/${retries})`);
+                        const controller = new AbortController();
+                        const timeoutId = setTimeout(() => controller.abort(), 5000);
+                        
+                        // 완전한 URL 사용
+                        const healthUrl = `${serverUrl}/api/health`;
+                        console.log(`헬스 체크 URL: ${healthUrl}`);
+                        
+                        const response = await fetch(healthUrl, {
+                            method: 'GET',
+                            signal: controller.signal,
+                            headers: {
+                                'Accept': 'application/json',
+                                'Cache-Control': 'no-cache'
+                            },
+                            // 배포 환경에서 CORS 문제 방지
+                            mode: 'same-origin'
+                        }).catch(error => {
+                            if (error.name === 'AbortError') {
+                                throw new Error('서버 연결 시간 초과');
+                            }
+                            throw error;
+                        });
+                        
+                        clearTimeout(timeoutId);
+                        
+                        if (response.ok) {
+                            const data = await response.json();
+                            console.log('서버 연결 성공:', data);
+                            return true;
+                        } else {
+                            console.error('서버 응답 오류:', response.status, response.statusText);
+                            // 마지막 시도가 아니면 계속 진행
+                            if (attempt < retries) {
+                                console.log(`재시도 중... (${attempt}/${retries})`);
+                                await new Promise(resolve => setTimeout(resolve, 1000)); // 1초 대기
+                                continue;
+                            }
+                            return false;
+                        }
+                    } catch (error) {
+                        console.error(`서버 연결 확인 오류 (시도 ${attempt}/${retries}):`, error);
+                        
+                        // 마지막 시도에서만 오류 메시지 표시
+                        if (attempt >= retries) {
+                            errorMessage.textContent = `서버 연결 실패: ${error.message}. 잠시 후 다시 시도해주세요.`;
+                            errorMessage.style.display = 'block';
+                            return false;
+                        }
+                        
+                        // 재시도 전 잠시 대기
+                        await new Promise(resolve => setTimeout(resolve, 1000)); // 1초 대기
+                    }
+                }
+                return false;
+            }
+            
+            // 페이지 로드 시 서버 연결 확인
+            checkServerConnection();
+            
+            // 숫자만 입력 가능하도록 설정
+            roomCodeInput.addEventListener('input', (e) => {
+                e.target.value = e.target.value.replace(/[^0-9]/g, '');
+            });
+            
+            // 방 생성
+            createRoomBtn.addEventListener('click', async () => {
+                loading.style.display = 'block';
+                errorMessage.style.display = 'none';
+                
+                // 최대 3번 재시도
+                for (let attempt = 1; attempt <= 3; attempt++) {
+                    try {
+                        console.log(`방 생성 요청 중... (시도 ${attempt}/3)`);
+                        const controller = new AbortController();
+                        const timeoutId = setTimeout(() => controller.abort(), 10000);
+                        
+                        // 상대 경로 사용
+                        const createRoomUrl = '/api/create-room';
+                        console.log(`방 생성 URL: ${createRoomUrl}`);
+                        
+                        const response = await fetch(createRoomUrl, {
+                            method: 'GET',
+                            headers: {
+                                'Accept': 'application/json',
+                                'Cache-Control': 'no-cache'
+                            },
+                            signal: controller.signal
+                        }).catch(error => {
+                            if (error.name === 'AbortError') {
+                                throw new Error('요청 시간 초과');
+                            }
+                            throw error;
+                        });
+                        
+                        clearTimeout(timeoutId);
+                        
+                        if (!response.ok) {
+                            throw new Error(`HTTP 오류: ${response.status}`);
+                        }
+                        
+                        const data = await response.json();
+                        console.log('방 생성 응답:', data);
+                        
+                        if (data.roomCode) {
+                            // 생성된 방으로 이동
+                            window.location.href = `/room/${data.roomCode}`;
+                            return; // 성공하면 루프 종료
+                        } else {
+                            throw new Error('방 생성 실패: 응답에 roomCode가 없습니다');
+                        }
+                    } catch (error) {
+                        console.error(`방 생성 오류 (시도 ${attempt}/3):`, error);
+                        
+                        // 마지막 시도가 아니면 재시도
+                        if (attempt < 3) {
+                            console.log(`재시도 중... (${attempt}/3)`);
+                            await new Promise(resolve => setTimeout(resolve, 1000)); // 1초 대기
+                            continue;
+                        }
+                        
+                        // 서버 응답이 없는 경우 클라이언트에서 방 코드 생성 (대체 방법)
+                        if (error.message === '요청 시간 초과' || error.message.includes('네트워크')) {
+                            console.log('서버 응답 없음, 클라이언트에서 방 코드 생성');
+                            
+                            // 6자리 숫자 코드 생성
+                            const roomCode = Math.floor(100000 + Math.random() * 900000).toString();
+                            console.log(`클라이언트에서 생성한 방 코드: ${roomCode}`);
+                            
+                            // 생성된 방으로 이동
+                            window.location.href = `/room/${roomCode}`;
+                            return;
+                        }
+                        
+                        // 그 외 오류는 메시지 표시
+                        errorMessage.textContent = `방 생성 중 오류가 발생했습니다: ${error.message}. 잠시 후 다시 시도해주세요.`;
+                        errorMessage.style.display = 'block';
+                    }
+                }
+                
+                loading.style.display = 'none';
+            });
+            
+            // 방 입장
+            joinRoomBtn.addEventListener('click', async () => {
+                const roomCode = roomCodeInput.value.trim();
+                
+                // 입력 검증
+                if (!roomCode || roomCode.length !== 6 || !/^\d+$/.test(roomCode)) {
+                    errorMessage.textContent = '6자리 숫자 코드를 입력해주세요.';
+                    errorMessage.style.display = 'block';
+                    return;
+                }
+                
+                loading.style.display = 'block';
+                errorMessage.style.display = 'none';
+                
+                // 최대 3번 재시도
+                for (let attempt = 1; attempt <= 3; attempt++) {
+                    try {
+                        console.log(`방 확인 요청 중: ${roomCode} (시도 ${attempt}/3)`);
+                        const controller = new AbortController();
+                        const timeoutId = setTimeout(() => controller.abort(), 15000); // 15초로 증가
+                        
+                        // 상대 경로 사용
+                        const checkRoomUrl = `/api/check-room/${roomCode}`;
+                        console.log(`방 확인 URL: ${checkRoomUrl}`);
+                        
+                        const response = await fetch(checkRoomUrl, {
+                            method: 'GET',
+                            headers: {
+                                'Accept': 'application/json',
+                                'Cache-Control': 'no-cache'
+                            },
+                            signal: controller.signal
+                        }).catch(error => {
+                            if (error.name === 'AbortError') {
+                                throw new Error('요청 시간 초과');
+                            }
+                            throw error;
+                        });
+                        
+                        clearTimeout(timeoutId);
+                        
+                        if (!response.ok) {
+                            throw new Error(`HTTP 오류: ${response.status}`);
+                        }
+                        
+                        const data = await response.json();
+                        console.log('방 확인 응답:', data);
+                        
+                        if (data.exists) {
+                            // 해당 방으로 이동
+                            window.location.href = `/room/${roomCode}`;
+                            return; // 성공하면 루프 종료
+                        } else {
+                            errorMessage.textContent = '존재하지 않는 방 코드입니다.';
+                            errorMessage.style.display = 'block';
+                            break; // 방이 존재하지 않으면 재시도하지 않음
+                        }
+                    } catch (error) {
+                        console.error(`방 확인 오류 (시도 ${attempt}/3):`, error);
+                        
+                        // 마지막 시도가 아니면 재시도
+                        if (attempt < 3) {
+                            console.log(`재시도 중... (${attempt}/3)`);
+                            await new Promise(resolve => setTimeout(resolve, 1000)); // 1초 대기
+                            continue;
+                        }
+                        
+                        // 마지막 시도에서 실패하면 오류 메시지 표시
+                        errorMessage.textContent = `서버 연결 중 오류가 발생했습니다: ${error.message}. 잠시 후 다시 시도해주세요.`;
+                        errorMessage.style.display = 'block';
+                    }
+                }
+                
+                loading.style.display = 'none';
+            });
+            
+            // Enter 키로 방 입장
+            roomCodeInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    joinRoomBtn.click();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
