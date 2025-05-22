@@ -373,13 +373,74 @@ function setPenSize(e) {
     }
 }
 
-// 캔버스 지우기 함수
+// 캔버스 지우기 함수 - 모든 사용자가 사용할 수 있도록 수정
 function clearCanvas() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    // 확인 대화상자 표시
+    if (confirm('정말로 모든 내용을 지우시겠습니까?')) {
+        const canvas = document.getElementById('whiteboard');
+        const ctx = canvas.getContext('2d');
+        
+        if (canvas && ctx) {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            // 서버에 캔버스 지우기 이벤트 전송
+            if (socket && socket.connected) {
+                socket.emit('clearCanvas');
+                console.log('캔버스 지우기 요청 전송');
+            }
+        }
+    }
+}
+
+// 다른 사용자의 캔버스 지우기 이벤트 수신 처리
+socket.on('clearCanvas', (data) => {
+    const canvas = document.getElementById('whiteboard');
+    const ctx = canvas.getContext('2d');
     
-    // 서버에 캔버스 지우기 이벤트 전송
-    if (socket && socket.connected) {
-        socket.emit('clearCanvas');
+    if (canvas && ctx) {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        console.log('다른 사용자가 캔버스를 지웠습니다.');
+        
+        // 알림 표시 (선택 사항)
+        if (data && data.clearedBy) {
+            showNotification(`다른 사용자가 캔버스를 지웠습니다.`);
+        }
+    }
+});
+
+// 알림 표시 함수
+function showNotification(message, duration = 3000) {
+    try {
+        // 이미 있는 알림 요소 확인
+        let notificationElement = document.getElementById('notification');
+        
+        if (!notificationElement) {
+            // 알림 요소 생성
+            notificationElement = document.createElement('div');
+            notificationElement.id = 'notification';
+            notificationElement.style.position = 'fixed';
+            notificationElement.style.top = '20px';
+            notificationElement.style.left = '50%';
+            notificationElement.style.transform = 'translateX(-50%)';
+            notificationElement.style.backgroundColor = 'rgba(0, 0, 0, 0.7)';
+            notificationElement.style.color = 'white';
+            notificationElement.style.padding = '10px 20px';
+            notificationElement.style.borderRadius = '4px';
+            notificationElement.style.zIndex = '1000';
+            notificationElement.style.boxShadow = '0 2px 5px rgba(0, 0, 0, 0.2)';
+            document.body.appendChild(notificationElement);
+        }
+        
+        // 메시지 설정 및 표시
+        notificationElement.textContent = message;
+        notificationElement.style.display = 'block';
+        
+        // 지정된 시간 후 숨기기
+        setTimeout(() => {
+            notificationElement.style.display = 'none';
+        }, duration);
+    } catch (error) {
+        console.error('알림 표시 중 오류 발생:', error);
     }
 }
 

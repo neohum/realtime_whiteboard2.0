@@ -954,7 +954,7 @@ io.on('connection', (socket) => {
         }
     });
 
-    // 캔버스 지우기 이벤트 수신 및 브로드캐스트
+    // 캔버스 지우기 이벤트 수신 및 브로드캐스트 - 모든 사용자가 지울 수 있도록 수정
     socket.on('clearCanvas', async () => {
         try {
             if (!currentRoom) return;
@@ -967,15 +967,7 @@ io.on('connection', (socket) => {
                 return;
             }
             
-            // 생성자 ID 확인 (소켓 ID 또는 IP 기반 생성자 ID)
-            const isCreator = socket.id === roomInfo.creatorId || 
-                             (socket.handshake.headers['x-creator-id'] === roomInfo.creatorId);
-            
-            // 방 생성자만 캔버스를 지울 수 있음
-            if (!isCreator) {
-                socket.emit('error', { message: '방 생성자만 캔버스를 지울 수 있습니다.' });
-                return;
-            }
+            // 방 생성자 확인 코드 제거 - 모든 사용자가 지울 수 있도록 함
             
             logToFile(`방 ${currentRoom}에서 캔버스 지우기 요청 수신 (요청자: ${socket.id})`);
             
@@ -984,7 +976,7 @@ io.on('connection', (socket) => {
             await clearImages(currentRoom);
             
             // 같은 방의 다른 사용자에게 캔버스 지우기 이벤트 브로드캐스트
-            socket.to(currentRoom).emit('clearCanvas');
+            socket.to(currentRoom).emit('clearCanvas', { clearedBy: socket.id });
             logToFile(`방 ${currentRoom}에 clearCanvas 이벤트 브로드캐스트 완료`);
         } catch (error) {
             console.error(`캔버스 지우기 오류:`, error);
@@ -1118,7 +1110,9 @@ io.on('connection', (socket) => {
         
         // 방의 모든 사용자에게 업데이트된 사용자 목록 전송
         const socketsInRoom = io.sockets.adapter.rooms.get(roomCode);
-        if (socketsInRoom) {
+        if (socketsInRoom && rooms[roomCode]) {  // rooms[roomCode] 존재 여부 확인 추가
+            const roomInfo = rooms[roomCode];  // roomInfo 변수 정의
+            
             const users = Array.from(socketsInRoom).map(socketId => {
                 return {
                     id: socketId,
@@ -1139,18 +1133,20 @@ io.on('connection', (socket) => {
         
         // 사용자가 속한 방이 있었다면 업데이트된 사용자 목록 전송
         if (currentRoom && rooms[currentRoom]) {
+            const roomInfo = rooms[currentRoom];  // roomInfo 변수 정의
             const socketsInRoom = io.sockets.adapter.rooms.get(currentRoom);
+            
             if (socketsInRoom) {
                 const users = Array.from(socketsInRoom).map(socketId => {
                     return {
                         id: socketId,
-                        isCreator: socketId === rooms[currentRoom].creatorId
+                        isCreator: socketId === roomInfo.creatorId
                     };
                 });
                 
                 io.to(currentRoom).emit('usersList', {
                     users: users,
-                    creatorId: rooms[currentRoom].creatorId
+                    creatorId: roomInfo.creatorId
                 });
             }
         }
@@ -1161,7 +1157,7 @@ io.on('connection', (socket) => {
         logToFile(`소켓 오류: ${error}`);
     });
 
-    // 연결 종료 처리
+    // 연결 종료 처리 - 개선된 버전
     socket.on('disconnect', async (reason) => {
         connectedClients--;
         
@@ -1171,9 +1167,14 @@ io.on('connection', (socket) => {
                 // userRooms 맵에서 사용자 정보 제거
                 userRooms.delete(socket.id);
                 
+                // 방 정보 확인
+                const roomInfo = rooms[currentRoom];
+                if (!roomInfo) {
+                    logToFile(`사용자 ${socket.id}가 연결 끊김 (이유: ${reason}), 방 정보 없음: ${currentRoom}`);
+                    return;
+                }
+                
                 // 방 정보 업데이트 (실제 참가자 수 확인)
-                // 참고: disconnect 이벤트는 이미 소켓이 방에서 나간 후에 발생하므로
-                // 실제 참가자 수는 이미 감소된 상태
                 updateRoomInfo(currentRoom);
                 
                 // 현재 방의 실제 참가자 수 가져오기
@@ -1185,8 +1186,25 @@ io.on('connection', (socket) => {
                 // 방의 다른 사용자들에게 사용자 퇴장 알림
                 socket.to(currentRoom).emit('userLeft', {
                     id: socket.id,
-                    users: actualUsers
+                    users: actualUsers,
+                    reason: reason,
+                    timestamp: Date.now()
                 });
+                
+                // 사용자가 속한 방이 있었다면 업데이트된 사용자 목록 전송
+                if (sockets) {
+                    const users = Array.from(sockets).map(socketId => {
+                        return {
+                            id: socketId,
+                            isCreator: socketId === roomInfo.creatorId
+                        };
+                    });
+                    
+                    io.to(currentRoom).emit('usersList', {
+                        users: users,
+                        creatorId: roomInfo.creatorId
+                    });
+                }
             } else {
                 logToFile(`사용자 연결 끊김: ${socket.id} (이유: ${reason}) (현재 연결: ${connectedClients}명)`);
             }
