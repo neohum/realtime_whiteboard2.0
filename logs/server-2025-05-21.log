@@ -1,0 +1,891 @@
+[2025-05-21T08:31:58.183Z] 서버 시작 - 포트: 3000, 도메인: http://localhost:3000
+[2025-05-21T08:31:58.183Z] Redis 연결을 건너뜁니다. 메모리 저장소만 사용합니다.
+[2025-05-21T08:31:58.186Z] 서버 시작 및 초기화 완료
+[2025-05-21T08:32:10.158Z] 404 Not Found: GET /v1/docs
+[2025-05-21T08:32:13.070Z] 404 Not Found: GET /favicon.ico
+[2025-05-21T08:32:15.766Z] API 호출로 새 방 생성: 519657, 생성자: ::1-1747816335765
+[2025-05-21T08:32:15.833Z] 사용자 연결됨: CHQyqG2AvTJ4_U1SAAAB (현재 연결: 1명)
+[2025-05-21T08:32:15.843Z] 404 Not Found: GET /favicon.ico
+[2025-05-21T08:32:15.847Z] 사용자 CHQyqG2AvTJ4_U1SAAAB가 방 519657에 입장 (현재 인원: 1명)
+[2025-05-21T08:33:27.713Z] 서버 시작 - 포트: 3000, 도메인: http://localhost:3000
+[2025-05-21T08:33:27.713Z] Redis 연결을 건너뜁니다. 메모리 저장소만 사용합니다.
+[2025-05-21T08:33:27.715Z] 서버 시작 및 초기화 완료
+[2025-05-21T08:33:30.222Z] 사용자 연결됨: 6wu_CEWn2Yq18-blAAAB (현재 연결: 1명)
+[2025-05-21T08:33:30.230Z] 소켓 연결에서 새 방 생성: 519657, 생성자: 6wu_CEWn2Yq18-blAAAB
+[2025-05-21T08:33:30.232Z] 사용자 6wu_CEWn2Yq18-blAAAB가 방 519657에 입장 (현재 인원: 1명)
+[2025-05-21T08:33:30.233Z] 사용자 6wu_CEWn2Yq18-blAAAB가 방 519657에서 나감
+[2025-05-21T08:33:30.234Z] 사용자 6wu_CEWn2Yq18-blAAAB가 방 519657에 입장 (현재 인원: 1명)
+[2025-05-21T08:33:30.235Z] 사용자 6wu_CEWn2Yq18-blAAAB가 방 519657에서 나감
+[2025-05-21T08:33:30.235Z] 사용자 6wu_CEWn2Yq18-blAAAB가 방 519657에 입장 (현재 인원: 1명)
+[2025-05-21T08:35:06.508Z] 사용자 6wu_CEWn2Yq18-blAAAB가 방 519657에서 연결 끊김 (이유: transport close) (현재 인원: 0명)
+[2025-05-21T08:35:06.570Z] 사용자 연결됨: ccf_q4YJfI6L8q83AAAD (현재 연결: 1명)
+[2025-05-21T08:35:06.577Z] 사용자 ccf_q4YJfI6L8q83AAAD가 방 519657에 입장 (현재 인원: 1명)
+[2025-05-21T08:35:06.579Z] 사용자 ccf_q4YJfI6L8q83AAAD가 방 519657에서 나감
+[2025-05-21T08:35:06.580Z] 사용자 ccf_q4YJfI6L8q83AAAD가 방 519657에 입장 (현재 인원: 1명)
+[2025-05-21T08:35:06.581Z] 404 Not Found: GET /favicon.ico
+[2025-05-21T08:35:07.422Z] 사용자 ccf_q4YJfI6L8q83AAAD가 방 519657에서 연결 끊김 (이유: transport close) (현재 인원: 0명)
+[2025-05-21T08:35:07.456Z] 사용자 연결됨: ZkC7QN16lr3qIgT9AAAF (현재 연결: 1명)
+[2025-05-21T08:35:07.473Z] 사용자 ZkC7QN16lr3qIgT9AAAF가 방 519657에 입장 (현재 인원: 1명)
+[2025-05-21T08:35:07.476Z] 사용자 ZkC7QN16lr3qIgT9AAAF가 방 519657에서 나감
+[2025-05-21T08:35:07.482Z] 사용자 ZkC7QN16lr3qIgT9AAAF가 방 519657에 입장 (현재 인원: 1명)
+[2025-05-21T08:35:07.486Z] 404 Not Found: GET /favicon.ico
+[2025-05-21T08:36:30.987Z] 사용자 ZkC7QN16lr3qIgT9AAAF가 방 519657에서 연결 끊김 (이유: transport close) (현재 인원: 0명)
+[2025-05-21T08:36:31.039Z] 사용자 연결됨: t1tmssAzA2srURdGAAAH (현재 연결: 1명)
+[2025-05-21T08:36:31.046Z] 사용자 t1tmssAzA2srURdGAAAH가 방 519657에 입장 (현재 인원: 1명)
+[2025-05-21T08:36:31.050Z] 사용자 t1tmssAzA2srURdGAAAH가 방 519657에서 나감
+[2025-05-21T08:36:31.050Z] 사용자 t1tmssAzA2srURdGAAAH가 방 519657에 입장 (현재 인원: 1명)
+[2025-05-21T08:36:31.054Z] 404 Not Found: GET /favicon.ico
+[2025-05-21T08:36:32.027Z] 사용자 t1tmssAzA2srURdGAAAH가 방 519657에서 연결 끊김 (이유: transport close) (현재 인원: 0명)
+[2025-05-21T08:36:32.055Z] 사용자 연결됨: WF0AWwVMVWGrOFHyAAAJ (현재 연결: 1명)
+[2025-05-21T08:36:32.074Z] 사용자 WF0AWwVMVWGrOFHyAAAJ가 방 519657에 입장 (현재 인원: 1명)
+[2025-05-21T08:36:32.078Z] 사용자 WF0AWwVMVWGrOFHyAAAJ가 방 519657에서 나감
+[2025-05-21T08:36:32.079Z] 사용자 WF0AWwVMVWGrOFHyAAAJ가 방 519657에 입장 (현재 인원: 1명)
+[2025-05-21T08:36:32.082Z] 404 Not Found: GET /favicon.ico
+[2025-05-21T08:36:32.698Z] 사용자 WF0AWwVMVWGrOFHyAAAJ가 방 519657에서 연결 끊김 (이유: transport close) (현재 인원: 0명)
+[2025-05-21T08:36:32.731Z] 사용자 연결됨: qO6q_i0a2wpy8n2RAAAL (현재 연결: 1명)
+[2025-05-21T08:36:32.749Z] 사용자 qO6q_i0a2wpy8n2RAAAL가 방 519657에 입장 (현재 인원: 1명)
+[2025-05-21T08:36:32.753Z] 사용자 qO6q_i0a2wpy8n2RAAAL가 방 519657에서 나감
+[2025-05-21T08:36:32.753Z] 사용자 qO6q_i0a2wpy8n2RAAAL가 방 519657에 입장 (현재 인원: 1명)
+[2025-05-21T08:36:32.757Z] 404 Not Found: GET /favicon.ico
+[2025-05-21T08:36:33.183Z] 사용자 qO6q_i0a2wpy8n2RAAAL가 방 519657에서 연결 끊김 (이유: transport close) (현재 인원: 0명)
+[2025-05-21T08:36:33.208Z] 사용자 연결됨: zbWjP_vSo2yxGdQcAAAN (현재 연결: 1명)
+[2025-05-21T08:36:33.226Z] 사용자 zbWjP_vSo2yxGdQcAAAN가 방 519657에 입장 (현재 인원: 1명)
+[2025-05-21T08:36:33.229Z] 사용자 zbWjP_vSo2yxGdQcAAAN가 방 519657에서 나감
+[2025-05-21T08:36:33.230Z] 사용자 zbWjP_vSo2yxGdQcAAAN가 방 519657에 입장 (현재 인원: 1명)
+[2025-05-21T08:36:33.232Z] 404 Not Found: GET /favicon.ico
+[2025-05-21T08:36:33.791Z] 사용자 zbWjP_vSo2yxGdQcAAAN가 방 519657에서 연결 끊김 (이유: transport close) (현재 인원: 0명)
+[2025-05-21T08:36:33.821Z] 사용자 연결됨: a9K-qCJ8I4SEZslAAAAP (현재 연결: 1명)
+[2025-05-21T08:36:33.839Z] 사용자 a9K-qCJ8I4SEZslAAAAP가 방 519657에 입장 (현재 인원: 1명)
+[2025-05-21T08:36:33.843Z] 사용자 a9K-qCJ8I4SEZslAAAAP가 방 519657에서 나감
+[2025-05-21T08:36:33.846Z] 사용자 a9K-qCJ8I4SEZslAAAAP가 방 519657에 입장 (현재 인원: 1명)
+[2025-05-21T08:36:33.847Z] 404 Not Found: GET /favicon.ico
+[2025-05-21T08:38:26.279Z] 메모리 사용량: 14MB / 15MB
+[2025-05-21T08:39:53.324Z] 사용자 a9K-qCJ8I4SEZslAAAAP가 방 519657에서 연결 끊김 (이유: transport close) (현재 인원: 0명)
+[2025-05-21T08:39:53.378Z] 사용자 연결됨: kAT7Ff40hY4TVKqjAAAR (현재 연결: 1명)
+[2025-05-21T08:39:53.385Z] 사용자 kAT7Ff40hY4TVKqjAAAR가 방 519657에 입장 (현재 인원: 1명)
+[2025-05-21T08:39:53.388Z] 사용자 kAT7Ff40hY4TVKqjAAAR가 방 519657에서 나감
+[2025-05-21T08:39:53.389Z] 사용자 kAT7Ff40hY4TVKqjAAAR가 방 519657에 입장 (현재 인원: 1명)
+[2025-05-21T08:39:53.392Z] 404 Not Found: GET /favicon.ico
+[2025-05-21T08:39:54.406Z] 사용자 kAT7Ff40hY4TVKqjAAAR가 방 519657에서 연결 끊김 (이유: transport close) (현재 인원: 0명)
+[2025-05-21T08:39:54.435Z] 사용자 연결됨: mHb7L0r2Tff8x60zAAAT (현재 연결: 1명)
+[2025-05-21T08:39:54.454Z] 사용자 mHb7L0r2Tff8x60zAAAT가 방 519657에 입장 (현재 인원: 1명)
+[2025-05-21T08:39:54.458Z] 사용자 mHb7L0r2Tff8x60zAAAT가 방 519657에서 나감
+[2025-05-21T08:39:54.459Z] 사용자 mHb7L0r2Tff8x60zAAAT가 방 519657에 입장 (현재 인원: 1명)
+[2025-05-21T08:39:54.461Z] 404 Not Found: GET /favicon.ico
+[2025-05-21T08:39:55.390Z] 사용자 mHb7L0r2Tff8x60zAAAT가 방 519657에서 연결 끊김 (이유: transport close) (현재 인원: 0명)
+[2025-05-21T08:39:55.414Z] 사용자 연결됨: e2aMwhhQDIVASzI7AAAV (현재 연결: 1명)
+[2025-05-21T08:39:55.432Z] 사용자 e2aMwhhQDIVASzI7AAAV가 방 519657에 입장 (현재 인원: 1명)
+[2025-05-21T08:39:55.436Z] 사용자 e2aMwhhQDIVASzI7AAAV가 방 519657에서 나감
+[2025-05-21T08:39:55.436Z] 사용자 e2aMwhhQDIVASzI7AAAV가 방 519657에 입장 (현재 인원: 1명)
+[2025-05-21T08:39:55.440Z] 404 Not Found: GET /favicon.ico
+[2025-05-21T08:39:57.834Z] 사용자 e2aMwhhQDIVASzI7AAAV가 방 519657에서 연결 끊김 (이유: transport close) (현재 인원: 0명)
+[2025-05-21T08:39:57.866Z] 사용자 연결됨: u2e-Eh66LHBaFZcvAAAX (현재 연결: 1명)
+[2025-05-21T08:39:57.881Z] 사용자 u2e-Eh66LHBaFZcvAAAX가 방 519657에 입장 (현재 인원: 1명)
+[2025-05-21T08:39:57.886Z] 사용자 u2e-Eh66LHBaFZcvAAAX가 방 519657에서 나감
+[2025-05-21T08:39:57.887Z] 사용자 u2e-Eh66LHBaFZcvAAAX가 방 519657에 입장 (현재 인원: 1명)
+[2025-05-21T08:39:57.891Z] 404 Not Found: GET /favicon.ico
+[2025-05-21T08:40:06.707Z] 사용자 연결됨: 83LuUm2uwcry2vApAAAZ (현재 연결: 2명)
+[2025-05-21T08:40:06.712Z] 사용자 83LuUm2uwcry2vApAAAZ가 방 519657에 입장 (현재 인원: 2명)
+[2025-05-21T08:40:06.755Z] 사용자 83LuUm2uwcry2vApAAAZ가 방 519657에서 나감
+[2025-05-21T08:40:06.755Z] 사용자 83LuUm2uwcry2vApAAAZ가 방 519657에 입장 (현재 인원: 2명)
+[2025-05-21T08:40:06.776Z] 404 Not Found: GET /favicon.ico
+[2025-05-21T08:40:11.838Z] 사용자 83LuUm2uwcry2vApAAAZ가 방 519657에서 연결 끊김 (이유: transport close) (현재 인원: 1명)
+[2025-05-21T08:40:15.649Z] 사용자 u2e-Eh66LHBaFZcvAAAX가 방 519657에서 연결 끊김 (이유: transport close) (현재 인원: 0명)
+[2025-05-21T08:40:15.701Z] 404 Not Found: GET /favicon.ico
+[2025-05-21T08:40:17.534Z] API 호출로 새 방 생성: 557389, 생성자: ::1-1747816817534
+[2025-05-21T08:40:17.560Z] 사용자 연결됨: GyIrzjsG07i3MclNAAAb (현재 연결: 1명)
+[2025-05-21T08:40:17.581Z] 사용자 GyIrzjsG07i3MclNAAAb가 방 557389에 입장 (현재 인원: 1명)
+[2025-05-21T08:40:17.587Z] 사용자 GyIrzjsG07i3MclNAAAb가 방 557389에서 나감
+[2025-05-21T08:40:17.589Z] 사용자 GyIrzjsG07i3MclNAAAb가 방 557389에 입장 (현재 인원: 1명)
+[2025-05-21T08:40:17.591Z] 404 Not Found: GET /favicon.ico
+[2025-05-21T08:41:23.881Z] 사용자 연결됨: 5qPTj9GvFO4lU9LaAAAd (현재 연결: 2명)
+[2025-05-21T08:41:23.913Z] 사용자 5qPTj9GvFO4lU9LaAAAd가 방 557389에 입장 (현재 인원: 2명)
+[2025-05-21T08:41:23.939Z] 사용자 5qPTj9GvFO4lU9LaAAAd가 방 557389에서 나감
+[2025-05-21T08:41:23.939Z] 사용자 5qPTj9GvFO4lU9LaAAAd가 방 557389에 입장 (현재 인원: 2명)
+[2025-05-21T08:41:23.948Z] 404 Not Found: GET /favicon.ico
+[2025-05-21T08:41:39.041Z] 404 Not Found: GET /favicon.ico
+[2025-05-21T08:41:39.045Z] 사용자 연결됨: HnZzHEcUhIp_CKYNAAAf (현재 연결: 3명)
+[2025-05-21T08:41:39.049Z] 사용자 HnZzHEcUhIp_CKYNAAAf가 방 557389에 입장 (현재 인원: 3명)
+[2025-05-21T08:41:39.051Z] 사용자 HnZzHEcUhIp_CKYNAAAf가 방 557389에서 나감
+[2025-05-21T08:41:39.051Z] 사용자 HnZzHEcUhIp_CKYNAAAf가 방 557389에 입장 (현재 인원: 3명)
+[2025-05-21T08:41:44.905Z] 사용자 HnZzHEcUhIp_CKYNAAAf가 방 557389에서 연결 끊김 (이유: transport close) (현재 인원: 2명)
+[2025-05-21T08:41:48.448Z] 사용자 5qPTj9GvFO4lU9LaAAAd가 방 557389에서 연결 끊김 (이유: transport close) (현재 인원: 1명)
+[2025-05-21T08:43:26.277Z] 메모리 사용량: 15MB / 17MB
+[2025-05-21T08:45:09.718Z] 사용자 GyIrzjsG07i3MclNAAAb가 방 557389에서 연결 끊김 (이유: transport close) (현재 인원: 0명)
+[2025-05-21T08:45:09.764Z] 사용자 연결됨: l8LTBlo_xtYVOlSEAAAh (현재 연결: 1명)
+[2025-05-21T08:45:09.811Z] 사용자 l8LTBlo_xtYVOlSEAAAh가 방 557389에 입장 (현재 인원: 1명)
+[2025-05-21T08:45:09.815Z] 사용자 l8LTBlo_xtYVOlSEAAAh가 방 557389에서 나감
+[2025-05-21T08:45:09.815Z] 사용자 l8LTBlo_xtYVOlSEAAAh가 방 557389에 입장 (현재 인원: 1명)
+[2025-05-21T08:45:09.819Z] 404 Not Found: GET /favicon.ico
+[2025-05-21T08:45:10.576Z] 사용자 l8LTBlo_xtYVOlSEAAAh가 방 557389에서 연결 끊김 (이유: transport close) (현재 인원: 0명)
+[2025-05-21T08:45:10.600Z] 사용자 연결됨: ErUZ5G9W7WkbaclyAAAj (현재 연결: 1명)
+[2025-05-21T08:45:10.612Z] 사용자 ErUZ5G9W7WkbaclyAAAj가 방 557389에 입장 (현재 인원: 1명)
+[2025-05-21T08:45:10.614Z] 사용자 ErUZ5G9W7WkbaclyAAAj가 방 557389에서 나감
+[2025-05-21T08:45:10.614Z] 사용자 ErUZ5G9W7WkbaclyAAAj가 방 557389에 입장 (현재 인원: 1명)
+[2025-05-21T08:45:10.619Z] 404 Not Found: GET /favicon.ico
+[2025-05-21T08:45:11.127Z] 사용자 ErUZ5G9W7WkbaclyAAAj가 방 557389에서 연결 끊김 (이유: transport close) (현재 인원: 0명)
+[2025-05-21T08:45:11.151Z] 사용자 연결됨: zv5RnMsVa1p05S_4AAAl (현재 연결: 1명)
+[2025-05-21T08:45:11.163Z] 사용자 zv5RnMsVa1p05S_4AAAl가 방 557389에 입장 (현재 인원: 1명)
+[2025-05-21T08:45:11.167Z] 사용자 zv5RnMsVa1p05S_4AAAl가 방 557389에서 나감
+[2025-05-21T08:45:11.167Z] 사용자 zv5RnMsVa1p05S_4AAAl가 방 557389에 입장 (현재 인원: 1명)
+[2025-05-21T08:45:11.171Z] 404 Not Found: GET /favicon.ico
+[2025-05-21T08:45:11.429Z] 사용자 zv5RnMsVa1p05S_4AAAl가 방 557389에서 연결 끊김 (이유: transport close) (현재 인원: 0명)
+[2025-05-21T08:45:11.451Z] 사용자 연결됨: mG4DYFb-GJRajm52AAAn (현재 연결: 1명)
+[2025-05-21T08:45:11.463Z] 사용자 mG4DYFb-GJRajm52AAAn가 방 557389에 입장 (현재 인원: 1명)
+[2025-05-21T08:45:11.467Z] 사용자 mG4DYFb-GJRajm52AAAn가 방 557389에서 나감
+[2025-05-21T08:45:11.468Z] 사용자 mG4DYFb-GJRajm52AAAn가 방 557389에 입장 (현재 인원: 1명)
+[2025-05-21T08:45:11.472Z] 404 Not Found: GET /favicon.ico
+[2025-05-21T08:45:11.693Z] 사용자 mG4DYFb-GJRajm52AAAn가 방 557389에서 연결 끊김 (이유: transport close) (현재 인원: 0명)
+[2025-05-21T08:45:11.714Z] 사용자 연결됨: KHERS-cUC_uN5VNRAAAp (현재 연결: 1명)
+[2025-05-21T08:45:11.726Z] 사용자 KHERS-cUC_uN5VNRAAAp가 방 557389에 입장 (현재 인원: 1명)
+[2025-05-21T08:45:11.730Z] 사용자 KHERS-cUC_uN5VNRAAAp가 방 557389에서 나감
+[2025-05-21T08:45:11.731Z] 사용자 KHERS-cUC_uN5VNRAAAp가 방 557389에 입장 (현재 인원: 1명)
+[2025-05-21T08:45:11.733Z] 404 Not Found: GET /favicon.ico
+[2025-05-21T08:45:11.989Z] 사용자 KHERS-cUC_uN5VNRAAAp가 방 557389에서 연결 끊김 (이유: transport close) (현재 인원: 0명)
+[2025-05-21T08:45:12.011Z] 사용자 연결됨: llQfAnqmHfUO_FWGAAAr (현재 연결: 1명)
+[2025-05-21T08:45:12.023Z] 사용자 llQfAnqmHfUO_FWGAAAr가 방 557389에 입장 (현재 인원: 1명)
+[2025-05-21T08:45:12.029Z] 사용자 llQfAnqmHfUO_FWGAAAr가 방 557389에서 나감
+[2025-05-21T08:45:12.030Z] 사용자 llQfAnqmHfUO_FWGAAAr가 방 557389에 입장 (현재 인원: 1명)
+[2025-05-21T08:45:12.032Z] 404 Not Found: GET /favicon.ico
+[2025-05-21T08:45:14.961Z] 사용자 llQfAnqmHfUO_FWGAAAr가 방 557389에서 연결 끊김 (이유: transport close) (현재 인원: 0명)
+[2025-05-21T08:45:14.971Z] 404 Not Found: GET /favicon.ico
+[2025-05-21T08:45:17.470Z] API 호출로 새 방 생성: 422036, 생성자: ::1-1747817117469
+[2025-05-21T08:45:17.504Z] 사용자 연결됨: Tyrs4jnWK5ZQoN5iAAAt (현재 연결: 1명)
+[2025-05-21T08:45:17.518Z] 사용자 Tyrs4jnWK5ZQoN5iAAAt가 방 422036에 입장 (현재 인원: 1명)
+[2025-05-21T08:45:17.526Z] 사용자 Tyrs4jnWK5ZQoN5iAAAt가 방 422036에서 나감
+[2025-05-21T08:45:17.527Z] 사용자 Tyrs4jnWK5ZQoN5iAAAt가 방 422036에 입장 (현재 인원: 1명)
+[2025-05-21T08:45:17.530Z] 404 Not Found: GET /favicon.ico
+[2025-05-21T08:47:02.288Z] 사용자 Tyrs4jnWK5ZQoN5iAAAt가 방 422036에서 연결 끊김 (이유: transport close) (현재 인원: 0명)
+[2025-05-21T08:47:02.328Z] 사용자 연결됨: FhlT5v7CMAa6jCxLAAAv (현재 연결: 1명)
+[2025-05-21T08:47:02.334Z] 사용자 FhlT5v7CMAa6jCxLAAAv가 방 422036에 입장 (현재 인원: 1명)
+[2025-05-21T08:47:02.336Z] 사용자 FhlT5v7CMAa6jCxLAAAv가 방 422036에서 나감
+[2025-05-21T08:47:02.336Z] 사용자 FhlT5v7CMAa6jCxLAAAv가 방 422036에 입장 (현재 인원: 1명)
+[2025-05-21T08:47:02.339Z] 404 Not Found: GET /favicon.ico
+[2025-05-21T08:47:03.216Z] 사용자 FhlT5v7CMAa6jCxLAAAv가 방 422036에서 연결 끊김 (이유: transport close) (현재 인원: 0명)
+[2025-05-21T08:47:03.241Z] 사용자 연결됨: jkrovwxocyvef8B9AAAx (현재 연결: 1명)
+[2025-05-21T08:47:03.254Z] 사용자 jkrovwxocyvef8B9AAAx가 방 422036에 입장 (현재 인원: 1명)
+[2025-05-21T08:47:03.257Z] 사용자 jkrovwxocyvef8B9AAAx가 방 422036에서 나감
+[2025-05-21T08:47:03.257Z] 사용자 jkrovwxocyvef8B9AAAx가 방 422036에 입장 (현재 인원: 1명)
+[2025-05-21T08:47:03.259Z] 404 Not Found: GET /favicon.ico
+[2025-05-21T08:47:03.871Z] 사용자 jkrovwxocyvef8B9AAAx가 방 422036에서 연결 끊김 (이유: transport close) (현재 인원: 0명)
+[2025-05-21T08:47:03.895Z] 사용자 연결됨: JUsB4lgWL1GjJ-ZQAAAz (현재 연결: 1명)
+[2025-05-21T08:47:03.908Z] 사용자 JUsB4lgWL1GjJ-ZQAAAz가 방 422036에 입장 (현재 인원: 1명)
+[2025-05-21T08:47:03.912Z] 사용자 JUsB4lgWL1GjJ-ZQAAAz가 방 422036에서 나감
+[2025-05-21T08:47:03.913Z] 사용자 JUsB4lgWL1GjJ-ZQAAAz가 방 422036에 입장 (현재 인원: 1명)
+[2025-05-21T08:47:03.916Z] 404 Not Found: GET /favicon.ico
+[2025-05-21T08:47:04.404Z] 사용자 JUsB4lgWL1GjJ-ZQAAAz가 방 422036에서 연결 끊김 (이유: transport close) (현재 인원: 0명)
+[2025-05-21T08:47:04.427Z] 사용자 연결됨: dENy1U5newmQyrc1AAA1 (현재 연결: 1명)
+[2025-05-21T08:47:04.438Z] 사용자 dENy1U5newmQyrc1AAA1가 방 422036에 입장 (현재 인원: 1명)
+[2025-05-21T08:47:04.441Z] 사용자 dENy1U5newmQyrc1AAA1가 방 422036에서 나감
+[2025-05-21T08:47:04.441Z] 사용자 dENy1U5newmQyrc1AAA1가 방 422036에 입장 (현재 인원: 1명)
+[2025-05-21T08:47:04.444Z] 404 Not Found: GET /favicon.ico
+[2025-05-21T08:47:04.670Z] 사용자 dENy1U5newmQyrc1AAA1가 방 422036에서 연결 끊김 (이유: transport close) (현재 인원: 0명)
+[2025-05-21T08:47:04.692Z] 사용자 연결됨: 76OyY41fU70R7mSUAAA3 (현재 연결: 1명)
+[2025-05-21T08:47:04.705Z] 사용자 76OyY41fU70R7mSUAAA3가 방 422036에 입장 (현재 인원: 1명)
+[2025-05-21T08:47:04.708Z] 사용자 76OyY41fU70R7mSUAAA3가 방 422036에서 나감
+[2025-05-21T08:47:04.709Z] 사용자 76OyY41fU70R7mSUAAA3가 방 422036에 입장 (현재 인원: 1명)
+[2025-05-21T08:47:04.710Z] 404 Not Found: GET /favicon.ico
+[2025-05-21T08:47:04.891Z] 사용자 76OyY41fU70R7mSUAAA3가 방 422036에서 연결 끊김 (이유: transport close) (현재 인원: 0명)
+[2025-05-21T08:47:04.915Z] 사용자 연결됨: HWaGvg_HweFOLxtPAAA5 (현재 연결: 1명)
+[2025-05-21T08:47:04.928Z] 사용자 HWaGvg_HweFOLxtPAAA5가 방 422036에 입장 (현재 인원: 1명)
+[2025-05-21T08:47:04.931Z] 사용자 HWaGvg_HweFOLxtPAAA5가 방 422036에서 나감
+[2025-05-21T08:47:04.932Z] 사용자 HWaGvg_HweFOLxtPAAA5가 방 422036에 입장 (현재 인원: 1명)
+[2025-05-21T08:47:04.933Z] 404 Not Found: GET /favicon.ico
+[2025-05-21T08:47:05.158Z] 사용자 HWaGvg_HweFOLxtPAAA5가 방 422036에서 연결 끊김 (이유: transport close) (현재 인원: 0명)
+[2025-05-21T08:47:05.181Z] 사용자 연결됨: JhHZGJK0qt48gpqGAAA7 (현재 연결: 1명)
+[2025-05-21T08:47:05.198Z] 사용자 JhHZGJK0qt48gpqGAAA7가 방 422036에 입장 (현재 인원: 1명)
+[2025-05-21T08:47:05.198Z] 사용자 JhHZGJK0qt48gpqGAAA7가 방 422036에서 나감
+[2025-05-21T08:47:05.199Z] 사용자 JhHZGJK0qt48gpqGAAA7가 방 422036에 입장 (현재 인원: 1명)
+[2025-05-21T08:47:05.200Z] 404 Not Found: GET /favicon.ico
+[2025-05-21T08:47:05.457Z] 사용자 JhHZGJK0qt48gpqGAAA7가 방 422036에서 연결 끊김 (이유: transport close) (현재 인원: 0명)
+[2025-05-21T08:47:05.479Z] 사용자 연결됨: _-3Ek9lk22J1WsAHAAA9 (현재 연결: 1명)
+[2025-05-21T08:47:05.490Z] 사용자 _-3Ek9lk22J1WsAHAAA9가 방 422036에 입장 (현재 인원: 1명)
+[2025-05-21T08:47:05.493Z] 사용자 _-3Ek9lk22J1WsAHAAA9가 방 422036에서 나감
+[2025-05-21T08:47:05.494Z] 사용자 _-3Ek9lk22J1WsAHAAA9가 방 422036에 입장 (현재 인원: 1명)
+[2025-05-21T08:47:05.496Z] 404 Not Found: GET /favicon.ico
+[2025-05-21T08:47:05.949Z] 사용자 _-3Ek9lk22J1WsAHAAA9가 방 422036에서 연결 끊김 (이유: transport close) (현재 인원: 0명)
+[2025-05-21T08:47:05.983Z] 사용자 연결됨: YaceHV9kGPLb0cJOAAA_ (현재 연결: 1명)
+[2025-05-21T08:47:05.991Z] 사용자 YaceHV9kGPLb0cJOAAA_가 방 422036에 입장 (현재 인원: 1명)
+[2025-05-21T08:47:05.992Z] 사용자 YaceHV9kGPLb0cJOAAA_가 방 422036에서 나감
+[2025-05-21T08:47:05.993Z] 사용자 YaceHV9kGPLb0cJOAAA_가 방 422036에 입장 (현재 인원: 1명)
+[2025-05-21T08:47:05.993Z] 404 Not Found: GET /favicon.ico
+[2025-05-21T08:47:08.175Z] 사용자 YaceHV9kGPLb0cJOAAA_가 방 422036에서 연결 끊김 (이유: transport close) (현재 인원: 0명)
+[2025-05-21T08:47:17.871Z] 404 Not Found: GET /v1/docs
+[2025-05-21T08:47:20.892Z] 404 Not Found: GET /favicon.ico
+[2025-05-21T08:47:23.785Z] API 호출로 새 방 생성: 859396, 생성자: ::1-1747817243784
+[2025-05-21T08:47:23.815Z] 사용자 연결됨: GkFjMXw6vhchFOw9AABB (현재 연결: 1명)
+[2025-05-21T08:47:23.830Z] 사용자 GkFjMXw6vhchFOw9AABB가 방 859396에 입장 (현재 인원: 1명)
+[2025-05-21T08:47:23.835Z] 사용자 GkFjMXw6vhchFOw9AABB가 방 859396에서 나감
+[2025-05-21T08:47:23.836Z] 사용자 GkFjMXw6vhchFOw9AABB가 방 859396에 입장 (현재 인원: 1명)
+[2025-05-21T08:47:23.842Z] 404 Not Found: GET /favicon.ico
+[2025-05-21T08:47:40.982Z] 404 Not Found: GET /favicon.ico
+[2025-05-21T08:47:59.564Z] 방 확인 요청: 859396, 존재: true
+[2025-05-21T08:47:59.621Z] 사용자 연결됨: nTjyTiYl-WldornjAABD (현재 연결: 2명)
+[2025-05-21T08:47:59.631Z] 사용자 nTjyTiYl-WldornjAABD가 방 859396에 입장 (현재 인원: 2명)
+[2025-05-21T08:47:59.634Z] 사용자 nTjyTiYl-WldornjAABD가 방 859396에서 나감
+[2025-05-21T08:47:59.634Z] 사용자 nTjyTiYl-WldornjAABD가 방 859396에 입장 (현재 인원: 2명)
+[2025-05-21T08:47:59.636Z] 404 Not Found: GET /favicon.ico
+[2025-05-21T08:48:13.150Z] 사용자 GkFjMXw6vhchFOw9AABB가 방 859396에서 연결 끊김 (이유: transport close) (현재 인원: 1명)
+[2025-05-21T08:48:13.194Z] 404 Not Found: GET /favicon.ico
+[2025-05-21T08:48:14.704Z] API 호출로 새 방 생성: 555789, 생성자: ::1-1747817294704
+[2025-05-21T08:48:14.729Z] 사용자 연결됨: XowWraiBR1e9lHgYAABF (현재 연결: 2명)
+[2025-05-21T08:48:14.742Z] 사용자 XowWraiBR1e9lHgYAABF가 방 555789에 입장 (현재 인원: 1명)
+[2025-05-21T08:48:14.745Z] 사용자 XowWraiBR1e9lHgYAABF가 방 555789에서 나감
+[2025-05-21T08:48:14.745Z] 사용자 XowWraiBR1e9lHgYAABF가 방 555789에 입장 (현재 인원: 1명)
+[2025-05-21T08:48:14.749Z] 404 Not Found: GET /favicon.ico
+[2025-05-21T08:48:26.275Z] 메모리 사용량: 16MB / 18MB
+[2025-05-21T08:50:04.177Z] 사용자 XowWraiBR1e9lHgYAABF가 방 555789에서 연결 끊김 (이유: transport close) (현재 인원: 0명)
+[2025-05-21T08:50:05.268Z] 사용자 nTjyTiYl-WldornjAABD가 방 859396에서 연결 끊김 (이유: transport close) (현재 인원: 0명)
+[2025-05-21T08:53:26.308Z] 메모리 사용량: 16MB / 18MB
+[2025-05-21T08:56:34.545Z] 404 Not Found: GET /favicon.ico
+[2025-05-21T08:56:36.622Z] API 호출로 새 방 생성: 377553, 생성자: ::1-1747817796622
+[2025-05-21T08:56:36.653Z] 사용자 연결됨: 3pGVe-Fx9wpOcXB9AABH (현재 연결: 1명)
+[2025-05-21T08:56:36.669Z] 사용자 3pGVe-Fx9wpOcXB9AABH가 방 377553에 입장 (현재 인원: 1명)
+[2025-05-21T08:56:36.672Z] 사용자 3pGVe-Fx9wpOcXB9AABH가 방 377553에서 나감
+[2025-05-21T08:56:36.673Z] 사용자 3pGVe-Fx9wpOcXB9AABH가 방 377553에 입장 (현재 인원: 1명)
+[2025-05-21T08:56:36.679Z] 404 Not Found: GET /favicon.ico
+[2025-05-21T08:57:45.705Z] 사용자 연결됨: 1y9ulhrAMT1XdvqhAABJ (현재 연결: 2명)
+[2025-05-21T08:57:45.709Z] 사용자 1y9ulhrAMT1XdvqhAABJ가 방 377553에 입장 (현재 인원: 2명)
+[2025-05-21T08:57:45.756Z] 사용자 1y9ulhrAMT1XdvqhAABJ가 방 377553에서 나감
+[2025-05-21T08:57:45.757Z] 사용자 1y9ulhrAMT1XdvqhAABJ가 방 377553에 입장 (현재 인원: 2명)
+[2025-05-21T08:57:45.772Z] 404 Not Found: GET /favicon.ico
+[2025-05-21T08:58:26.314Z] 메모리 사용량: 16MB / 18MB
+[2025-05-21T09:00:52.511Z] 사용자 3pGVe-Fx9wpOcXB9AABH가 방 377553에서 연결 끊김 (이유: transport close) (현재 인원: 1명)
+[2025-05-21T09:00:52.543Z] 사용자 연결됨: n-Ld48KnscpbGBAjAABL (현재 연결: 2명)
+[2025-05-21T09:00:52.560Z] 사용자 n-Ld48KnscpbGBAjAABL가 방 377553에 입장 (현재 인원: 2명)
+[2025-05-21T09:00:52.562Z] 사용자 n-Ld48KnscpbGBAjAABL가 방 377553에서 나감
+[2025-05-21T09:00:52.562Z] 사용자 n-Ld48KnscpbGBAjAABL가 방 377553에 입장 (현재 인원: 2명)
+[2025-05-21T09:00:52.568Z] 404 Not Found: GET /favicon.ico
+[2025-05-21T09:00:53.337Z] 사용자 n-Ld48KnscpbGBAjAABL가 방 377553에서 연결 끊김 (이유: transport close) (현재 인원: 1명)
+[2025-05-21T09:00:53.367Z] 사용자 연결됨: 3DVSGEUPFsUurjuzAABN (현재 연결: 2명)
+[2025-05-21T09:00:53.383Z] 사용자 3DVSGEUPFsUurjuzAABN가 방 377553에 입장 (현재 인원: 2명)
+[2025-05-21T09:00:53.387Z] 사용자 3DVSGEUPFsUurjuzAABN가 방 377553에서 나감
+[2025-05-21T09:00:53.388Z] 사용자 3DVSGEUPFsUurjuzAABN가 방 377553에 입장 (현재 인원: 2명)
+[2025-05-21T09:00:53.390Z] 404 Not Found: GET /favicon.ico
+[2025-05-21T09:00:53.866Z] 사용자 3DVSGEUPFsUurjuzAABN가 방 377553에서 연결 끊김 (이유: transport close) (현재 인원: 1명)
+[2025-05-21T09:00:53.895Z] 사용자 연결됨: B_cG2eI0C5E5evFqAABP (현재 연결: 2명)
+[2025-05-21T09:00:53.913Z] 사용자 B_cG2eI0C5E5evFqAABP가 방 377553에 입장 (현재 인원: 2명)
+[2025-05-21T09:00:53.915Z] 사용자 B_cG2eI0C5E5evFqAABP가 방 377553에서 나감
+[2025-05-21T09:00:53.916Z] 사용자 B_cG2eI0C5E5evFqAABP가 방 377553에 입장 (현재 인원: 2명)
+[2025-05-21T09:00:53.918Z] 404 Not Found: GET /favicon.ico
+[2025-05-21T09:00:54.199Z] 사용자 B_cG2eI0C5E5evFqAABP가 방 377553에서 연결 끊김 (이유: transport close) (현재 인원: 1명)
+[2025-05-21T09:00:54.230Z] 사용자 연결됨: iX_R-xNFeS7OnC5yAABR (현재 연결: 2명)
+[2025-05-21T09:00:54.248Z] 사용자 iX_R-xNFeS7OnC5yAABR가 방 377553에 입장 (현재 인원: 2명)
+[2025-05-21T09:00:54.252Z] 사용자 iX_R-xNFeS7OnC5yAABR가 방 377553에서 나감
+[2025-05-21T09:00:54.253Z] 사용자 iX_R-xNFeS7OnC5yAABR가 방 377553에 입장 (현재 인원: 2명)
+[2025-05-21T09:00:54.256Z] 404 Not Found: GET /favicon.ico
+[2025-05-21T09:00:54.469Z] 사용자 iX_R-xNFeS7OnC5yAABR가 방 377553에서 연결 끊김 (이유: transport close) (현재 인원: 1명)
+[2025-05-21T09:00:54.503Z] 사용자 연결됨: 8jeJIyRo8tdhInlmAABT (현재 연결: 2명)
+[2025-05-21T09:00:54.523Z] 사용자 8jeJIyRo8tdhInlmAABT가 방 377553에 입장 (현재 인원: 2명)
+[2025-05-21T09:00:54.528Z] 사용자 8jeJIyRo8tdhInlmAABT가 방 377553에서 나감
+[2025-05-21T09:00:54.529Z] 사용자 8jeJIyRo8tdhInlmAABT가 방 377553에 입장 (현재 인원: 2명)
+[2025-05-21T09:00:54.531Z] 404 Not Found: GET /favicon.ico
+[2025-05-21T09:00:54.725Z] 사용자 8jeJIyRo8tdhInlmAABT가 방 377553에서 연결 끊김 (이유: transport close) (현재 인원: 1명)
+[2025-05-21T09:00:54.755Z] 사용자 연결됨: hlim0Re0F7JwDhfQAABV (현재 연결: 2명)
+[2025-05-21T09:00:54.772Z] 사용자 hlim0Re0F7JwDhfQAABV가 방 377553에 입장 (현재 인원: 2명)
+[2025-05-21T09:00:54.775Z] 사용자 hlim0Re0F7JwDhfQAABV가 방 377553에서 나감
+[2025-05-21T09:00:54.779Z] 사용자 hlim0Re0F7JwDhfQAABV가 방 377553에 입장 (현재 인원: 2명)
+[2025-05-21T09:00:54.780Z] 404 Not Found: GET /favicon.ico
+[2025-05-21T09:00:54.999Z] 사용자 hlim0Re0F7JwDhfQAABV가 방 377553에서 연결 끊김 (이유: transport close) (현재 인원: 1명)
+[2025-05-21T09:00:55.034Z] 사용자 연결됨: tsV-zE7DQZ2RB_--AABX (현재 연결: 2명)
+[2025-05-21T09:00:55.049Z] 사용자 tsV-zE7DQZ2RB_--AABX가 방 377553에 입장 (현재 인원: 2명)
+[2025-05-21T09:00:55.053Z] 사용자 tsV-zE7DQZ2RB_--AABX가 방 377553에서 나감
+[2025-05-21T09:00:55.054Z] 사용자 tsV-zE7DQZ2RB_--AABX가 방 377553에 입장 (현재 인원: 2명)
+[2025-05-21T09:00:55.056Z] 404 Not Found: GET /favicon.ico
+[2025-05-21T09:00:55.274Z] 사용자 tsV-zE7DQZ2RB_--AABX가 방 377553에서 연결 끊김 (이유: transport close) (현재 인원: 1명)
+[2025-05-21T09:00:55.307Z] 사용자 연결됨: twsR3Je3_TnCYUUJAABZ (현재 연결: 2명)
+[2025-05-21T09:00:55.325Z] 사용자 twsR3Je3_TnCYUUJAABZ가 방 377553에 입장 (현재 인원: 2명)
+[2025-05-21T09:00:55.329Z] 사용자 twsR3Je3_TnCYUUJAABZ가 방 377553에서 나감
+[2025-05-21T09:00:55.331Z] 사용자 twsR3Je3_TnCYUUJAABZ가 방 377553에 입장 (현재 인원: 2명)
+[2025-05-21T09:00:55.333Z] 404 Not Found: GET /favicon.ico
+[2025-05-21T09:00:55.535Z] 사용자 twsR3Je3_TnCYUUJAABZ가 방 377553에서 연결 끊김 (이유: transport close) (현재 인원: 1명)
+[2025-05-21T09:00:55.567Z] 사용자 연결됨: 5kamxoVsEPJUTgiBAABb (현재 연결: 2명)
+[2025-05-21T09:00:55.582Z] 사용자 5kamxoVsEPJUTgiBAABb가 방 377553에 입장 (현재 인원: 2명)
+[2025-05-21T09:00:55.586Z] 사용자 5kamxoVsEPJUTgiBAABb가 방 377553에서 나감
+[2025-05-21T09:00:55.588Z] 사용자 5kamxoVsEPJUTgiBAABb가 방 377553에 입장 (현재 인원: 2명)
+[2025-05-21T09:00:55.590Z] 404 Not Found: GET /favicon.ico
+[2025-05-21T09:00:55.831Z] 사용자 5kamxoVsEPJUTgiBAABb가 방 377553에서 연결 끊김 (이유: transport close) (현재 인원: 1명)
+[2025-05-21T09:00:55.865Z] 사용자 연결됨: S4HPORkgND2C6e3FAABd (현재 연결: 2명)
+[2025-05-21T09:00:55.881Z] 사용자 S4HPORkgND2C6e3FAABd가 방 377553에 입장 (현재 인원: 2명)
+[2025-05-21T09:00:55.886Z] 사용자 S4HPORkgND2C6e3FAABd가 방 377553에서 나감
+[2025-05-21T09:00:55.886Z] 사용자 S4HPORkgND2C6e3FAABd가 방 377553에 입장 (현재 인원: 2명)
+[2025-05-21T09:00:55.889Z] 404 Not Found: GET /favicon.ico
+[2025-05-21T09:00:56.124Z] 사용자 S4HPORkgND2C6e3FAABd가 방 377553에서 연결 끊김 (이유: transport close) (현재 인원: 1명)
+[2025-05-21T09:00:56.156Z] 사용자 연결됨: -LGTALfGeMO0l0muAABf (현재 연결: 2명)
+[2025-05-21T09:00:56.172Z] 사용자 -LGTALfGeMO0l0muAABf가 방 377553에 입장 (현재 인원: 2명)
+[2025-05-21T09:00:56.179Z] 사용자 -LGTALfGeMO0l0muAABf가 방 377553에서 나감
+[2025-05-21T09:00:56.180Z] 사용자 -LGTALfGeMO0l0muAABf가 방 377553에 입장 (현재 인원: 2명)
+[2025-05-21T09:00:56.182Z] 404 Not Found: GET /favicon.ico
+[2025-05-21T09:00:56.439Z] 사용자 -LGTALfGeMO0l0muAABf가 방 377553에서 연결 끊김 (이유: transport close) (현재 인원: 1명)
+[2025-05-21T09:00:56.471Z] 사용자 연결됨: 0qqy1UVUy5vI3VRsAABh (현재 연결: 2명)
+[2025-05-21T09:00:56.488Z] 사용자 0qqy1UVUy5vI3VRsAABh가 방 377553에 입장 (현재 인원: 2명)
+[2025-05-21T09:00:56.491Z] 사용자 0qqy1UVUy5vI3VRsAABh가 방 377553에서 나감
+[2025-05-21T09:00:56.491Z] 사용자 0qqy1UVUy5vI3VRsAABh가 방 377553에 입장 (현재 인원: 2명)
+[2025-05-21T09:00:56.496Z] 404 Not Found: GET /favicon.ico
+[2025-05-21T09:00:56.724Z] 사용자 0qqy1UVUy5vI3VRsAABh가 방 377553에서 연결 끊김 (이유: transport close) (현재 인원: 1명)
+[2025-05-21T09:00:56.759Z] 사용자 연결됨: IWJIKUpowgNWxJbvAABj (현재 연결: 2명)
+[2025-05-21T09:00:56.775Z] 사용자 IWJIKUpowgNWxJbvAABj가 방 377553에 입장 (현재 인원: 2명)
+[2025-05-21T09:00:56.779Z] 사용자 IWJIKUpowgNWxJbvAABj가 방 377553에서 나감
+[2025-05-21T09:00:56.781Z] 사용자 IWJIKUpowgNWxJbvAABj가 방 377553에 입장 (현재 인원: 2명)
+[2025-05-21T09:00:56.786Z] 404 Not Found: GET /favicon.ico
+[2025-05-21T09:00:56.981Z] 사용자 IWJIKUpowgNWxJbvAABj가 방 377553에서 연결 끊김 (이유: transport close) (현재 인원: 1명)
+[2025-05-21T09:00:57.013Z] 사용자 연결됨: ewyu0E9Tat5o5h0wAABl (현재 연결: 2명)
+[2025-05-21T09:00:57.030Z] 사용자 ewyu0E9Tat5o5h0wAABl가 방 377553에 입장 (현재 인원: 2명)
+[2025-05-21T09:00:57.033Z] 사용자 ewyu0E9Tat5o5h0wAABl가 방 377553에서 나감
+[2025-05-21T09:00:57.033Z] 사용자 ewyu0E9Tat5o5h0wAABl가 방 377553에 입장 (현재 인원: 2명)
+[2025-05-21T09:00:57.039Z] 404 Not Found: GET /favicon.ico
+[2025-05-21T09:00:57.255Z] 사용자 ewyu0E9Tat5o5h0wAABl가 방 377553에서 연결 끊김 (이유: transport close) (현재 인원: 1명)
+[2025-05-21T09:00:57.288Z] 사용자 연결됨: oDcWfDgdar4_Vwc9AABn (현재 연결: 2명)
+[2025-05-21T09:00:57.305Z] 사용자 oDcWfDgdar4_Vwc9AABn가 방 377553에 입장 (현재 인원: 2명)
+[2025-05-21T09:00:57.307Z] 사용자 oDcWfDgdar4_Vwc9AABn가 방 377553에서 나감
+[2025-05-21T09:00:57.307Z] 사용자 oDcWfDgdar4_Vwc9AABn가 방 377553에 입장 (현재 인원: 2명)
+[2025-05-21T09:00:57.311Z] 404 Not Found: GET /favicon.ico
+[2025-05-21T09:00:59.549Z] 사용자 1y9ulhrAMT1XdvqhAABJ가 방 377553에서 연결 끊김 (이유: transport close) (현재 인원: 1명)
+[2025-05-21T09:01:05.554Z] 사용자 oDcWfDgdar4_Vwc9AABn가 방 377553에서 연결 끊김 (이유: transport close) (현재 인원: 0명)
+[2025-05-21T09:01:05.562Z] 404 Not Found: GET /favicon.ico
+[2025-05-21T09:01:13.268Z] 404 Not Found: GET /.well-known/appspecific/com.chrome.devtools.json
+[2025-05-21T09:01:22.408Z] API 호출로 새 방 생성: 908824, 생성자: ::1-1747818082408
+[2025-05-21T09:01:22.439Z] 404 Not Found: GET /.well-known/appspecific/com.chrome.devtools.json
+[2025-05-21T09:01:22.469Z] 사용자 연결됨: i83EkYfJrLyWGSS8AABp (현재 연결: 1명)
+[2025-05-21T09:01:22.476Z] 사용자 i83EkYfJrLyWGSS8AABp가 방 908824에 입장 (현재 인원: 1명)
+[2025-05-21T09:01:22.547Z] 사용자 i83EkYfJrLyWGSS8AABp가 방 908824에서 나감
+[2025-05-21T09:01:22.549Z] 사용자 i83EkYfJrLyWGSS8AABp가 방 908824에 입장 (현재 인원: 1명)
+[2025-05-21T09:01:22.563Z] 404 Not Found: GET /favicon.ico
+[2025-05-21T09:02:09.065Z] 사용자 연결됨: VfqZwAo2rOQtzPF6AABr (현재 연결: 2명)
+[2025-05-21T09:02:09.071Z] 사용자 VfqZwAo2rOQtzPF6AABr가 방 908824에 입장 (현재 인원: 2명)
+[2025-05-21T09:02:09.116Z] 사용자 VfqZwAo2rOQtzPF6AABr가 방 908824에서 나감
+[2025-05-21T09:02:09.116Z] 사용자 VfqZwAo2rOQtzPF6AABr가 방 908824에 입장 (현재 인원: 2명)
+[2025-05-21T09:02:09.132Z] 404 Not Found: GET /favicon.ico
+[2025-05-21T09:03:26.320Z] 메모리 사용량: 17MB / 19MB
+[2025-05-21T09:05:36.940Z] 사용자 i83EkYfJrLyWGSS8AABp가 방 908824에서 연결 끊김 (이유: transport close) (현재 인원: 1명)
+[2025-05-21T09:05:36.962Z] 404 Not Found: GET /.well-known/appspecific/com.chrome.devtools.json
+[2025-05-21T09:05:37.054Z] 404 Not Found: GET /favicon.ico
+[2025-05-21T09:05:53.765Z] 404 Not Found: GET /v1/docs
+[2025-05-21T09:05:55.413Z] 사용자 VfqZwAo2rOQtzPF6AABr가 방 908824에서 연결 끊김 (이유: transport close) (현재 인원: 0명)
+[2025-05-21T09:05:55.420Z] 404 Not Found: GET /favicon.ico
+[2025-05-21T09:05:57.709Z] API 호출로 새 방 생성: 816835, 생성자: ::1-1747818357709
+[2025-05-21T09:05:57.753Z] 사용자 연결됨: oE88blso-S36tsdtAABt (현재 연결: 1명)
+[2025-05-21T09:05:57.768Z] 사용자 oE88blso-S36tsdtAABt가 방 816835에 입장 (현재 인원: 1명)
+[2025-05-21T09:05:57.771Z] 사용자 oE88blso-S36tsdtAABt가 방 816835에서 나감
+[2025-05-21T09:05:57.772Z] 사용자 oE88blso-S36tsdtAABt가 방 816835에 입장 (현재 인원: 1명)
+[2025-05-21T09:05:57.777Z] 404 Not Found: GET /favicon.ico
+[2025-05-21T09:06:37.209Z] 방 확인 요청: 816835, 존재: true
+[2025-05-21T09:06:37.244Z] 404 Not Found: GET /.well-known/appspecific/com.chrome.devtools.json
+[2025-05-21T09:06:37.274Z] 사용자 연결됨: 67qH7IYPmDhS46zdAABv (현재 연결: 2명)
+[2025-05-21T09:06:37.354Z] 사용자 67qH7IYPmDhS46zdAABv가 방 816835에 입장 (현재 인원: 2명)
+[2025-05-21T09:06:37.360Z] 사용자 67qH7IYPmDhS46zdAABv가 방 816835에서 나감
+[2025-05-21T09:06:37.360Z] 사용자 67qH7IYPmDhS46zdAABv가 방 816835에 입장 (현재 인원: 2명)
+[2025-05-21T09:06:37.364Z] 404 Not Found: GET /favicon.ico
+[2025-05-21T09:07:09.082Z] 404 Not Found: GET /.well-known/appspecific/com.chrome.devtools.json
+[2025-05-21T09:08:26.325Z] 메모리 사용량: 17MB / 19MB
+[2025-05-21T09:12:34.820Z] 사용자 oE88blso-S36tsdtAABt가 방 816835에서 연결 끊김 (이유: transport close) (현재 인원: 1명)
+[2025-05-21T09:12:34.844Z] 404 Not Found: GET /.well-known/appspecific/com.chrome.devtools.json
+[2025-05-21T09:12:34.938Z] 404 Not Found: GET /favicon.ico
+[2025-05-21T09:12:44.382Z] API 호출로 새 방 생성: 384301, 생성자: ::1-1747818764382
+[2025-05-21T09:12:44.406Z] 404 Not Found: GET /.well-known/appspecific/com.chrome.devtools.json
+[2025-05-21T09:12:44.438Z] 사용자 연결됨: 7LAb2Bc2JAz-tkk1AABx (현재 연결: 2명)
+[2025-05-21T09:12:44.509Z] 사용자 7LAb2Bc2JAz-tkk1AABx가 방 384301에 입장 (현재 인원: 1명)
+[2025-05-21T09:12:44.513Z] 사용자 7LAb2Bc2JAz-tkk1AABx가 방 384301에서 나감
+[2025-05-21T09:12:44.513Z] 사용자 7LAb2Bc2JAz-tkk1AABx가 방 384301에 입장 (현재 인원: 1명)
+[2025-05-21T09:12:44.519Z] 404 Not Found: GET /favicon.ico
+[2025-05-21T09:13:26.344Z] 메모리 사용량: 18MB / 19MB
+[2025-05-21T09:13:33.394Z] 사용자 67qH7IYPmDhS46zdAABv가 방 816835에서 연결 끊김 (이유: transport close) (현재 인원: 0명)
+[2025-05-21T09:13:33.426Z] 404 Not Found: GET /.well-known/appspecific/com.chrome.devtools.json
+[2025-05-21T09:13:33.450Z] 사용자 연결됨: 2NqzmVDxJTP9e3amAABz (현재 연결: 2명)
+[2025-05-21T09:13:33.460Z] 사용자 2NqzmVDxJTP9e3amAABz가 방 384301에 입장 (현재 인원: 2명)
+[2025-05-21T09:13:33.532Z] 사용자 2NqzmVDxJTP9e3amAABz가 방 384301에서 나감
+[2025-05-21T09:13:33.532Z] 사용자 2NqzmVDxJTP9e3amAABz가 방 384301에 입장 (현재 인원: 2명)
+[2025-05-21T09:13:33.547Z] 404 Not Found: GET /favicon.ico
+[2025-05-21T09:13:44.461Z] 사용자 2NqzmVDxJTP9e3amAABz가 방 384301에서 연결 끊김 (이유: transport close) (현재 인원: 1명)
+[2025-05-21T09:13:44.494Z] 404 Not Found: GET /.well-known/appspecific/com.chrome.devtools.json
+[2025-05-21T09:13:44.593Z] 404 Not Found: GET /favicon.ico
+[2025-05-21T09:14:05.414Z] API 호출로 새 방 생성: 702756, 생성자: ::1-1747818845414
+[2025-05-21T09:14:05.444Z] 404 Not Found: GET /.well-known/appspecific/com.chrome.devtools.json
+[2025-05-21T09:14:05.476Z] 사용자 연결됨: KYRatrKYjoNS2MhsAAB1 (현재 연결: 2명)
+[2025-05-21T09:14:05.543Z] 사용자 KYRatrKYjoNS2MhsAAB1가 방 702756에 입장 (현재 인원: 1명)
+[2025-05-21T09:14:05.547Z] 사용자 KYRatrKYjoNS2MhsAAB1가 방 702756에서 나감
+[2025-05-21T09:14:05.547Z] 사용자 KYRatrKYjoNS2MhsAAB1가 방 702756에 입장 (현재 인원: 1명)
+[2025-05-21T09:14:05.556Z] 404 Not Found: GET /favicon.ico
+[2025-05-21T09:14:20.214Z] 사용자 7LAb2Bc2JAz-tkk1AABx가 방 384301에서 연결 끊김 (이유: transport close) (현재 인원: 0명)
+[2025-05-21T09:14:20.256Z] 사용자 연결됨: m9Z6LsS1Z07UTFJzAAB3 (현재 연결: 2명)
+[2025-05-21T09:14:20.262Z] 사용자 m9Z6LsS1Z07UTFJzAAB3가 방 702756에 입장 (현재 인원: 2명)
+[2025-05-21T09:14:20.307Z] 사용자 m9Z6LsS1Z07UTFJzAAB3가 방 702756에서 나감
+[2025-05-21T09:14:20.307Z] 사용자 m9Z6LsS1Z07UTFJzAAB3가 방 702756에 입장 (현재 인원: 2명)
+[2025-05-21T09:14:20.319Z] 404 Not Found: GET /favicon.ico
+[2025-05-21T09:15:38.207Z] 404 Not Found: GET /.well-known/appspecific/com.chrome.devtools.json
+[2025-05-21T09:18:26.352Z] 메모리 사용량: 18MB / 19MB
+[2025-05-21T09:20:59.476Z] 서버 종료 중...
+[2025-05-21T09:21:02.530Z] 서버 시작 - 포트: 3000, 도메인: http://localhost:3000
+[2025-05-21T09:21:02.530Z] Redis 연결을 건너뛰었습니다. 메모리 저장소만 사용합니다.
+[2025-05-21T09:21:02.533Z] 서버 시작 및 초기화 완료
+[2025-05-21T09:21:03.270Z] 사용자 연결됨: TnKxaKhFnhnBzFHAAAAC (현재 연결: 1명)
+[2025-05-21T09:21:03.275Z] 사용자 연결됨: cMAeFmqlz0a1XCdRAAAD (현재 연결: 2명)
+[2025-05-21T09:21:03.279Z] 소켓 연결에서 새 방 생성: 702756, 생성자: TnKxaKhFnhnBzFHAAAAC
+[2025-05-21T09:22:46.286Z] 서버 시작 - 포트: 3000, 도메인: http://localhost:3000
+[2025-05-21T09:22:46.287Z] Redis 연결을 건너뛰었습니다. 메모리 저장소만 사용합니다.
+[2025-05-21T09:22:46.289Z] 서버 시작 및 초기화 완료
+[2025-05-21T09:22:49.165Z] 사용자 연결됨: kF8SxoApfjfcd9onAAAB (현재 연결: 1명)
+[2025-05-21T09:22:49.172Z] 소켓 연결에서 새 방 생성: 702756, 생성자: kF8SxoApfjfcd9onAAAB
+[2025-05-21T09:22:49.174Z] 사용자 kF8SxoApfjfcd9onAAAB가 방 702756에 입장 (현재 인원: 1명)
+[2025-05-21T09:22:49.177Z] 사용자 kF8SxoApfjfcd9onAAAB가 방 702756에서 나감
+[2025-05-21T09:22:49.177Z] 사용자 kF8SxoApfjfcd9onAAAB가 방 702756에 입장 (현재 인원: 1명)
+[2025-05-21T09:22:55.061Z] 사용자 kF8SxoApfjfcd9onAAAB가 방 702756에서 연결 끊김 (이유: transport close) (현재 인원: 0명)
+[2025-05-21T09:22:55.125Z] 사용자 연결됨: bFSZmkkVkWVS3rRfAAAD (현재 연결: 1명)
+[2025-05-21T09:22:55.136Z] 404 Not Found: GET /.well-known/appspecific/com.chrome.devtools.json
+[2025-05-21T09:22:55.204Z] 사용자 bFSZmkkVkWVS3rRfAAAD가 방 702756에 입장 (현재 인원: 1명)
+[2025-05-21T09:22:55.209Z] 사용자 bFSZmkkVkWVS3rRfAAAD가 방 702756에서 나감
+[2025-05-21T09:22:55.212Z] 사용자 bFSZmkkVkWVS3rRfAAAD가 방 702756에 입장 (현재 인원: 1명)
+[2025-05-21T09:22:55.215Z] 404 Not Found: GET /favicon.ico
+[2025-05-21T09:22:57.173Z] 사용자 bFSZmkkVkWVS3rRfAAAD가 방 702756에서 연결 끊김 (이유: transport close) (현재 인원: 0명)
+[2025-05-21T09:22:57.202Z] 404 Not Found: GET /.well-known/appspecific/com.chrome.devtools.json
+[2025-05-21T09:22:57.233Z] 사용자 연결됨: ZyOL8JDHx0-1beX7AAAF (현재 연결: 1명)
+[2025-05-21T09:22:57.303Z] 사용자 ZyOL8JDHx0-1beX7AAAF가 방 702756에 입장 (현재 인원: 1명)
+[2025-05-21T09:22:57.311Z] 사용자 ZyOL8JDHx0-1beX7AAAF가 방 702756에서 나감
+[2025-05-21T09:22:57.311Z] 사용자 ZyOL8JDHx0-1beX7AAAF가 방 702756에 입장 (현재 인원: 1명)
+[2025-05-21T09:22:57.315Z] 404 Not Found: GET /favicon.ico
+[2025-05-21T09:22:57.981Z] 사용자 ZyOL8JDHx0-1beX7AAAF가 방 702756에서 연결 끊김 (이유: transport close) (현재 인원: 0명)
+[2025-05-21T09:22:58.011Z] 404 Not Found: GET /.well-known/appspecific/com.chrome.devtools.json
+[2025-05-21T09:22:58.042Z] 사용자 연결됨: TtgPOSjZ4-oDxDtxAAAH (현재 연결: 1명)
+[2025-05-21T09:22:58.113Z] 사용자 TtgPOSjZ4-oDxDtxAAAH가 방 702756에 입장 (현재 인원: 1명)
+[2025-05-21T09:22:58.119Z] 사용자 TtgPOSjZ4-oDxDtxAAAH가 방 702756에서 나감
+[2025-05-21T09:22:58.119Z] 사용자 TtgPOSjZ4-oDxDtxAAAH가 방 702756에 입장 (현재 인원: 1명)
+[2025-05-21T09:22:58.124Z] 404 Not Found: GET /favicon.ico
+[2025-05-21T09:22:58.757Z] 사용자 TtgPOSjZ4-oDxDtxAAAH가 방 702756에서 연결 끊김 (이유: transport close) (현재 인원: 0명)
+[2025-05-21T09:22:58.790Z] 404 Not Found: GET /.well-known/appspecific/com.chrome.devtools.json
+[2025-05-21T09:22:58.821Z] 사용자 연결됨: YB3cDqi4zyKlza4iAAAJ (현재 연결: 1명)
+[2025-05-21T09:22:58.892Z] 사용자 YB3cDqi4zyKlza4iAAAJ가 방 702756에 입장 (현재 인원: 1명)
+[2025-05-21T09:22:58.898Z] 사용자 YB3cDqi4zyKlza4iAAAJ가 방 702756에서 나감
+[2025-05-21T09:22:58.899Z] 사용자 YB3cDqi4zyKlza4iAAAJ가 방 702756에 입장 (현재 인원: 1명)
+[2025-05-21T09:22:58.903Z] 404 Not Found: GET /favicon.ico
+[2025-05-21T09:22:59.429Z] 사용자 YB3cDqi4zyKlza4iAAAJ가 방 702756에서 연결 끊김 (이유: transport close) (현재 인원: 0명)
+[2025-05-21T09:22:59.457Z] 404 Not Found: GET /.well-known/appspecific/com.chrome.devtools.json
+[2025-05-21T09:22:59.487Z] 사용자 연결됨: -icyns_QQtsSJgTrAAAL (현재 연결: 1명)
+[2025-05-21T09:22:59.554Z] 사용자 -icyns_QQtsSJgTrAAAL가 방 702756에 입장 (현재 인원: 1명)
+[2025-05-21T09:22:59.561Z] 사용자 -icyns_QQtsSJgTrAAAL가 방 702756에서 나감
+[2025-05-21T09:22:59.562Z] 사용자 -icyns_QQtsSJgTrAAAL가 방 702756에 입장 (현재 인원: 1명)
+[2025-05-21T09:22:59.566Z] 404 Not Found: GET /favicon.ico
+[2025-05-21T09:23:00.127Z] 사용자 -icyns_QQtsSJgTrAAAL가 방 702756에서 연결 끊김 (이유: transport close) (현재 인원: 0명)
+[2025-05-21T09:23:00.159Z] 404 Not Found: GET /.well-known/appspecific/com.chrome.devtools.json
+[2025-05-21T09:23:00.189Z] 사용자 연결됨: BwH3TY64o3UX5HAaAAAN (현재 연결: 1명)
+[2025-05-21T09:23:00.257Z] 사용자 BwH3TY64o3UX5HAaAAAN가 방 702756에 입장 (현재 인원: 1명)
+[2025-05-21T09:23:00.263Z] 사용자 BwH3TY64o3UX5HAaAAAN가 방 702756에서 나감
+[2025-05-21T09:23:00.264Z] 사용자 BwH3TY64o3UX5HAaAAAN가 방 702756에 입장 (현재 인원: 1명)
+[2025-05-21T09:23:00.269Z] 404 Not Found: GET /favicon.ico
+[2025-05-21T09:23:00.794Z] 사용자 BwH3TY64o3UX5HAaAAAN가 방 702756에서 연결 끊김 (이유: transport close) (현재 인원: 0명)
+[2025-05-21T09:23:00.835Z] 404 Not Found: GET /.well-known/appspecific/com.chrome.devtools.json
+[2025-05-21T09:23:00.859Z] 사용자 연결됨: 1Uq7t6eEuvwirhAdAAAP (현재 연결: 1명)
+[2025-05-21T09:23:00.925Z] 사용자 1Uq7t6eEuvwirhAdAAAP가 방 702756에 입장 (현재 인원: 1명)
+[2025-05-21T09:23:00.932Z] 사용자 1Uq7t6eEuvwirhAdAAAP가 방 702756에서 나감
+[2025-05-21T09:23:00.933Z] 사용자 1Uq7t6eEuvwirhAdAAAP가 방 702756에 입장 (현재 인원: 1명)
+[2025-05-21T09:23:00.937Z] 404 Not Found: GET /favicon.ico
+[2025-05-21T09:23:05.667Z] 사용자 연결됨: q9LHP4T1SlHQ_WteAAAR (현재 연결: 2명)
+[2025-05-21T09:23:05.678Z] 사용자 q9LHP4T1SlHQ_WteAAAR가 방 702756에 입장 (현재 인원: 2명)
+[2025-05-21T09:23:05.681Z] 사용자 q9LHP4T1SlHQ_WteAAAR가 방 702756에서 나감
+[2025-05-21T09:23:05.681Z] 사용자 q9LHP4T1SlHQ_WteAAAR가 방 702756에 입장 (현재 인원: 2명)
+[2025-05-21T09:23:17.201Z] 사용자 q9LHP4T1SlHQ_WteAAAR가 방 702756에서 연결 끊김 (이유: transport close) (현재 인원: 1명)
+[2025-05-21T09:23:17.269Z] 404 Not Found: GET /.well-known/appspecific/com.chrome.devtools.json
+[2025-05-21T09:23:17.341Z] 404 Not Found: GET /favicon.ico
+[2025-05-21T09:23:22.568Z] 사용자 1Uq7t6eEuvwirhAdAAAP가 방 702756에서 연결 끊김 (이유: transport close) (현재 인원: 0명)
+[2025-05-21T09:23:22.575Z] 404 Not Found: GET /room/
+[2025-05-21T09:23:22.615Z] 404 Not Found: GET /.well-known/appspecific/com.chrome.devtools.json
+[2025-05-21T09:23:22.711Z] 404 Not Found: GET /favicon.ico
+[2025-05-21T09:23:24.522Z] API 호출로 새 방 생성: 988661, 생성자: ::1-1747819404521
+[2025-05-21T09:23:24.562Z] 404 Not Found: GET /.well-known/appspecific/com.chrome.devtools.json
+[2025-05-21T09:23:24.594Z] 사용자 연결됨: SDmuv0odXPQmaCkmAAAT (현재 연결: 1명)
+[2025-05-21T09:23:24.658Z] 사용자 SDmuv0odXPQmaCkmAAAT가 방 988661에 입장 (현재 인원: 1명)
+[2025-05-21T09:23:24.667Z] 사용자 SDmuv0odXPQmaCkmAAAT가 방 988661에서 나감
+[2025-05-21T09:23:24.667Z] 사용자 SDmuv0odXPQmaCkmAAAT가 방 988661에 입장 (현재 인원: 1명)
+[2025-05-21T09:23:24.673Z] 404 Not Found: GET /favicon.ico
+[2025-05-21T09:23:37.225Z] 404 Not Found: GET /.well-known/appspecific/com.chrome.devtools.json
+[2025-05-21T09:23:37.251Z] 사용자 연결됨: 0_lcQTMGHXhJ0CyAAAAV (현재 연결: 2명)
+[2025-05-21T09:23:37.325Z] 사용자 0_lcQTMGHXhJ0CyAAAAV가 방 988661에 입장 (현재 인원: 2명)
+[2025-05-21T09:23:37.333Z] 사용자 0_lcQTMGHXhJ0CyAAAAV가 방 988661에서 나감
+[2025-05-21T09:23:37.334Z] 사용자 0_lcQTMGHXhJ0CyAAAAV가 방 988661에 입장 (현재 인원: 2명)
+[2025-05-21T09:23:37.337Z] 404 Not Found: GET /favicon.ico
+[2025-05-21T09:27:10.518Z] 사용자 SDmuv0odXPQmaCkmAAAT가 방 988661에서 연결 끊김 (이유: transport close) (현재 인원: 1명)
+[2025-05-21T09:27:10.547Z] 404 Not Found: GET /.well-known/appspecific/com.chrome.devtools.json
+[2025-05-21T09:27:10.644Z] 404 Not Found: GET /favicon.ico
+[2025-05-21T09:27:15.102Z] 사용자 0_lcQTMGHXhJ0CyAAAAV가 방 988661에서 연결 끊김 (이유: transport close) (현재 인원: 0명)
+[2025-05-21T09:27:15.137Z] 404 Not Found: GET /.well-known/appspecific/com.chrome.devtools.json
+[2025-05-21T09:27:15.230Z] 404 Not Found: GET /favicon.ico
+[2025-05-21T09:27:19.583Z] 서버 종료 중...
+[2025-05-21T09:27:21.349Z] 서버 시작 - 포트: 3000, 도메인: http://localhost:3000
+[2025-05-21T09:27:21.349Z] Redis 연결을 건너뛰었습니다. 메모리 저장소만 사용합니다.
+[2025-05-21T09:27:21.352Z] 서버 시작 및 초기화 완료
+[2025-05-21T09:27:26.824Z] API 호출로 새 방 생성: 188350, 생성자: ::1-1747819646824
+[2025-05-21T09:27:26.855Z] 404 Not Found: GET /.well-known/appspecific/com.chrome.devtools.json
+[2025-05-21T09:27:26.958Z] 사용자 연결됨: 5vJer2AHnwro-dR3AAAB (현재 연결: 1명)
+[2025-05-21T09:27:26.969Z] 사용자 5vJer2AHnwro-dR3AAAB가 방 188350에 입장 (현재 인원: 1명)
+[2025-05-21T09:27:26.971Z] 404 Not Found: GET /favicon.ico
+[2025-05-21T09:27:26.974Z] 사용자 5vJer2AHnwro-dR3AAAB가 방 188350에서 나감
+[2025-05-21T09:27:26.974Z] 사용자 5vJer2AHnwro-dR3AAAB가 방 188350에 입장 (현재 인원: 1명)
+[2025-05-21T09:27:41.174Z] 404 Not Found: GET /.well-known/appspecific/com.chrome.devtools.json
+[2025-05-21T09:27:41.199Z] 사용자 연결됨: eBgp3YtmICk0a1VjAAAD (현재 연결: 2명)
+[2025-05-21T09:27:41.273Z] 사용자 eBgp3YtmICk0a1VjAAAD가 방 188350에 입장 (현재 인원: 2명)
+[2025-05-21T09:27:41.281Z] 사용자 eBgp3YtmICk0a1VjAAAD가 방 188350에서 나감
+[2025-05-21T09:27:41.282Z] 사용자 eBgp3YtmICk0a1VjAAAD가 방 188350에 입장 (현재 인원: 2명)
+[2025-05-21T09:27:41.285Z] 404 Not Found: GET /favicon.ico
+[2025-05-21T09:29:20.385Z] 서버 종료 중...
+[2025-05-21T09:29:23.056Z] 서버 시작 - 포트: 3000, 도메인: http://localhost:3000
+[2025-05-21T09:29:23.056Z] Redis 연결을 건너뛰었습니다. 메모리 저장소만 사용합니다.
+[2025-05-21T09:29:23.058Z] 서버 시작 및 초기화 완료
+[2025-05-21T09:29:23.296Z] 사용자 연결됨: dY87ByigQ3hJO9PuAAAB (현재 연결: 1명)
+[2025-05-21T09:29:23.304Z] 소켓 연결에서 새 방 생성: 188350, 생성자: dY87ByigQ3hJO9PuAAAB
+[2025-05-21T09:29:23.306Z] 사용자 dY87ByigQ3hJO9PuAAAB가 방 188350에 입장 (현재 인원: 1명)
+[2025-05-21T09:29:23.307Z] 사용자 dY87ByigQ3hJO9PuAAAB가 방 188350에서 나감
+[2025-05-21T09:29:23.309Z] 사용자 dY87ByigQ3hJO9PuAAAB가 방 188350에 입장 (현재 인원: 1명)
+[2025-05-21T09:29:23.310Z] 사용자 dY87ByigQ3hJO9PuAAAB가 방 188350에서 나감
+[2025-05-21T09:29:23.310Z] 사용자 dY87ByigQ3hJO9PuAAAB가 방 188350에 입장 (현재 인원: 1명)
+[2025-05-21T09:29:24.283Z] 사용자 연결됨: nK9nqt2YueCpJjjJAAAD (현재 연결: 2명)
+[2025-05-21T09:29:24.290Z] 사용자 nK9nqt2YueCpJjjJAAAD가 방 188350에 입장 (현재 인원: 2명)
+[2025-05-21T09:29:24.292Z] 사용자 nK9nqt2YueCpJjjJAAAD가 방 188350에서 나감
+[2025-05-21T09:29:24.293Z] 사용자 nK9nqt2YueCpJjjJAAAD가 방 188350에 입장 (현재 인원: 2명)
+[2025-05-21T09:29:24.293Z] 사용자 nK9nqt2YueCpJjjJAAAD가 방 188350에서 나감
+[2025-05-21T09:29:24.294Z] 사용자 nK9nqt2YueCpJjjJAAAD가 방 188350에 입장 (현재 인원: 2명)
+[2025-05-21T09:29:37.470Z] 사용자 dY87ByigQ3hJO9PuAAAB가 방 188350에서 연결 끊김 (이유: transport close) (현재 인원: 1명)
+[2025-05-21T09:29:37.509Z] 404 Not Found: GET /.well-known/appspecific/com.chrome.devtools.json
+[2025-05-21T09:29:37.613Z] 404 Not Found: GET /favicon.ico
+[2025-05-21T09:29:43.289Z] 사용자 nK9nqt2YueCpJjjJAAAD가 방 188350에서 연결 끊김 (이유: transport close) (현재 인원: 0명)
+[2025-05-21T09:29:43.319Z] 404 Not Found: GET /.well-known/appspecific/com.chrome.devtools.json
+[2025-05-21T09:29:43.416Z] 404 Not Found: GET /favicon.ico
+[2025-05-21T09:29:44.705Z] API 호출로 새 방 생성: 142053, 생성자: ::1-1747819784705
+[2025-05-21T09:29:44.733Z] 404 Not Found: GET /.well-known/appspecific/com.chrome.devtools.json
+[2025-05-21T09:29:44.766Z] 사용자 연결됨: PxPExPvPwOElun2fAAAF (현재 연결: 1명)
+[2025-05-21T09:29:44.836Z] 사용자 PxPExPvPwOElun2fAAAF가 방 142053에 입장 (현재 인원: 1명)
+[2025-05-21T09:29:44.842Z] 사용자 PxPExPvPwOElun2fAAAF가 방 142053에서 나감
+[2025-05-21T09:29:44.843Z] 사용자 PxPExPvPwOElun2fAAAF가 방 142053에 입장 (현재 인원: 1명)
+[2025-05-21T09:29:44.846Z] 404 Not Found: GET /favicon.ico
+[2025-05-21T09:30:14.960Z] 404 Not Found: GET /.well-known/appspecific/com.chrome.devtools.json
+[2025-05-21T09:30:14.990Z] 사용자 연결됨: n2rvTu-AWPcBZh9mAAAH (현재 연결: 2명)
+[2025-05-21T09:30:15.069Z] 사용자 n2rvTu-AWPcBZh9mAAAH가 방 142053에 입장 (현재 인원: 2명)
+[2025-05-21T09:30:15.076Z] 사용자 n2rvTu-AWPcBZh9mAAAH가 방 142053에서 나감
+[2025-05-21T09:30:15.077Z] 사용자 n2rvTu-AWPcBZh9mAAAH가 방 142053에 입장 (현재 인원: 2명)
+[2025-05-21T09:30:15.079Z] 404 Not Found: GET /favicon.ico
+[2025-05-21T09:32:49.710Z] 서버 종료 중...
+[2025-05-21T09:32:52.042Z] 서버 시작 - 포트: 3000, 도메인: http://localhost:3000
+[2025-05-21T09:32:52.043Z] Redis 연결을 건너뛰었습니다. 메모리 저장소만 사용합니다.
+[2025-05-21T09:32:52.045Z] 서버 시작 및 초기화 완료
+[2025-05-21T09:32:53.293Z] 사용자 연결됨: 86mdNkhBU_cKkIAiAAAB (user86md) (현재 연결: 1명)
+[2025-05-21T09:32:53.300Z] 소켓 연결에서 새 방 생성: 142053, 생성자: 86mdNkhBU_cKkIAiAAAB (user86md)
+[2025-05-21T09:32:53.301Z] 사용자 86mdNkhBU_cKkIAiAAAB (user86md)가 방 142053에 입장 (현재 인원: 1명)
+[2025-05-21T09:32:53.305Z] 사용자 86mdNkhBU_cKkIAiAAAB (user86md)가 방 142053에서 나감
+[2025-05-21T09:32:53.306Z] 사용자 86mdNkhBU_cKkIAiAAAB (user86md)가 방 142053에 입장 (현재 인원: 1명)
+[2025-05-21T09:32:53.308Z] 사용자 86mdNkhBU_cKkIAiAAAB (user86md)가 방 142053에서 나감
+[2025-05-21T09:32:53.308Z] 사용자 86mdNkhBU_cKkIAiAAAB (user86md)가 방 142053에 입장 (현재 인원: 1명)
+[2025-05-21T09:32:54.285Z] 사용자 연결됨: 9wrK8cun5-5vLxtEAAAD (user9wrK) (현재 연결: 2명)
+[2025-05-21T09:32:54.290Z] 사용자 9wrK8cun5-5vLxtEAAAD (user9wrK)가 방 142053에 입장 (현재 인원: 2명)
+[2025-05-21T09:32:54.293Z] 사용자 9wrK8cun5-5vLxtEAAAD (user9wrK)가 방 142053에서 나감
+[2025-05-21T09:32:54.293Z] 사용자 9wrK8cun5-5vLxtEAAAD (user9wrK)가 방 142053에 입장 (현재 인원: 2명)
+[2025-05-21T09:32:54.294Z] 사용자 9wrK8cun5-5vLxtEAAAD (user9wrK)가 방 142053에서 나감
+[2025-05-21T09:32:54.295Z] 사용자 9wrK8cun5-5vLxtEAAAD (user9wrK)가 방 142053에 입장 (현재 인원: 2명)
+[2025-05-21T09:33:04.880Z] 사용자 86mdNkhBU_cKkIAiAAAB가 방 142053에서 연결 끊김 (이유: transport close) (현재 인원: 1명)
+[2025-05-21T09:33:04.921Z] 404 Not Found: GET /.well-known/appspecific/com.chrome.devtools.json
+[2025-05-21T09:33:05.009Z] 404 Not Found: GET /favicon.ico
+[2025-05-21T09:33:13.699Z] 사용자 9wrK8cun5-5vLxtEAAAD가 방 142053에서 연결 끊김 (이유: transport close) (현재 인원: 0명)
+[2025-05-21T09:33:13.736Z] 404 Not Found: GET /.well-known/appspecific/com.chrome.devtools.json
+[2025-05-21T09:33:13.827Z] 404 Not Found: GET /favicon.ico
+[2025-05-21T09:33:19.592Z] API 호출로 새 방 생성: 113263, 생성자: ::1-1747819999592
+[2025-05-21T09:33:19.617Z] 404 Not Found: GET /.well-known/appspecific/com.chrome.devtools.json
+[2025-05-21T09:33:19.648Z] 사용자 연결됨: rMg6FVtEJ-YZ7EgjAAAF (userrMg6) (현재 연결: 1명)
+[2025-05-21T09:33:19.717Z] 사용자 rMg6FVtEJ-YZ7EgjAAAF (userrMg6)가 방 113263에 입장 (현재 인원: 1명)
+[2025-05-21T09:33:19.723Z] 사용자 rMg6FVtEJ-YZ7EgjAAAF (userrMg6)가 방 113263에서 나감
+[2025-05-21T09:33:19.723Z] 사용자 rMg6FVtEJ-YZ7EgjAAAF (userrMg6)가 방 113263에 입장 (현재 인원: 1명)
+[2025-05-21T09:33:19.726Z] 404 Not Found: GET /favicon.ico
+[2025-05-21T09:33:38.173Z] 404 Not Found: GET /.well-known/appspecific/com.chrome.devtools.json
+[2025-05-21T09:33:38.201Z] 사용자 연결됨: iMiE36RvYx7jOGIsAAAH (useriMiE) (현재 연결: 2명)
+[2025-05-21T09:33:38.275Z] 사용자 iMiE36RvYx7jOGIsAAAH (useriMiE)가 방 113263에 입장 (현재 인원: 2명)
+[2025-05-21T09:33:38.282Z] 404 Not Found: GET /favicon.ico
+[2025-05-21T09:33:38.284Z] 사용자 iMiE36RvYx7jOGIsAAAH (useriMiE)가 방 113263에서 나감
+[2025-05-21T09:33:38.285Z] 사용자 iMiE36RvYx7jOGIsAAAH (useriMiE)가 방 113263에 입장 (현재 인원: 2명)
+[2025-05-21T09:35:34.394Z] 서버 종료 중...
+[2025-05-21T09:35:35.728Z] 서버 시작 - 포트: 3000, 도메인: http://localhost:3000
+[2025-05-21T09:35:35.728Z] Redis 연결을 건너뛰었습니다. 메모리 저장소만 사용합니다.
+[2025-05-21T09:35:35.731Z] 서버 시작 및 초기화 완료
+[2025-05-21T09:35:36.301Z] 사용자 연결됨: O_SVOpjbcxYzWyRNAAAC (userO_SV) (현재 연결: 1명)
+[2025-05-21T09:35:36.308Z] 사용자 연결됨: UfTDU6NmSsKwtMrqAAAD (userUfTD) (현재 연결: 2명)
+[2025-05-21T09:35:36.311Z] 소켓 연결에서 새 방 생성: 113263, 생성자: O_SVOpjbcxYzWyRNAAAC (userO_SV)
+[2025-05-21T09:35:36.312Z] 사용자 O_SVOpjbcxYzWyRNAAAC (userO_SV)가 방 113263에 입장 (현재 인원: 1명)
+[2025-05-21T09:35:36.317Z] 사용자 UfTDU6NmSsKwtMrqAAAD (userUfTD)가 방 113263에 입장 (현재 인원: 2명)
+[2025-05-21T09:35:36.319Z] 사용자 O_SVOpjbcxYzWyRNAAAC (userO_SV)가 방 113263에서 나감
+[2025-05-21T09:35:36.319Z] 사용자 O_SVOpjbcxYzWyRNAAAC (userO_SV)가 방 113263에 입장 (현재 인원: 2명)
+[2025-05-21T09:35:36.320Z] 사용자 O_SVOpjbcxYzWyRNAAAC (userO_SV)가 방 113263에서 나감
+[2025-05-21T09:35:36.320Z] 사용자 O_SVOpjbcxYzWyRNAAAC (userO_SV)가 방 113263에 입장 (현재 인원: 2명)
+[2025-05-21T09:35:36.323Z] 사용자 UfTDU6NmSsKwtMrqAAAD (userUfTD)가 방 113263에서 나감
+[2025-05-21T09:35:36.323Z] 사용자 UfTDU6NmSsKwtMrqAAAD (userUfTD)가 방 113263에 입장 (현재 인원: 2명)
+[2025-05-21T09:35:36.324Z] 사용자 UfTDU6NmSsKwtMrqAAAD (userUfTD)가 방 113263에서 나감
+[2025-05-21T09:35:36.325Z] 사용자 UfTDU6NmSsKwtMrqAAAD (userUfTD)가 방 113263에 입장 (현재 인원: 2명)
+[2025-05-21T09:35:53.475Z] 사용자 O_SVOpjbcxYzWyRNAAAC가 방 113263에서 연결 끊김 (이유: transport close) (현재 인원: 1명)
+[2025-05-21T09:35:54.837Z] 사용자 UfTDU6NmSsKwtMrqAAAD가 방 113263에서 연결 끊김 (이유: transport close) (현재 인원: 0명)
+[2025-05-21T09:35:57.828Z] 서버 종료 중...
+[2025-05-21T09:35:59.160Z] 서버 시작 - 포트: 3000, 도메인: http://localhost:3000
+[2025-05-21T09:35:59.160Z] Redis 연결을 건너뛰었습니다. 메모리 저장소만 사용합니다.
+[2025-05-21T09:35:59.166Z] 서버 시작 및 초기화 완료
+[2025-05-21T09:36:14.171Z] 404 Not Found: GET /favicon.ico
+[2025-05-21T09:36:16.409Z] API 호출로 새 방 생성: 202755, 생성자: ::1-1747820176408
+[2025-05-21T09:36:16.464Z] 사용자 연결됨: Tk3Z4GHYvBRfsTk7AAAB (userTk3Z) (현재 연결: 1명)
+[2025-05-21T09:36:16.472Z] 사용자 Tk3Z4GHYvBRfsTk7AAAB (userTk3Z)가 방 202755에 입장 (현재 인원: 1명)
+[2025-05-21T09:36:16.475Z] 사용자 Tk3Z4GHYvBRfsTk7AAAB (userTk3Z)가 방 202755에서 나감
+[2025-05-21T09:36:16.476Z] 사용자 Tk3Z4GHYvBRfsTk7AAAB (userTk3Z)가 방 202755에 입장 (현재 인원: 1명)
+[2025-05-21T09:36:16.477Z] 404 Not Found: GET /favicon.ico
+[2025-05-21T09:36:33.505Z] 사용자 연결됨: rw4vjnM-w42J9_N3AAAD (userrw4v) (현재 연결: 2명)
+[2025-05-21T09:36:33.537Z] 사용자 rw4vjnM-w42J9_N3AAAD (userrw4v)가 방 202755에 입장 (현재 인원: 2명)
+[2025-05-21T09:36:33.560Z] 사용자 rw4vjnM-w42J9_N3AAAD (userrw4v)가 방 202755에서 나감
+[2025-05-21T09:36:33.560Z] 사용자 rw4vjnM-w42J9_N3AAAD (userrw4v)가 방 202755에 입장 (현재 인원: 2명)
+[2025-05-21T09:36:33.569Z] 404 Not Found: GET /favicon.ico
+[2025-05-21T09:38:58.631Z] 서버 종료 중...
+[2025-05-21T09:38:59.899Z] 서버 시작 - 포트: 3000, 도메인: http://localhost:3000
+[2025-05-21T09:38:59.899Z] Redis 연결을 건너뛰었습니다. 메모리 저장소만 사용합니다.
+[2025-05-21T09:38:59.902Z] 서버 시작 및 초기화 완료
+[2025-05-21T09:39:00.302Z] 사용자 연결됨: H9ouDFyDlHDuTOSSAAAB (userH9ou) (현재 연결: 1명)
+[2025-05-21T09:39:00.308Z] 소켓 연결에서 새 방 생성: 202755, 생성자: H9ouDFyDlHDuTOSSAAAB (userH9ou)
+[2025-05-21T09:39:00.309Z] 사용자 H9ouDFyDlHDuTOSSAAAB (userH9ou)가 방 202755에 입장 (현재 인원: 1명)
+[2025-05-21T09:39:00.312Z] 사용자 H9ouDFyDlHDuTOSSAAAB (userH9ou)가 방 202755에서 나감
+[2025-05-21T09:39:00.312Z] 사용자 H9ouDFyDlHDuTOSSAAAB (userH9ou)가 방 202755에 입장 (현재 인원: 1명)
+[2025-05-21T09:39:00.313Z] 사용자 H9ouDFyDlHDuTOSSAAAB (userH9ou)가 방 202755에서 나감
+[2025-05-21T09:39:00.313Z] 사용자 H9ouDFyDlHDuTOSSAAAB (userH9ou)가 방 202755에 입장 (현재 인원: 1명)
+[2025-05-21T09:39:02.297Z] 사용자 연결됨: FWbbyv6oET-6FdzOAAAD (userFWbb) (현재 연결: 2명)
+[2025-05-21T09:39:02.310Z] 사용자 FWbbyv6oET-6FdzOAAAD (userFWbb)가 방 202755에 입장 (현재 인원: 2명)
+[2025-05-21T09:39:02.319Z] 사용자 FWbbyv6oET-6FdzOAAAD (userFWbb)가 방 202755에서 나감
+[2025-05-21T09:39:02.319Z] 사용자 FWbbyv6oET-6FdzOAAAD (userFWbb)가 방 202755에 입장 (현재 인원: 2명)
+[2025-05-21T09:39:02.321Z] 사용자 FWbbyv6oET-6FdzOAAAD (userFWbb)가 방 202755에서 나감
+[2025-05-21T09:39:02.322Z] 사용자 FWbbyv6oET-6FdzOAAAD (userFWbb)가 방 202755에 입장 (현재 인원: 2명)
+[2025-05-21T09:39:08.779Z] 사용자 FWbbyv6oET-6FdzOAAAD가 방 202755에서 연결 끊김 (이유: transport close) (현재 인원: 1명)
+[2025-05-21T09:39:08.788Z] 404 Not Found: GET /favicon.ico
+[2025-05-21T09:39:10.367Z] API 호출로 새 방 생성: 873383, 생성자: ::1-1747820350366
+[2025-05-21T09:39:10.400Z] 사용자 연결됨: 0IJzE8KB0YADGzmsAAAF (user0IJz) (현재 연결: 2명)
+[2025-05-21T09:39:10.418Z] 사용자 0IJzE8KB0YADGzmsAAAF (user0IJz)가 방 873383에 입장 (현재 인원: 1명)
+[2025-05-21T09:39:10.423Z] 사용자 0IJzE8KB0YADGzmsAAAF (user0IJz)가 방 873383에서 나감
+[2025-05-21T09:39:10.425Z] 사용자 0IJzE8KB0YADGzmsAAAF (user0IJz)가 방 873383에 입장 (현재 인원: 1명)
+[2025-05-21T09:39:10.429Z] 404 Not Found: GET /favicon.ico
+[2025-05-21T09:39:22.132Z] 사용자 H9ouDFyDlHDuTOSSAAAB가 방 202755에서 연결 끊김 (이유: transport close) (현재 인원: 0명)
+[2025-05-21T09:39:22.169Z] 사용자 연결됨: KcJE93nD2-Eu9ZDgAAAH (userKcJE) (현재 연결: 2명)
+[2025-05-21T09:39:22.187Z] 사용자 KcJE93nD2-Eu9ZDgAAAH (userKcJE)가 방 873383에 입장 (현재 인원: 2명)
+[2025-05-21T09:39:22.192Z] 사용자 KcJE93nD2-Eu9ZDgAAAH (userKcJE)가 방 873383에서 나감
+[2025-05-21T09:39:22.194Z] 사용자 KcJE93nD2-Eu9ZDgAAAH (userKcJE)가 방 873383에 입장 (현재 인원: 2명)
+[2025-05-21T09:39:22.198Z] 404 Not Found: GET /favicon.ico
+[2025-05-21T09:41:33.936Z] 사용자 KcJE93nD2-Eu9ZDgAAAH가 방 873383에서 연결 끊김 (이유: transport close) (현재 인원: 1명)
+[2025-05-21T09:41:33.946Z] 404 Not Found: GET /favicon.ico
+[2025-05-21T09:41:39.234Z] 사용자 0IJzE8KB0YADGzmsAAAF가 방 873383에서 연결 끊김 (이유: transport close) (현재 인원: 0명)
+[2025-05-21T09:41:39.241Z] 404 Not Found: GET /favicon.ico
+[2025-05-21T09:41:41.268Z] API 호출로 새 방 생성: 849125, 생성자: ::1-1747820501268
+[2025-05-21T09:41:41.298Z] 사용자 연결됨: fuPmG53xSAH_6u7ZAAAJ (userfuPm) (현재 연결: 1명)
+[2025-05-21T09:41:41.313Z] 사용자 fuPmG53xSAH_6u7ZAAAJ (userfuPm)가 방 849125에 입장 (현재 인원: 1명)
+[2025-05-21T09:41:41.318Z] 사용자 fuPmG53xSAH_6u7ZAAAJ (userfuPm)가 방 849125에서 나감
+[2025-05-21T09:41:41.319Z] 사용자 fuPmG53xSAH_6u7ZAAAJ (userfuPm)가 방 849125에 입장 (현재 인원: 1명)
+[2025-05-21T09:41:41.323Z] 404 Not Found: GET /favicon.ico
+[2025-05-21T09:41:57.538Z] 사용자 연결됨: Lhkzya3KazVJlcFpAAAL (userLhkz) (현재 연결: 2명)
+[2025-05-21T09:41:57.545Z] 사용자 Lhkzya3KazVJlcFpAAAL (userLhkz)가 방 849125에 입장 (현재 인원: 2명)
+[2025-05-21T09:41:57.547Z] 사용자 Lhkzya3KazVJlcFpAAAL (userLhkz)가 방 849125에서 나감
+[2025-05-21T09:41:57.547Z] 사용자 Lhkzya3KazVJlcFpAAAL (userLhkz)가 방 849125에 입장 (현재 인원: 2명)
+[2025-05-21T09:41:57.553Z] 404 Not Found: GET /favicon.ico
+[2025-05-21T09:42:28.508Z] 404 Not Found: GET /.well-known/appspecific/com.chrome.devtools.json
+[2025-05-21T09:43:59.863Z] 메모리 사용량: 14MB / 16MB
+[2025-05-21T09:46:34.270Z] 서버 종료 중...
+[2025-05-21T09:46:36.645Z] 서버 시작 - 포트: 3000, 도메인: http://localhost:3000
+[2025-05-21T09:46:36.645Z] Redis 연결을 건너뛰었습니다. 메모리 저장소만 사용합니다.
+[2025-05-21T09:46:36.647Z] 서버 시작 및 초기화 완료
+[2025-05-21T09:46:38.273Z] 사용자 연결됨: u6QXvm868PYT2S97AAAC (useru6QX) (현재 연결: 1명)
+[2025-05-21T09:46:38.275Z] 사용자 연결됨: ukfXEmaPKluCQfXwAAAD (userukfX) (현재 연결: 2명)
+[2025-05-21T09:46:38.282Z] 소켓 연결에서 새 방 생성: 849125, 생성자: u6QXvm868PYT2S97AAAC (useru6QX)
+[2025-05-21T09:46:38.282Z] 사용자 u6QXvm868PYT2S97AAAC (useru6QX)가 방 849125에 입장 (현재 인원: 1명)
+[2025-05-21T09:46:38.284Z] 사용자 u6QXvm868PYT2S97AAAC (useru6QX)가 방 849125에서 나감
+[2025-05-21T09:46:38.285Z] 사용자 u6QXvm868PYT2S97AAAC (useru6QX)가 방 849125에 입장 (현재 인원: 1명)
+[2025-05-21T09:46:38.286Z] 사용자 u6QXvm868PYT2S97AAAC (useru6QX)가 방 849125에서 나감
+[2025-05-21T09:46:38.286Z] 사용자 u6QXvm868PYT2S97AAAC (useru6QX)가 방 849125에 입장 (현재 인원: 1명)
+[2025-05-21T09:46:38.289Z] 사용자 ukfXEmaPKluCQfXwAAAD (userukfX)가 방 849125에 입장 (현재 인원: 2명)
+[2025-05-21T09:46:38.294Z] 사용자 ukfXEmaPKluCQfXwAAAD (userukfX)가 방 849125에서 나감
+[2025-05-21T09:46:38.295Z] 사용자 ukfXEmaPKluCQfXwAAAD (userukfX)가 방 849125에 입장 (현재 인원: 2명)
+[2025-05-21T09:46:38.295Z] 사용자 ukfXEmaPKluCQfXwAAAD (userukfX)가 방 849125에서 나감
+[2025-05-21T09:46:38.295Z] 사용자 ukfXEmaPKluCQfXwAAAD (userukfX)가 방 849125에 입장 (현재 인원: 2명)
+[2025-05-21T09:46:44.763Z] 사용자 u6QXvm868PYT2S97AAAC가 방 849125에서 연결 끊김 (이유: transport close) (현재 인원: 1명)
+[2025-05-21T09:47:01.783Z] 사용자 연결됨: RO_JBHrCfFgva8oGAAAF (userRO_J) (현재 연결: 2명)
+[2025-05-21T09:47:01.832Z] 사용자 RO_JBHrCfFgva8oGAAAF (userRO_J)가 방 849125에 입장 (현재 인원: 2명)
+[2025-05-21T09:47:01.842Z] 사용자 RO_JBHrCfFgva8oGAAAF (userRO_J)가 방 849125에서 나감
+[2025-05-21T09:47:01.843Z] 사용자 RO_JBHrCfFgva8oGAAAF (userRO_J)가 방 849125에 입장 (현재 인원: 2명)
+[2025-05-21T09:47:01.849Z] 404 Not Found: GET /favicon.ico
+[2025-05-21T09:48:18.406Z] 사용자 연결됨: BE5n-MuwppMmOHMyAAAH (userBE5n) (현재 연결: 3명)
+[2025-05-21T09:48:18.446Z] 사용자 BE5n-MuwppMmOHMyAAAH (userBE5n)가 방 849125에 입장 (현재 인원: 3명)
+[2025-05-21T09:48:18.463Z] 사용자 BE5n-MuwppMmOHMyAAAH (userBE5n)가 방 849125에서 나감
+[2025-05-21T09:48:18.464Z] 사용자 BE5n-MuwppMmOHMyAAAH (userBE5n)가 방 849125에 입장 (현재 인원: 3명)
+[2025-05-21T09:48:18.472Z] 404 Not Found: GET /favicon.ico
+[2025-05-21T09:49:27.984Z] 서버 종료 중...
+[2025-05-21T09:49:29.875Z] 서버 시작 - 포트: 3000, 도메인: http://localhost:3000
+[2025-05-21T09:49:29.876Z] Redis 연결을 건너뜁니다. 메모리 저장소만 사용합니다.
+[2025-05-21T09:49:29.878Z] 서버 시작 및 초기화 완료
+[2025-05-21T09:49:31.276Z] 사용자 연결됨: FIkJhqW-ETQj_6OJAAAB (현재 연결: 1명)
+[2025-05-21T09:49:31.285Z] 소켓 연결에서 새 방 생성: 849125, 생성자: FIkJhqW-ETQj_6OJAAAB
+[2025-05-21T09:51:36.809Z] 서버 시작 - 포트: 3000, 도메인: http://localhost:3000
+[2025-05-21T09:51:36.810Z] Redis 연결을 건너뜁니다. 메모리 저장소만 사용합니다.
+[2025-05-21T09:51:36.812Z] 서버 시작 및 초기화 완료
+[2025-05-21T09:51:47.033Z] 404 Not Found: GET /.well-known/appspecific/com.chrome.devtools.json
+[2025-05-21T09:51:47.180Z] 404 Not Found: GET /favicon.ico
+[2025-05-21T09:51:53.841Z] 사용자 연결됨: QJtEF8gsmPh2HS7ZAAAB (현재 연결: 1명)
+[2025-05-21T09:51:53.848Z] 소켓 연결에서 새 방 생성: 849125, 생성자: QJtEF8gsmPh2HS7ZAAAB (userQJtE)
+[2025-05-21T09:52:51.721Z] 서버 시작 - 포트: 3000, 도메인: http://localhost:3000
+[2025-05-21T09:52:51.721Z] Redis 연결을 건너뜁니다. 메모리 저장소만 사용합니다.
+[2025-05-21T09:52:51.724Z] 서버 시작 및 초기화 완료
+[2025-05-21T09:52:56.907Z] API 호출로 새 방 생성: 640996, 생성자: ::1-1747821176907
+[2025-05-21T09:52:56.940Z] 404 Not Found: GET /.well-known/appspecific/com.chrome.devtools.json
+[2025-05-21T09:52:56.974Z] 사용자 연결됨: NYcEJ6qMarHGt-e5AAAB (현재 연결: 1명)
+[2025-05-21T09:52:57.046Z] 사용자 NYcEJ6qMarHGt-e5AAAB (userNYcE)가 방 640996에 입장 (현재 인원: 1명)
+[2025-05-21T09:55:52.982Z] 서버 시작 - 포트: 3000, 도메인: http://localhost:3000
+[2025-05-21T09:55:52.982Z] Redis 연결을 건너뜁니다. 메모리 저장소만 사용합니다.
+[2025-05-21T09:55:52.985Z] 서버 시작 및 초기화 완료
+[2025-05-21T09:55:56.394Z] 사용자 연결됨: hsEk0yLxGlyfTBqZAAAB (현재 연결: 1명)
+[2025-05-21T09:55:56.402Z] 소켓 연결에서 새 방 생성: 640996, 생성자: hsEk0yLxGlyfTBqZAAAB (userhsEk)
+[2025-05-21T09:55:56.404Z] 사용자 hsEk0yLxGlyfTBqZAAAB (userhsEk)가 방 640996에 입장 (현재 인원: 1명)
+[2025-05-21T09:55:56.412Z] 사용자 hsEk0yLxGlyfTBqZAAAB (userhsEk)가 방 640996에서 나감
+[2025-05-21T09:55:56.414Z] 사용자 hsEk0yLxGlyfTBqZAAAB (userhsEk)가 방 640996에 입장 (현재 인원: 1명)
+[2025-05-21T09:55:59.854Z] 사용자 hsEk0yLxGlyfTBqZAAAB (userhsEk)가 방 640996에서 연결 끊김 (이유: transport close) (현재 인원: 0명)
+[2025-05-21T09:55:59.855Z] 사용자 hsEk0yLxGlyfTBqZAAAB가 방 640996에서 연결 끊김 (이유: transport close) (현재 인원: 0명)
+[2025-05-21T09:56:01.951Z] 404 Not Found: GET /favicon.ico
+[2025-05-21T09:56:03.834Z] API 호출로 새 방 생성: 315598, 생성자: ::1-1747821363834
+[2025-05-21T09:56:03.883Z] 사용자 연결됨: pD5O2oMAYoK3HvEdAAAD (현재 연결: 0명)
+[2025-05-21T09:56:03.891Z] 404 Not Found: GET /favicon.ico
+[2025-05-21T09:56:03.894Z] 사용자 pD5O2oMAYoK3HvEdAAAD (userpD5O)가 방 315598에 입장 (현재 인원: 1명)
+[2025-05-21T09:56:03.896Z] 사용자 pD5O2oMAYoK3HvEdAAAD (userpD5O)가 방 315598에서 나감
+[2025-05-21T09:56:03.897Z] 사용자 pD5O2oMAYoK3HvEdAAAD (userpD5O)가 방 315598에 입장 (현재 인원: 1명)
+[2025-05-21T09:56:11.560Z] 사용자 연결됨: DYaDLdUVklTWrKV7AAAF (현재 연결: 1명)
+[2025-05-21T09:56:11.566Z] 사용자 DYaDLdUVklTWrKV7AAAF (userDYaD)가 방 315598에 입장 (현재 인원: 2명)
+[2025-05-21T09:56:11.607Z] 사용자 DYaDLdUVklTWrKV7AAAF (userDYaD)가 방 315598에서 나감
+[2025-05-21T09:56:11.608Z] 사용자 DYaDLdUVklTWrKV7AAAF (userDYaD)가 방 315598에 입장 (현재 인원: 2명)
+[2025-05-21T09:56:11.634Z] 404 Not Found: GET /favicon.ico
+[2025-05-21T09:58:18.534Z] 사용자 pD5O2oMAYoK3HvEdAAAD (userpD5O)가 방 315598에서 연결 끊김 (이유: transport close) (현재 인원: 1명)
+[2025-05-21T09:58:18.535Z] 사용자 pD5O2oMAYoK3HvEdAAAD가 방 315598에서 연결 끊김 (이유: transport close) (현재 인원: 1명)
+[2025-05-21T09:58:19.166Z] 사용자 DYaDLdUVklTWrKV7AAAF (userDYaD)가 방 315598에서 연결 끊김 (이유: transport close) (현재 인원: 0명)
+[2025-05-21T09:58:19.167Z] 사용자 DYaDLdUVklTWrKV7AAAF가 방 315598에서 연결 끊김 (이유: transport close) (현재 인원: 0명)
+[2025-05-21T10:00:52.987Z] 메모리 사용량: 14MB / 15MB
+[2025-05-21T10:05:52.990Z] 메모리 사용량: 14MB / 15MB
+[2025-05-21T10:10:52.994Z] 메모리 사용량: 14MB / 15MB
+[2025-05-21T10:15:52.943Z] 메모리 사용량: 14MB / 15MB
+[2025-05-21T10:20:52.942Z] 메모리 사용량: 14MB / 15MB
+[2025-05-21T10:25:52.940Z] 메모리 사용량: 14MB / 15MB
+[2025-05-21T10:30:52.940Z] 메모리 사용량: 14MB / 15MB
+[2025-05-21T10:35:52.940Z] 메모리 사용량: 13MB / 15MB
+[2025-05-21T10:53:29.387Z] 메모리 사용량: 13MB / 15MB
+[2025-05-21T11:05:45.449Z] 방 데이터 삭제 오류: Cannot read properties of null (reading 'del')
+[2025-05-21T11:05:45.450Z] 방 데이터 삭제 오류: Cannot read properties of null (reading 'del')
+[2025-05-21T11:05:45.451Z] 메모리 사용량: 13MB / 15MB
+[2025-05-21T12:10:25.366Z] 방 데이터 삭제 오류: Cannot read properties of null (reading 'del')
+[2025-05-21T12:10:25.367Z] 방 데이터 삭제 오류: Cannot read properties of null (reading 'del')
+[2025-05-21T12:10:25.368Z] 메모리 사용량: 13MB / 15MB
+[2025-05-21T12:26:56.364Z] 방 데이터 삭제 오류: Cannot read properties of null (reading 'del')
+[2025-05-21T12:26:56.365Z] 방 데이터 삭제 오류: Cannot read properties of null (reading 'del')
+[2025-05-21T12:26:56.365Z] 메모리 사용량: 13MB / 15MB
+[2025-05-21T12:46:35.146Z] 방 데이터 삭제 오류: Cannot read properties of null (reading 'del')
+[2025-05-21T12:46:35.147Z] 방 데이터 삭제 오류: Cannot read properties of null (reading 'del')
+[2025-05-21T12:46:35.147Z] 메모리 사용량: 13MB / 15MB
+[2025-05-21T13:23:16.224Z] 방 데이터 삭제 오류: Cannot read properties of null (reading 'del')
+[2025-05-21T13:23:16.224Z] 방 데이터 삭제 오류: Cannot read properties of null (reading 'del')
+[2025-05-21T13:23:16.224Z] 메모리 사용량: 13MB / 15MB
+[2025-05-21T13:37:18.882Z] 방 데이터 삭제 오류: Cannot read properties of null (reading 'del')
+[2025-05-21T13:37:18.883Z] 방 데이터 삭제 오류: Cannot read properties of null (reading 'del')
+[2025-05-21T13:37:18.883Z] 메모리 사용량: 13MB / 15MB
+[2025-05-21T14:26:37.970Z] 방 데이터 삭제 오류: Cannot read properties of null (reading 'del')
+[2025-05-21T14:26:37.971Z] 방 데이터 삭제 오류: Cannot read properties of null (reading 'del')
+[2025-05-21T14:26:37.971Z] 메모리 사용량: 13MB / 15MB
+[2025-05-21T14:38:21.794Z] 방 데이터 삭제 오류: Cannot read properties of null (reading 'del')
+[2025-05-21T14:38:21.795Z] 방 데이터 삭제 오류: Cannot read properties of null (reading 'del')
+[2025-05-21T14:38:21.795Z] 메모리 사용량: 13MB / 15MB
+[2025-05-21T15:29:05.388Z] 방 데이터 삭제 오류: Cannot read properties of null (reading 'del')
+[2025-05-21T15:29:05.389Z] 방 데이터 삭제 오류: Cannot read properties of null (reading 'del')
+[2025-05-21T15:29:05.389Z] 메모리 사용량: 13MB / 15MB
+[2025-05-21T16:12:15.347Z] 방 데이터 삭제 오류: Cannot read properties of null (reading 'del')
+[2025-05-21T16:12:15.348Z] 방 데이터 삭제 오류: Cannot read properties of null (reading 'del')
+[2025-05-21T16:12:15.348Z] 메모리 사용량: 13MB / 15MB
+[2025-05-21T17:12:39.948Z] 방 데이터 삭제 오류: Cannot read properties of null (reading 'del')
+[2025-05-21T17:12:39.948Z] 방 데이터 삭제 오류: Cannot read properties of null (reading 'del')
+[2025-05-21T17:12:39.948Z] 메모리 사용량: 13MB / 15MB
+[2025-05-21T18:37:28.454Z] 방 데이터 삭제 오류: Cannot read properties of null (reading 'del')
+[2025-05-21T18:37:28.455Z] 방 데이터 삭제 오류: Cannot read properties of null (reading 'del')
+[2025-05-21T18:37:28.456Z] 메모리 사용량: 13MB / 15MB
+[2025-05-21T18:53:37.141Z] 방 데이터 삭제 오류: Cannot read properties of null (reading 'del')
+[2025-05-21T18:53:37.142Z] 방 데이터 삭제 오류: Cannot read properties of null (reading 'del')
+[2025-05-21T18:53:37.143Z] 메모리 사용량: 13MB / 15MB
+[2025-05-21T19:56:45.135Z] 방 데이터 삭제 오류: Cannot read properties of null (reading 'del')
+[2025-05-21T19:56:45.136Z] 방 데이터 삭제 오류: Cannot read properties of null (reading 'del')
+[2025-05-21T19:56:45.136Z] 메모리 사용량: 13MB / 15MB
+[2025-05-21T20:31:28.014Z] 방 데이터 삭제 오류: Cannot read properties of null (reading 'del')
+[2025-05-21T20:31:28.015Z] 방 데이터 삭제 오류: Cannot read properties of null (reading 'del')
+[2025-05-21T20:31:28.015Z] 메모리 사용량: 13MB / 15MB
+[2025-05-21T21:01:22.447Z] 방 데이터 삭제 오류: Cannot read properties of null (reading 'del')
+[2025-05-21T21:01:22.447Z] 방 데이터 삭제 오류: Cannot read properties of null (reading 'del')
+[2025-05-21T21:01:22.447Z] 메모리 사용량: 13MB / 15MB
+[2025-05-21T21:51:44.978Z] 방 데이터 삭제 오류: Cannot read properties of null (reading 'del')
+[2025-05-21T21:51:44.979Z] 방 데이터 삭제 오류: Cannot read properties of null (reading 'del')
+[2025-05-21T21:51:44.979Z] 메모리 사용량: 13MB / 15MB
+[2025-05-21T22:02:13.174Z] 방 데이터 삭제 오류: Cannot read properties of null (reading 'del')
+[2025-05-21T22:02:13.175Z] 방 데이터 삭제 오류: Cannot read properties of null (reading 'del')
+[2025-05-21T22:02:13.175Z] 메모리 사용량: 14MB / 15MB
+[2025-05-21T22:35:45.833Z] 방 데이터 삭제 오류: Cannot read properties of null (reading 'del')
+[2025-05-21T22:35:45.834Z] 방 데이터 삭제 오류: Cannot read properties of null (reading 'del')
+[2025-05-21T22:35:45.834Z] 메모리 사용량: 14MB / 15MB
+[2025-05-21T23:02:04.742Z] 방 데이터 삭제 오류: Cannot read properties of null (reading 'del')
+[2025-05-21T23:02:04.743Z] 방 데이터 삭제 오류: Cannot read properties of null (reading 'del')
+[2025-05-21T23:02:04.743Z] 메모리 사용량: 14MB / 15MB
+[2025-05-21T23:20:27.658Z] 방 데이터 삭제 오류: Cannot read properties of null (reading 'del')
+[2025-05-21T23:20:27.658Z] 방 데이터 삭제 오류: Cannot read properties of null (reading 'del')
+[2025-05-21T23:20:27.658Z] 메모리 사용량: 14MB / 15MB
+[2025-05-22T00:03:08.327Z] 방 데이터 삭제 오류: Cannot read properties of null (reading 'del')
+[2025-05-22T00:03:08.328Z] 방 데이터 삭제 오류: Cannot read properties of null (reading 'del')
+[2025-05-22T00:03:08.328Z] 메모리 사용량: 14MB / 15MB
+[2025-05-22T00:34:44.545Z] 방 데이터 삭제 오류: Cannot read properties of null (reading 'del')
+[2025-05-22T00:34:44.546Z] 방 데이터 삭제 오류: Cannot read properties of null (reading 'del')
+[2025-05-22T00:34:44.546Z] 메모리 사용량: 14MB / 15MB
+[2025-05-22T01:04:10.008Z] 방 데이터 삭제 오류: Cannot read properties of null (reading 'del')
+[2025-05-22T01:04:10.009Z] 방 데이터 삭제 오류: Cannot read properties of null (reading 'del')
+[2025-05-22T01:04:10.009Z] 메모리 사용량: 14MB / 15MB
+[2025-05-22T01:38:40.471Z] 방 데이터 삭제 오류: Cannot read properties of null (reading 'del')
+[2025-05-22T01:38:40.472Z] 방 데이터 삭제 오류: Cannot read properties of null (reading 'del')
+[2025-05-22T01:38:40.472Z] 메모리 사용량: 14MB / 15MB
+[2025-05-22T02:40:48.217Z] 방 데이터 삭제 오류: Cannot read properties of null (reading 'del')
+[2025-05-22T02:40:48.217Z] 방 데이터 삭제 오류: Cannot read properties of null (reading 'del')
+[2025-05-22T02:40:48.218Z] 메모리 사용량: 14MB / 15MB
+[2025-05-22T02:56:39.041Z] 방 데이터 삭제 오류: Cannot read properties of null (reading 'del')
+[2025-05-22T02:56:39.041Z] 방 데이터 삭제 오류: Cannot read properties of null (reading 'del')
+[2025-05-22T02:56:39.042Z] 메모리 사용량: 14MB / 15MB
+[2025-05-22T03:53:28.990Z] 방 데이터 삭제 오류: Cannot read properties of null (reading 'del')
+[2025-05-22T03:53:28.990Z] 방 데이터 삭제 오류: Cannot read properties of null (reading 'del')
+[2025-05-22T03:53:28.991Z] 메모리 사용량: 14MB / 15MB
+[2025-05-22T04:07:10.943Z] 방 데이터 삭제 오류: Cannot read properties of null (reading 'del')
+[2025-05-22T04:07:10.944Z] 방 데이터 삭제 오류: Cannot read properties of null (reading 'del')
+[2025-05-22T04:07:10.945Z] 메모리 사용량: 14MB / 15MB
+[2025-05-22T04:55:10.874Z] 방 데이터 삭제 오류: Cannot read properties of null (reading 'del')
+[2025-05-22T04:55:10.874Z] 방 데이터 삭제 오류: Cannot read properties of null (reading 'del')
+[2025-05-22T04:55:10.874Z] 메모리 사용량: 14MB / 15MB
+[2025-05-22T05:41:56.830Z] 방 데이터 삭제 오류: Cannot read properties of null (reading 'del')
+[2025-05-22T05:41:56.831Z] 방 데이터 삭제 오류: Cannot read properties of null (reading 'del')
+[2025-05-22T05:41:56.831Z] 메모리 사용량: 14MB / 15MB
+[2025-05-22T06:08:16.541Z] 방 데이터 삭제 오류: Cannot read properties of null (reading 'del')
+[2025-05-22T06:08:16.542Z] 방 데이터 삭제 오류: Cannot read properties of null (reading 'del')
+[2025-05-22T06:08:16.542Z] 메모리 사용량: 14MB / 15MB
+[2025-05-22T07:09:05.093Z] 방 데이터 삭제 오류: Cannot read properties of null (reading 'del')
+[2025-05-22T07:09:05.093Z] 방 데이터 삭제 오류: Cannot read properties of null (reading 'del')
+[2025-05-22T07:09:05.093Z] 메모리 사용량: 14MB / 15MB
+[2025-05-22T08:10:04.021Z] 방 데이터 삭제 오류: Cannot read properties of null (reading 'del')
+[2025-05-22T08:10:04.022Z] 방 데이터 삭제 오류: Cannot read properties of null (reading 'del')
+[2025-05-22T08:10:04.023Z] 메모리 사용량: 14MB / 15MB
+[2025-05-22T08:20:32.435Z] 방 데이터 삭제 오류: Cannot read properties of null (reading 'del')
+[2025-05-22T08:20:32.436Z] 방 데이터 삭제 오류: Cannot read properties of null (reading 'del')
+[2025-05-22T08:20:32.437Z] 메모리 사용량: 13MB / 15MB
+[2025-05-22T08:21:32.438Z] 방 데이터 삭제 오류: Cannot read properties of null (reading 'del')
+[2025-05-22T08:21:32.439Z] 방 데이터 삭제 오류: Cannot read properties of null (reading 'del')
+[2025-05-22T08:22:32.441Z] 방 데이터 삭제 오류: Cannot read properties of null (reading 'del')
+[2025-05-22T08:22:32.442Z] 방 데이터 삭제 오류: Cannot read properties of null (reading 'del')
+[2025-05-22T08:23:32.443Z] 방 데이터 삭제 오류: Cannot read properties of null (reading 'del')
+[2025-05-22T08:23:32.444Z] 방 데이터 삭제 오류: Cannot read properties of null (reading 'del')
+[2025-05-22T08:24:32.445Z] 방 데이터 삭제 오류: Cannot read properties of null (reading 'del')
+[2025-05-22T08:24:32.446Z] 방 데이터 삭제 오류: Cannot read properties of null (reading 'del')
+[2025-05-22T08:25:32.447Z] 메모리 사용량: 13MB / 15MB
+[2025-05-22T08:25:32.448Z] 방 데이터 삭제 오류: Cannot read properties of null (reading 'del')
+[2025-05-22T08:25:32.448Z] 방 데이터 삭제 오류: Cannot read properties of null (reading 'del')
+[2025-05-22T08:25:49.389Z] 404 Not Found: GET /favicon.ico
+[2025-05-22T08:25:51.957Z] API 호출로 새 방 생성: 931568, 생성자: ::1-1747902351957
+[2025-05-22T08:25:51.998Z] 사용자 연결됨: OWoB2A5KihxA_SFwAAAH (현재 연결: -2명)
+[2025-05-22T08:25:52.013Z] 사용자 OWoB2A5KihxA_SFwAAAH (userOWoB)가 방 931568에 입장 (현재 인원: 1명)
+[2025-05-22T08:25:52.020Z] 사용자 OWoB2A5KihxA_SFwAAAH (userOWoB)가 방 931568에서 나감
+[2025-05-22T08:25:52.021Z] 사용자 OWoB2A5KihxA_SFwAAAH (userOWoB)가 방 931568에 입장 (현재 인원: 1명)
+[2025-05-22T08:25:52.024Z] 404 Not Found: GET /favicon.ico
+[2025-05-22T08:26:32.451Z] 방 데이터 삭제 오류: Cannot read properties of null (reading 'del')
+[2025-05-22T08:26:32.451Z] 방 데이터 삭제 오류: Cannot read properties of null (reading 'del')
+[2025-05-22T08:27:31.988Z] 서버 종료 중...
