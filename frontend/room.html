@@ -731,6 +731,12 @@
             const colorPicker = document.getElementById('colorPicker');
             const sizeSlider = document.getElementById('sizeSlider');
             const clearBtn = document.getElementById('clearBtn');
+            const homeBtn = document.getElementById('homeBtn');
+
+            // 홈 버튼 클릭 이벤트 리스너
+            homeBtn.addEventListener('click', () => {
+                window.location.href = '/';
+            });
             
             // 도구 선택 이벤트 리스너
             penTool.addEventListener('click', () => {
@@ -1140,8 +1146,6 @@
             }, 5000);
         });
     </script>
-</body>
-</html>
 
 
 
@@ -1420,3 +1424,146 @@
         });
     });
 </script>
+
+<!-- 방 코드 모달 추가 -->
+<div id="roomCodeModal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn">&times;</span>
+        <h2>방 코드</h2>
+        <div class="room-code-display">
+            <span id="modalRoomCode"></span>
+        </div>
+        <p class="room-code-info">이 코드를 공유하여 다른 사람을 초대하세요</p>
+        <button id="copyRoomCodeBtn" class="copy-btn">코드 복사</button>
+    </div>
+</div>
+
+<style>
+    /* 방 코드 모달 스타일 */
+    .room-code-display {
+        font-size: 36px;
+        font-weight: bold;
+        background-color: #f8f9fa;
+        padding: 20px;
+        border-radius: 10px;
+        margin: 20px 0;
+        letter-spacing: 3px;
+        color: #333;
+        text-align: center;
+        box-shadow: inset 0 0 5px rgba(0,0,0,0.1);
+    }
+    
+    .room-code-info {
+        color: #666;
+        margin-bottom: 20px;
+    }
+    
+    .copy-btn {
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: background-color 0.3s;
+    }
+    
+    .copy-btn:hover {
+        background-color: #45a049;
+    }
+    
+    .copy-btn:active {
+        transform: translateY(1px);
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // 기존 코드 유지...
+        
+        // 방 코드 클릭 이벤트 추가
+        const roomCodeElement = document.getElementById('roomCode');
+        const roomCodeModal = document.getElementById('roomCodeModal');
+        const modalRoomCode = document.getElementById('modalRoomCode');
+        const closeBtn = roomCodeModal.querySelector('.close-btn');
+        const copyRoomCodeBtn = document.getElementById('copyRoomCodeBtn');
+        
+        // 방 코드 클릭 시 모달 표시
+        roomCodeElement.addEventListener('click', () => {
+            // 모달에 방 코드 표시
+            modalRoomCode.textContent = roomCodeElement.textContent;
+            
+            // 모달 표시
+            roomCodeModal.style.display = 'flex';
+            
+            // 모달 애니메이션 효과
+            const modalContent = roomCodeModal.querySelector('.modal-content');
+            modalContent.style.opacity = '0';
+            modalContent.style.transform = 'scale(0.9)';
+            modalContent.style.transition = 'opacity 0.3s, transform 0.3s';
+            
+            // 약간의 지연 후 애니메이션 적용
+            setTimeout(() => {
+                modalContent.style.opacity = '1';
+                modalContent.style.transform = 'scale(1)';
+            }, 50);
+        });
+        
+        // 모달 닫기 버튼 클릭 이벤트
+        closeBtn.addEventListener('click', () => {
+            // 모달 닫기 애니메이션
+            const modalContent = roomCodeModal.querySelector('.modal-content');
+            modalContent.style.opacity = '0';
+            modalContent.style.transform = 'scale(0.9)';
+            
+            // 애니메이션 완료 후 모달 숨기기
+            setTimeout(() => {
+                roomCodeModal.style.display = 'none';
+            }, 300);
+        });
+        
+        // 모달 외부 클릭 시 닫기
+        window.addEventListener('click', (event) => {
+            if (event.target === roomCodeModal) {
+                // 모달 닫기 애니메이션
+                const modalContent = roomCodeModal.querySelector('.modal-content');
+                modalContent.style.opacity = '0';
+                modalContent.style.transform = 'scale(0.9)';
+                
+                // 애니메이션 완료 후 모달 숨기기
+                setTimeout(() => {
+                    roomCodeModal.style.display = 'none';
+                }, 300);
+            }
+        });
+        
+        // 방 코드 복사 버튼 클릭 이벤트
+        copyRoomCodeBtn.addEventListener('click', () => {
+            // 방 코드 복사
+            const roomCode = modalRoomCode.textContent;
+            navigator.clipboard.writeText(roomCode)
+                .then(() => {
+                    // 복사 성공 시 버튼 텍스트 변경
+                    const originalText = copyRoomCodeBtn.textContent;
+                    copyRoomCodeBtn.textContent = '복사 완료!';
+                    copyRoomCodeBtn.style.backgroundColor = '#2196F3';
+                    
+                    // 2초 후 원래 텍스트로 복원
+                    setTimeout(() => {
+                        copyRoomCodeBtn.textContent = originalText;
+                        copyRoomCodeBtn.style.backgroundColor = '#4CAF50';
+                    }, 2000);
+                })
+                .catch(err => {
+                    console.error('클립보드 복사 실패:', err);
+                    alert('클립보드 복사에 실패했습니다. 수동으로 코드를 복사해주세요.');
+                });
+        });
+        
+        // 나머지 기존 코드 유지...
+    });
+</script>
+
+</body>
+</html>
