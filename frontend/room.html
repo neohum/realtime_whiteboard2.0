@@ -16,79 +16,78 @@
         }
         
         .header {
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 10px 20px;
+            background-color: #06f766;
+            border-bottom: 1px solid #dee2e6;
         }
         
         .room-info {
             display: flex;
-            align-items: center
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .room-info h1 {
+            margin: 0;
+            font-size: 1.5rem;
+        }
+        
+        .room-code-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
         
         .room-code {
-            background-color: rgba(255, 255, 255, 0.2);
+            font-weight: bold;
             padding: 5px 10px;
+            background-color: hsl(210, 97%, 48%);
             border-radius: 4px;
-            font-family: monospace;
-            font-size: 18px;
             cursor: pointer;
         }
         
-        .copy-tooltip {
-            position: relative;
-            display: inline-block;
-        }
-        
-        .tooltip-text {
-            visibility: hidden;
-            width: 140px;
-            background-color: #555;
-            color: #fff;
-            text-align: center;
-            border-radius: 6px;
-            padding: 5px;
-            position: absolute;
-            z-index: 1;
-            bottom: 150%;
-            left: 50%;
-            margin-left: -75px;
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-        
-        .tooltip-text::after {
-            content: "";
-            position: absolute;
-            top: 100%;
-            left: 50%;
-            margin-left: -5px;
-            border-width: 5px;
-            border-style: solid;
-            border-color: #555 transparent transparent transparent;
-        }
-        
-        .copy-tooltip:hover .tooltip-text {
-            visibility: visible;
-            opacity: 1;
-        }
-        
-        .users-count {
+        .qr-btn {
+            padding: 8px 12px;
+            border: none;
+            border-radius: 4px;
+            background-color: #007bff; /* 파란색 */
+            
+            cursor: pointer;
             display: flex;
             align-items: center;
             gap: 5px;
-            background-color: rgba(0, 0, 0, 0.1);
-            padding: 5px 10px;
-            border-radius: 15px;
-            font-size: 14px;
+            font-weight: 500;
+            transition: background-color 0.2s;
         }
         
-        #usersCount {
-            font-weight: bold;
-            color: #4CAF50;
+        .qr-btn:hover {
+            background-color: #0069d9;
+        }
+        
+        .qr-btn:active {
+            background-color: #0062cc;
+            transform: translateY(1px);
+        }
+        
+        /* QR 코드 아이콘 추가 */
+        .qr-btn::before {
+            content: "\1F4F1"; /* 모바일 폰 이모지 */
+            font-size: 16px;
+        }
+        
+        .status-bar {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .connection-status {
+            display: flex;
+            align-items: center;
+            gap: 5px;
         }
         
         .status-indicator {
@@ -96,17 +95,43 @@
             height: 10px;
             border-radius: 50%;
             background-color: orange;
-            margin-right: 5px;
         }
         
-        .connection-status {
+        /* 사용자 수 컨테이너 스타일 */
+        .users-count-container {
             display: flex;
             align-items: center;
-            background-color: rgba(0, 0, 0, 0.1);
+            gap: 5px;
+            background-color: #f1f1f1;
             padding: 5px 10px;
-            border-radius: 15px;
+            border-radius: 20px;
             font-size: 14px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
         }
+        
+        .users-count-container:hover {
+            background-color: #e9ecef;
+        }
+        
+        /* 사용자 아이콘 스타일 */
+        .user-icon {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="%23007bff" d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128zm89.6 32h-16.7c-22.2 10.2-46.9 16-72.9 16s-50.6-5.8-72.9-16h-16.7C60.2 288 0 348.2 0 422.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-41.6c0-74.2-60.2-134.4-134.4-134.4z"/></svg>');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: contain;
+        }
+        
+        /* 사용자 수 스타일 */
+        #usersCount {
+            font-weight: bold;
+            color: #007bff;
+        }
+        
+        /* 참가자 목록 관련 스타일 제거 */
         
         .tools {
             background-color: white;
@@ -210,13 +235,42 @@
         
         @media (max-width: 768px) {
             .header {
-                flex-direction: column;
-                gap: 10px;
+                flex-direction: row; /* 가로 방향 유지 */
+                flex-wrap: wrap; /* 필요시 줄바꿈 */
                 padding: 10px;
             }
             
-            .tools {
+            .room-info {
+                flex: 1;
+                min-width: 0; /* 축소 허용 */
+            }
+            
+            .status-bar {
+                margin-left: auto; /* 오른쪽 정렬 */
+            }
+            
+            .room-code-container {
                 flex-wrap: wrap;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .header {
+                padding: 8px;
+            }
+            
+            .room-info h1 {
+                font-size: 1.2rem;
+            }
+            
+            .users-count-container {
+                padding: 3px 8px;
+                font-size: 12px;
+            }
+            
+            .user-icon {
+                width: 14px;
+                height: 14px;
             }
         }
     </style>
@@ -230,20 +284,15 @@
                 <span id="roomCode" class="room-code"></span>
                 <button id="showQrBtn" class="qr-btn">QR 코드 보기</button>
             </div>
-            <div class="connection-status">
-                <span>상태: </span>
-                <span id="connectionStatus">연결 중...</span>
-            </div>
         </div>
         <div class="status-bar">
-            <div class="users-count">
-                <span>참가자:</span>
-                <span id="usersCount">0</span>
-                <span>명</span>
-            </div>
             <div class="connection-status">
                 <div class="status-indicator" id="connectionIndicator"></div>
                 <span id="connectionStatus">연결 중...</span>
+            </div>
+            <div class="users-count-container">
+                <i class="user-icon"></i>
+                <span id="usersCount">0</span>명
             </div>
         </div>
     </div>
@@ -332,7 +381,7 @@
             gap: 5px;
         }
         .qr-btn:hover {
-            background-color: #e0e0e0;
+            background-color: #2065ee;
         }
     </style>
     
@@ -350,79 +399,8 @@
             const roomCodeElement = document.getElementById('roomCode');
             roomCodeElement.textContent = roomCode;
             
-            // QR 코드 모달 요소
-            const qrModal = document.getElementById('qrModal');
-            const showQrBtn = document.getElementById('showQrBtn');
-            const closeBtn = document.querySelector('.close-btn');
-            const qrcodeContainer = document.getElementById('qrcode');
-            
-            // 현재 방 URL 생성
-            const roomUrl = `${window.location.origin}/room/${roomCode}`;
-            
-            // QR 코드 버튼 클릭 이벤트
-            showQrBtn.addEventListener('click', () => {
-                // QR 코드 컨테이너 초기화
-                qrcodeContainer.innerHTML = '';
-                
-                // QRCode.js 라이브러리를 사용하여 QR 코드 생성
-                try {
-                    new QRCode(qrcodeContainer, {
-                        text: roomUrl,
-                        width: 200,
-                        height: 200,
-                        colorDark: "#000000",
-                        colorLight: "#ffffff",
-                        correctLevel: QRCode.CorrectLevel.H
-                    });
-                    console.log('QR 코드 생성 완료');
-                } catch (error) {
-                    console.error('QR 코드 생성 오류:', error);
-                    qrcodeContainer.innerHTML = '<p style="color: red;">QR 코드 생성 실패</p>';
-                }
-                
-                // 모달 표시 - flex로 설정하여 중앙 정렬
-                qrModal.style.display = 'flex';
-            });
-            
-            // 모달 닫기 버튼 클릭 이벤트
-            closeBtn.addEventListener('click', () => {
-                qrModal.style.display = 'none';
-            });
-            
-            // 모달 외부 클릭 시 닫기
-            window.addEventListener('click', (event) => {
-                if (event.target === qrModal) {
-                    qrModal.style.display = 'none';
-                }
-            });
-            
-            // ESC 키 누를 때 모달 닫기
-            window.addEventListener('keydown', (event) => {
-                if (event.key === 'Escape' && qrModal.style.display === 'flex') {
-                    qrModal.style.display = 'none';
-                }
-            });
-            
-            // 기존 방 코드 복사 기능 제거 (QR 코드로 대체)
-            roomCodeElement.removeEventListener('click', () => {});
-            
-            // 홈으로 버튼 이벤트 리스너
-            document.getElementById('homeBtn').addEventListener('click', () => {
-                window.location.href = serverUrl;
-            });
-            
-            // 에러 표시 함수
-            function showError(message) {
-                const errorContainer = document.getElementById('errorContainer');
-                const errorMessage = document.getElementById('errorMessage');
-                
-                errorMessage.textContent = message;
-                errorContainer.style.display = 'block';
-                
-                setTimeout(() => {
-                    errorContainer.style.display = 'none';
-                }, 5000);
-            }
+            // 사용자 수 표시 요소
+            const usersCountElement = document.getElementById('usersCount');
             
             // 소켓 연결 설정
             let socket;
@@ -454,11 +432,71 @@
                                     console.log('서버 ping 응답 수신:', data);
                                     // 사용자 수 업데이트
                                     if (data && data.roomUsers) {
-                                        usersCount.textContent = data.roomUsers;
+                                        updateUsersCount(data.roomUsers);
                                     }
                                 });
                             }
                         }, 30000); // 30초마다 ping
+                    });
+                    
+                    // 방 입장 성공 이벤트
+                    socket.on('roomJoined', (data) => {
+                        console.log('방에 입장했습니다:', data);
+                        
+                        // 현재 인원 업데이트
+                        if (data && data.users) {
+                            updateUsersCount(data.users);
+                        }
+                    });
+                    
+                    // 사용자 입장 이벤트
+                    socket.on('userJoined', (data) => {
+                        console.log('새 사용자가 입장했습니다:', data);
+                        
+                        // 현재 인원 업데이트
+                        if (data && data.users) {
+                            updateUsersCount(data.users);
+                        }
+                    });
+                    
+                    // 사용자 퇴장 이벤트
+                    socket.on('userLeft', (data) => {
+                        console.log('사용자가 퇴장했습니다:', data);
+                        
+                        // 현재 인원 업데이트
+                        if (data && data.users) {
+                            updateUsersCount(data.users);
+                        }
+                    });
+                    
+                    // 사용자 수 업데이트 이벤트
+                    socket.on('userCountUpdated', (data) => {
+                        console.log('사용자 수 업데이트:', data);
+                        
+                        // 현재 인원 업데이트
+                        if (data && data.users) {
+                            updateUsersCount(data.users);
+                        }
+                    });
+                    
+                    // 서버 응답 이벤트
+                    socket.on('pong', (data) => {
+                        console.log('서버 pong 응답 수신:', data);
+                        
+                        // 현재 인원 업데이트
+                        if (data && data.roomUsers) {
+                            updateUsersCount(data.roomUsers);
+                        }
+                    });
+                    
+                    // 방 정보 이벤트
+                    socket.on('roomInfo', (data) => {
+                        console.log('방 정보 수신:', data);
+                        
+                        // 현재 인원 업데이트
+                        if (data && data.users) {
+                            updateUsersCount(data.users);
+                        }
                     });
                     
                     socket.on('connect_error', (error) => {
@@ -504,6 +542,32 @@
                     console.error('소켓 연결 초기화 오류:', error);
                     updateConnectionStatus('연결 오류', 'red');
                     showError('서버 연결 초기화 중 오류가 발생했습니다. 페이지를 새로고침해 주세요.');
+                }
+            }
+
+            // 사용자 수 업데이트 함수
+            function updateUsersCount(count) {
+                if (!usersCountElement) return;
+                
+                // 이전 값과 다를 때만 애니메이션 효과 적용
+                const prevCount = parseInt(usersCountElement.textContent);
+                if (prevCount !== count) {
+                    // 숫자 변경 애니메이션 효과
+                    usersCountElement.style.transition = 'transform 0.3s, color 0.3s';
+                    usersCountElement.style.transform = 'scale(1.2)';
+                    usersCountElement.style.color = count > prevCount ? '#4CAF50' : '#FF5722';
+                    
+                    // 숫자 업데이트
+                    usersCountElement.textContent = count;
+                    
+                    // 애니메이션 원상복구
+                    setTimeout(() => {
+                        usersCountElement.style.transform = 'scale(1)';
+                        usersCountElement.style.color = '#007bff';
+                    }, 300);
+                } else {
+                    // 같은 값이면 그냥 업데이트
+                    usersCountElement.textContent = count;
                 }
             }
 
@@ -1100,7 +1164,6 @@
         <h2>방 QR 코드</h2>
         <div id="qrcode" class="qr-code-container"></div>
         <p class="qr-info">QR 코드를 스캔하여 이 화이트보드에 접속하세요</p>
-        
     </div>
 </div>
 
@@ -1108,7 +1171,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 
 <style>
-    /* 모달 스타일 */
+    /* 모달 배경 스타일 개선 */
     .modal {
         display: none;
         position: fixed;
@@ -1117,85 +1180,243 @@
         top: 0;
         width: 100%;
         height: 100%;
-        background-color: rgba(0, 0, 0, 0.5);
-        /* 플렉스 컨테이너로 변경하여 중앙 정렬 */
-        display: none;
+        background-color: rgba(0, 0, 0, 0.7);
         justify-content: center;
         align-items: center;
+        backdrop-filter: blur(5px); /* 배경 블러 효과 강화 */
+        -webkit-backdrop-filter: blur(5px); /* Safari 지원 */
     }
     
+    /* 모달 내용 스타일 개선 - 더 크게 */
     .modal-content {
         background-color: white;
-        padding: 25px;
-        border-radius: 8px;
-        width: 350px;
-        max-width: 90%;
+        padding: 40px;
+        border-radius: 16px;
+        width: 90%;
+        max-width: 500px; /* 최대 너비 증가 */
         text-align: center;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-        /* 마진 제거 (플렉스로 중앙 정렬) */
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
         margin: 0;
-        /* 애니메이션 추가 */
-        animation: modalFadeIn 0.3s ease-out;
+        position: relative;
     }
     
-    @keyframes modalFadeIn {
-        from {
-            opacity: 0;
-            transform: translateY(-20px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
+    /* 모달 제목 스타일 */
+    .modal-content h2 {
+        margin-top: 0;
+        margin-bottom: 25px;
+        color: #333;
+        font-size: 2rem;
+        font-weight: bold;
     }
     
+    /* QR 코드 컨테이너 스타일 개선 - 더 크게 */
+    .qr-code-container {
+        margin: 30px auto;
+        width: 300px; /* 크기 증가 */
+        height: 300px; /* 크기 증가 */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: white;
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* QR 코드 이미지 스타일 */
+    .qr-code-container img {
+        max-width: 100%;
+        max-height: 100%;
+    }
+    
+    /* QR 코드 설명 텍스트 스타일 */
+    .qr-info {
+        margin: 20px 0 10px;
+        color: #555;
+        font-size: 16px;
+        line-height: 1.5;
+    }
+    
+    /* 닫기 버튼 스타일 */
     .close-btn {
+        position: absolute;
+        top: 15px;
+        right: 20px;
         color: #aaa;
-        float: right;
-        font-size: 28px;
+        font-size: 32px;
         font-weight: bold;
         cursor: pointer;
-        margin-top: -15px;
-        margin-right: -15px;
+        line-height: 1;
+        transition: color 0.2s;
     }
     
     .close-btn:hover {
         color: #333;
     }
     
-    .qr-code-container {
-        margin: 20px auto;
-        width: 200px;
-        height: 200px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-    
-    .qr-info {
-        margin: 15px 0;
-        color: #555;
-        font-size: 14px;
-    }
-    
     /* 모바일 환경을 위한 반응형 스타일 */
     @media (max-width: 768px) {
         .modal-content {
             width: 90%;
-            padding: 20px;
+            padding: 30px;
         }
         
         .qr-code-container {
-            width: 180px;
-            height: 180px;
+            width: 250px;
+            height: 250px;
         }
+    }
+    
+    /* 작은 모바일 화면을 위한 스타일 */
+    @media (max-width: 480px) {
+        .modal-content {
+            width: 95%;
+            padding: 25px 15px;
+        }
+        
+        .qr-code-container {
+            width: 220px;
+            height: 220px;
+            padding: 15px;
+        }
+        
+        .modal-content h2 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+    }
+    
+    /* 모달 애니메이션 효과 */
+    @keyframes modalFadeIn {
+        from {
+            opacity: 0;
+            transform: scale(0.9);
+        }
+        to {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+    
+    @keyframes modalFadeOut {
+        from {
+            opacity: 1;
+            transform: scale(1);
+        }
+        to {
+            opacity: 0;
+            transform: scale(0.9);
+        }
+    }
+    
+    .modal-content {
+        animation: modalFadeIn 0.3s ease-out forwards;
+    }
+    
+    .modal-closing .modal-content {
+        animation: modalFadeOut 0.3s ease-out forwards;
+    }
+    
+    /* 모달 배경 애니메이션 */
+    @keyframes backdropFadeIn {
+        from { background-color: rgba(0, 0, 0, 0); }
+        to { background-color: rgba(0, 0, 0, 0.7); }
+    }
+    
+    .modal {
+        animation: backdropFadeIn 0.3s ease-out forwards;
     }
 </style>
 
-
-
-
-
-
-
-
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // QR 코드 모달 요소
+        const qrModal = document.getElementById('qrModal');
+        const showQrBtn = document.getElementById('showQrBtn');
+        const closeBtn = document.querySelector('.close-btn');
+        const qrcodeContainer = document.getElementById('qrcode');
+        
+        // 현재 방 URL 생성
+        const roomUrl = `${window.location.origin}/room/${roomCode}`;
+        
+        // QR 코드 버튼 클릭 이벤트
+        showQrBtn.addEventListener('click', () => {
+            // QR 코드 컨테이너 초기화
+            qrcodeContainer.innerHTML = '';
+            
+            // QRCode.js 라이브러리를 사용하여 QR 코드 생성 - 더 큰 크기로
+            try {
+                new QRCode(qrcodeContainer, {
+                    text: roomUrl,
+                    width: 280, // 크기 증가
+                    height: 280, // 크기 증가
+                    colorDark: "#000000",
+                    colorLight: "#ffffff",
+                    correctLevel: QRCode.CorrectLevel.H
+                });
+                console.log('QR 코드 생성 완료');
+                
+                // 모달 표시 - flex로 설정하여 중앙 정렬
+                qrModal.style.display = 'flex';
+                
+                // 모달 애니메이션 효과
+                const modalContent = qrModal.querySelector('.modal-content');
+                modalContent.style.opacity = '0';
+                modalContent.style.transform = 'scale(0.9)';
+                modalContent.style.transition = 'opacity 0.3s, transform 0.3s';
+                
+                // 약간의 지연 후 애니메이션 적용
+                setTimeout(() => {
+                    modalContent.style.opacity = '1';
+                    modalContent.style.transform = 'scale(1)';
+                }, 50);
+            } catch (error) {
+                console.error('QR 코드 생성 오류:', error);
+                qrcodeContainer.innerHTML = '<p style="color: red;">QR 코드 생성 실패</p>';
+            }
+        });
+        
+        // 모달 닫기 버튼 클릭 이벤트
+        closeBtn.addEventListener('click', () => {
+            // 모달 닫기 애니메이션
+            const modalContent = qrModal.querySelector('.modal-content');
+            modalContent.style.opacity = '0';
+            modalContent.style.transform = 'scale(0.9)';
+            
+            // 애니메이션 완료 후 모달 숨기기
+            setTimeout(() => {
+                qrModal.style.display = 'none';
+            }, 300);
+        });
+        
+        // 모달 외부 클릭 시 닫기
+        window.addEventListener('click', (event) => {
+            if (event.target === qrModal) {
+                // 모달 닫기 애니메이션
+                const modalContent = qrModal.querySelector('.modal-content');
+                modalContent.style.opacity = '0';
+                modalContent.style.transform = 'scale(0.9)';
+                
+                // 애니메이션 완료 후 모달 숨기기
+                setTimeout(() => {
+                    qrModal.style.display = 'none';
+                }, 300);
+            }
+        });
+        
+        // ESC 키 누를 때 모달 닫기
+        window.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape' && qrModal.style.display === 'flex') {
+                // 모달 닫기 애니메이션
+                const modalContent = qrModal.querySelector('.modal-content');
+                modalContent.style.opacity = '0';
+                modalContent.style.transform = 'scale(0.9)';
+                
+                // 애니메이션 완료 후 모달 숨기기
+                setTimeout(() => {
+                    qrModal.style.display = 'none';
+                }, 300);
+            }
+        });
+    });
+</script>

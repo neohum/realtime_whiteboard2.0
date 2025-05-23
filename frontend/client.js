@@ -101,147 +101,33 @@ function initializeSocket() {
     // 소켓 연결
     const socket = io(options);
     
+    // 방 입장 상태 추적
+    let hasJoinedRoom = false;
+    
     // 연결 이벤트 리스너
     socket.on('connect', () => {
         console.log('서버에 연결되었습니다.');
         connectionStatus.textContent = '연결됨';
         connectionStatus.style.color = '#4CAF50';
         
-        // 방 코드가 있으면 방에 입장
-        if (roomCode) {
+        // 방 코드가 있고 아직 방에 입장하지 않은 경우에만 방에 입장
+        if (roomCode && !hasJoinedRoom) {
             console.log(`방 ${roomCode}에 입장 시도...`);
             socket.emit('joinRoom', roomCode);
+            hasJoinedRoom = true;
         }
     });
     
-    // 서버에서 보내는 연결 확인 메시지
-    socket.on('connectionEstablished', (data) => {
-        console.log('서버 연결 확인:', data);
-        showConnectionStatus('연결됨', 'green');
+    // 방 입장 성공 이벤트
+    socket.on('roomJoined', (data) => {
+        console.log('방에 입장했습니다:', data);
+        hasJoinedRoom = true;
         
-        // 연결 후 그리기 데이터 요청
-        socket.emit('requestDrawingData');
-        
-        // 이미지 데이터도 요청
-        socket.emit('requestImageData');
+        // 방 정보 처리...
     });
     
-    // 그리기 데이터 로드 처리
-    socket.on('loadDrawing', (points) => {
-        console.log(`${points.length}개의 그리기 데이터 수신`);
-        
-        // 캔버스 초기화
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        
-        // 데이터 그리기
-        for (const point of points) {
-            drawPoint(point);
-        }
-    });
+    // 참가자 목록 관련 이벤트 리스너 제거
     
-    // 이미지 데이터 로드 처리
-    socket.on('loadImages', (images) => {
-        console.log(`${images.length}개의 이미지 데이터 수신`);
-        
-        if (images.length === 0) {
-            console.log('수신된 이미지가 없습니다.');
-            return;
-        }
-        
-        // 이미지 그리기
-        for (const imageData of images) {
-            handlePastedImage(imageData);
-        }
-    });
-    
-    // 다른 사용자의 그리기 이벤트 수신
-    socket.on('draw', (data) => {
-        drawPoint(data);
-    });
-    
-    // 캔버스 지우기 이벤트 수신
-    socket.on('clearCanvas', () => {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-    });
-
-    // 이미지 붙여넣기 이벤트 수신
-    socket.on('pasteImage', (data) => {
-        console.log('이미지 붙여넣기 이벤트 수신', data.userId);
-        
-        // 자신이 보낸 이미지는 이미 그려져 있으므로 건너뜀
-        if (data.userId === socket.id) {
-            console.log('자신이 붙여넣은 이미지는 이미 표시되어 있습니다.');
-            return;
-        }
-        
-        handlePastedImage(data);
-    });
-
-    socket.on('connect_error', (error) => {
-        console.error('서버 연결 오류:', error);
-        showConnectionStatus('연결 오류', 'red');
-    });
-    
-    socket.on('disconnect', (reason) => {
-        console.log('서버와 연결이 끊어졌습니다:', reason);
-        showConnectionStatus('연결 끊김', 'red');
-        
-        // 자동 재연결이 불가능한 경우 수동으로 재연결 시도
-        if (reason === 'io server disconnect') {
-            // 서버에서 연결을 끊은 경우 수동으로 재연결
-            setTimeout(() => {
-                socket.connect();
-            }, 1000);
-        }
-    });
-    
-    socket.on('reconnect', (attemptNumber) => {
-        console.log(`${attemptNumber}번째 시도 후 재연결 성공`);
-        showConnectionStatus('재연결됨', 'green');
-        
-        // 재연결 후 그리기 데이터 다시 요청
-        socket.emit('requestDrawingData');
-        
-        // 이미지 데이터도 다시 요청
-        socket.emit('requestImageData');
-    });
-    
-    socket.on('reconnect_attempt', (attemptNumber) => {
-        console.log(`재연결 시도 중... (${attemptNumber}번째)`);
-        showConnectionStatus(`재연결 시도 중... (${attemptNumber})`, 'orange');
-    });
-    
-    socket.on('reconnect_error', (error) => {
-        console.error('재연결 오류:', error);
-    });
-    
-    socket.on('reconnect_failed', () => {
-        console.error('재연결 실패: 최대 시도 횟수 초과');
-        showConnectionStatus('재연결 실패', 'red');
-    });
-    
-    socket.on('error', (error) => {
-        console.error('소켓 오류:', error);
-        if (typeof error === 'object' && error.message) {
-            console.error(`오류 메시지: ${error.message}`);
-        }
-    });
-
-    // 연결 상태 확인을 위한 주기적인 ping 설정
-    const pingInterval = setInterval(() => {
-        if (socket.connected) {
-            // ping 메시지 전송
-            socket.emit('ping', () => {
-                console.log('서버 ping 응답 수신');
-            });
-        }
-    }, 30000); // 30초마다 ping
-
-    // 페이지 언로드 시 인터벌 정리
-    window.addEventListener('beforeunload', () => {
-        clearInterval(pingInterval);
-    });
-
     return socket;
 }
 
@@ -1024,6 +910,18 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log('네트워크 연결 끊김');
         showConnectionStatus('네트워크 오프라인', 'red');
     });
+    
+    // 참가자 보기 버튼 제거
+    const participantsBtn = document.getElementById('participantsBtn');
+    if (participantsBtn) {
+        participantsBtn.remove();
+    }
+    
+    // 참가자 목록 모달 제거
+    const participantsModal = document.getElementById('participantsModal');
+    if (participantsModal) {
+        participantsModal.remove();
+    }
 });
 
 // 이미지 붙여넣기 안내 메시지 추가
@@ -1251,6 +1149,23 @@ socket.io.on('reconnect_failed', () => {
     console.error('재연결 실패');
     showConnectionStatus('재연결 실패', 'red');
     showError('서버에 재연결할 수 없습니다. 페이지를 새로고침해 주세요.');
+});
+
+// 서버 오류 처리
+socket.on('error', (data) => {
+    console.error('서버 오류:', data);
+    
+    // Redis 연결 오류인 경우 특별 처리
+    if (data.message && data.message.includes('Redis')) {
+        showError('서버 데이터베이스 연결 오류가 발생했습니다. 잠시 후 다시 시도해주세요.');
+        
+        // 5초 후 페이지 새로고침
+        setTimeout(() => {
+            window.location.reload();
+        }, 5000);
+    } else {
+        showError(data.message || '오류가 발생했습니다.');
+    }
 });
 
 // 페이지 로드 시 스타일 추가
