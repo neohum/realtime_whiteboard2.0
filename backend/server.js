@@ -76,65 +76,106 @@ logToFile(`서버 시작 - 포트: ${PORT}, 도메인: ${DOMAIN}`);
 let redisClient = null;
 let redisEnabled = false;
 
-// Redis 연결 설정 (선택적)
+// Redis 연결 설정 (필수)
 (async () => {
     try {
-        // 프로덕션 환경에서만 Redis 연결 시도
-        if (process.env.NODE_ENV === 'production' && process.env.REDIS_URL) {
-            redisClient = createClient({
-                url: process.env.REDIS_URL,
-                socket: {
-                    connectTimeout: 3000, // 3초 연결 타임아웃
-                    reconnectStrategy: (retries) => {
-                        if (retries > 3) {
-                            console.log('Redis 재연결 시도 중단 (3회 초과)');
-                            return new Error('Redis 연결 실패');
-                        }
-                        return Math.min(retries * 100, 1000); // 최대 1초 대기
+        console.log('Redis 연결 시도 중...');
+        logToFile('Redis 연결 시도 중...');
+        
+        // Redis URL 설정 - 환경 변수 또는 기본값 사용
+        const redisUrl = process.env.REDIS_URL || 'redis://localhost:6379';
+        console.log(`Redis URL: ${redisUrl}`);
+        
+        redisClient = createClient({
+            url: redisUrl,
+            socket: {
+                connectTimeout: 5000, // 5초 연결 타임아웃
+                reconnectStrategy: (retries) => {
+                    if (retries > 5) {
+                        console.error('Redis 재연결 시도 중단 (5회 초과)');
+                        logToFile('Redis 재연결 시도 중단 (5회 초과)');
+                        process.exit(1); // Redis 연결 실패 시 서버 종료
                     }
+                    return Math.min(retries * 500, 3000); // 최대 3초 대기
                 }
-            });
+            }
+        });
 
-            redisClient.on('error', (err) => {
-                console.error(`Redis 연결 오류: ${err}`);
-                logToFile(`Redis 연결 오류: ${err}`);
-                redisEnabled = false;
-            });
-
-            redisClient.on('connect', () => {
-                console.log('Redis 서버에 연결되었습니다.');
-                logToFile('Redis 서버에 연결되었습니다.');
-                redisEnabled = true;
-            });
-
-            // 3초 타임아웃으로 연결 시도
-            const connectPromise = redisClient.connect();
-            const timeoutPromise = new Promise((_, reject) => 
-                setTimeout(() => reject(new Error('Redis 연결 시간 초과')), 3000)
-            );
+        redisClient.on('error', (err) => {
+            console.error(`Redis 연결 오류: ${err}`);
+            logToFile(`Redis 연결 오류: ${err}`);
+            redisEnabled = false;
             
-            await Promise.race([connectPromise, timeoutPromise]);
-            
-            console.log('Redis 연결 성공');
-            logToFile('Redis 연결 성공');
+            // 치명적인 Redis 오류 시 서버 재시작
+            if (err.code === 'ECONNREFUSED' || err.code === 'CONNECTION_BROKEN') {
+                console.error('치명적인 Redis 오류 발생, 서버를 종료합니다.');
+                logToFile('치명적인 Redis 오류 발생, 서버를 종료합니다.');
+                process.exit(1);
+            }
+        });
+
+        redisClient.on('connect', () => {
+            console.log('Redis 서버에 연결되었습니다.');
+            logToFile('Redis 서버에 연결되었습니다.');
+        });
+        
+        redisClient.on('ready', () => {
+            console.log('Redis 서버 준비 완료');
+            logToFile('Redis 서버 준비 완료');
             redisEnabled = true;
-        } else {
-            console.log('Redis 연결을 건너뜁니다. 메모리 저장소만 사용합니다.');
-            logToFile('Redis 연결을 건너뜁니다. 메모리 저장소만 사용합니다.');
-        }
+        });
+
+        // 5초 타임아웃으로 연결 시도
+        const connectPromise = redisClient.connect();
+        const timeoutPromise = new Promise((_, reject) => 
+            setTimeout(() => reject(new Error('Redis 연결 시간 초과')), 5000)
+        );
+        
+        await Promise.race([connectPromise, timeoutPromise]);
+        
+        console.log('Redis 연결 성공');
+        logToFile('Redis 연결 성공');
+        redisEnabled = true;
+        
+        // Redis 정보 출력
+        const info = await redisClient.info();
+        console.log('Redis 서버 정보:');
+        console.log(info.split('\n').filter(line => 
+            line.includes('redis_version') || 
+            line.includes('connected_clients') || 
+            line.includes('used_memory_human')
+        ).join('\n'));
+        
+        // Redis 키 만료 모니터링 설정
+        await setupRedisExpireMonitoring();
+        
     } catch (error) {
         console.error('Redis 연결 실패:', error);
         logToFile(`Redis 연결 실패: ${error.message}`);
-        console.log('Redis 없이 서버를 계속 실행합니다. 메모리 저장소만 사용됩니다.');
-        redisEnabled = false;
-        redisClient = null;
+        console.error('Redis는 필수 구성 요소입니다. 서버를 종료합니다.');
+        logToFile('Redis는 필수 구성 요소입니다. 서버를 종료합니다.');
+        
+        // 잠시 대기 후 서버 종료 (로그 기록을 위해)
+        setTimeout(() => {
+            process.exit(1);
+        }, 1000);
     }
 })();
 
 // Redis 사용 가능 여부 확인 함수
 function isRedisAvailable() {
-  return redisEnabled && redisClient && redisClient.isOpen;
+    return redisEnabled && redisClient && redisClient.isOpen;
 }
+
+// Redis 연결 확인 미들웨어
+app.use((req, res, next) => {
+    if (!isRedisAvailable()) {
+        return res.status(503).json({ 
+            error: 'Redis 서버에 연결할 수 없습니다. 잠시 후 다시 시도해주세요.' 
+        });
+    }
+    next();
+});
 
 // 메모리 저장소 초기화
 const rooms = {};
@@ -562,11 +603,6 @@ io.on('connection', (socket) => {
             
             // 마지막 활동 시간 업데이트
             rooms[roomCode].lastActive = Date.now();
-            
-            // 방의 모든 사용자에게 업데이트된 사용자 수 알림
-            io.to(roomCode).emit('userCountUpdated', {
-                users: actualUsers
-            });
         }
         
         return rooms[roomCode];
@@ -575,21 +611,46 @@ io.on('connection', (socket) => {
     // 방 입장 처리 - 오류 처리 강화
     socket.on('joinRoom', async (roomCode) => {
         try {
-            // 이전 방에서 나가기
+            // 이미 방에 있는 경우 처리
             if (currentRoom) {
-                socket.leave(currentRoom);
-                // 이전 방에서 나간 후 실제 참가자 수 업데이트
-                updateRoomInfo(currentRoom);
-                logToFile(`사용자 ${socket.id}가 방 ${currentRoom}에서 나감`);
-                
-                // 방의 다른 사용자들에게 사용자 퇴장 알림
-                socket.to(currentRoom).emit('userLeft', {
-                    id: socket.id,
-                    timestamp: Date.now()
-                });
-                
-                // userRooms 맵에서 이전 방 정보 제거
-                userRooms.delete(socket.id);
+                if (currentRoom === roomCode) {
+                    // 이미 같은 방에 있는 경우, 방 정보만 다시 전송
+                    console.log(`사용자 ${socket.id}가 이미 방 ${roomCode}에 있습니다. 방 정보 재전송`);
+                    
+                    // 방 정보 업데이트 (실제 참가자 수 확인)
+                    updateRoomInfo(roomCode);
+                    
+                    // 현재 방의 실제 참가자 수 가져오기
+                    const sockets = io.sockets.adapter.rooms.get(roomCode);
+                    const actualUsers = sockets ? sockets.size : 0;
+                    
+                    // 방 정보 확인
+                    const roomInfo = rooms[roomCode] || {
+                        createdAt: Date.now(),
+                        lastActive: Date.now(),
+                        users: actualUsers,
+                        creatorId: null,
+                        drawingEnabled: true
+                    };
+                    
+                    // 클라이언트에 방 정보 재전송
+                    socket.emit('roomJoined', { 
+                        roomCode,
+                        id: socket.id, 
+                        timestamp: Date.now(),
+                        users: actualUsers,
+                        domain: DOMAIN,
+                        isCreator: socket.id === roomInfo.creatorId,
+                        creatorId: roomInfo.creatorId,
+                        drawingEnabled: roomInfo.drawingEnabled
+                    });
+                    
+                    return;
+                } else {
+                    // 다른 방에 있는 경우, 기존 방에서 나가기
+                    socket.leave(currentRoom);
+                    logToFile(`사용자 ${socket.id}가 방 ${currentRoom}에서 나가고 방 ${roomCode}로 이동`);
+                }
             }
             
             // 방 정보 확인 (메모리에서 먼저 확인)
@@ -1059,98 +1120,11 @@ io.on('connection', (socket) => {
         });
     });
 
-    // 사용자 목록 요청 처리
-    socket.on('requestUsersList', () => {
-        try {
-            if (!currentRoom) {
-                socket.emit('error', { message: '방에 입장하지 않은 상태입니다.' });
-                return;
-            }
-            
-            // 방 정보 확인
-            const roomInfo = rooms[currentRoom];
-            
-            if (!roomInfo) {
-                socket.emit('error', { message: '방 정보를 찾을 수 없습니다.' });
-                return;
-            }
-            
-            // 방에 연결된 모든 소켓 가져오기
-            const socketsInRoom = io.sockets.adapter.rooms.get(currentRoom);
-            
-            if (!socketsInRoom) {
-                socket.emit('usersList', { users: [], creatorId: roomInfo.creatorId });
-                return;
-            }
-            
-            // 소켓 ID 배열로 변환
-            const users = Array.from(socketsInRoom).map(socketId => {
-                return {
-                    id: socketId,
-                    isCreator: socketId === roomInfo.creatorId
-                };
-            });
-            
-            // 사용자 목록 전송
-            socket.emit('usersList', {
-                users: users,
-                creatorId: roomInfo.creatorId
-            });
-            
-        } catch (error) {
-            console.error(`사용자 목록 요청 오류:`, error);
-            logToFile(`사용자 목록 요청 오류: ${error.message}`);
-            socket.emit('error', { message: '사용자 목록 요청 중 오류가 발생했습니다.' });
-        }
-    });
+    // 사용자 목록 요청 처리 제거
 
-    // 사용자 입장 시 모든 사용자에게 업데이트된 목록 전송
-    socket.on('joinRoom', async (roomCode) => {
-        // 기존 코드...
-        
-        // 방의 모든 사용자에게 업데이트된 사용자 목록 전송
-        const socketsInRoom = io.sockets.adapter.rooms.get(roomCode);
-        if (socketsInRoom && rooms[roomCode]) {  // rooms[roomCode] 존재 여부 확인 추가
-            const roomInfo = rooms[roomCode];  // roomInfo 변수 정의
-            
-            const users = Array.from(socketsInRoom).map(socketId => {
-                return {
-                    id: socketId,
-                    isCreator: socketId === roomInfo.creatorId
-                };
-            });
-            
-            io.to(roomCode).emit('usersList', {
-                users: users,
-                creatorId: roomInfo.creatorId
-            });
-        }
-    });
+    // 사용자 입장 시 모든 사용자에게 업데이트된 목록 전송 제거
 
-    // 사용자 퇴장 시 모든 사용자에게 업데이트된 목록 전송
-    socket.on('disconnect', () => {
-        // 기존 코드...
-        
-        // 사용자가 속한 방이 있었다면 업데이트된 사용자 목록 전송
-        if (currentRoom && rooms[currentRoom]) {
-            const roomInfo = rooms[currentRoom];  // roomInfo 변수 정의
-            const socketsInRoom = io.sockets.adapter.rooms.get(currentRoom);
-            
-            if (socketsInRoom) {
-                const users = Array.from(socketsInRoom).map(socketId => {
-                    return {
-                        id: socketId,
-                        isCreator: socketId === roomInfo.creatorId
-                    };
-                });
-                
-                io.to(currentRoom).emit('usersList', {
-                    users: users,
-                    creatorId: roomInfo.creatorId
-                });
-            }
-        }
-    });
+    // 사용자 퇴장 시 모든 사용자에게 업데이트된 목록 전송 제거
 
     // 오류 처리
     socket.on('error', (error) => {
@@ -1182,29 +1156,6 @@ io.on('connection', (socket) => {
                 const actualUsers = sockets ? sockets.size : 0;
                 
                 logToFile(`사용자 ${socket.id}가 방 ${currentRoom}에서 연결 끊김 (이유: ${reason}) (현재 인원: ${actualUsers}명)`);
-                
-                // 방의 다른 사용자들에게 사용자 퇴장 알림
-                socket.to(currentRoom).emit('userLeft', {
-                    id: socket.id,
-                    users: actualUsers,
-                    reason: reason,
-                    timestamp: Date.now()
-                });
-                
-                // 사용자가 속한 방이 있었다면 업데이트된 사용자 목록 전송
-                if (sockets) {
-                    const users = Array.from(sockets).map(socketId => {
-                        return {
-                            id: socketId,
-                            isCreator: socketId === roomInfo.creatorId
-                        };
-                    });
-                    
-                    io.to(currentRoom).emit('usersList', {
-                        users: users,
-                        creatorId: roomInfo.creatorId
-                    });
-                }
             } else {
                 logToFile(`사용자 연결 끊김: ${socket.id} (이유: ${reason}) (현재 연결: ${connectedClients}명)`);
             }
@@ -1356,7 +1307,32 @@ server.listen(PORT, () => {
     console.log(`도메인: ${DOMAIN}`);
     
     // Redis 상태 확인
-    console.log(`Redis 사용 가능 여부: ${isRedisAvailable() ? '예' : '아니오'}`);
+    if (!isRedisAvailable()) {
+        console.error('경고: Redis 연결이 활성화되지 않았습니다. 서버가 제대로 작동하지 않을 수 있습니다.');
+        logToFile('경고: Redis 연결이 활성화되지 않았습니다. 서버가 제대로 작동하지 않을 수 있습니다.');
+        
+        // Redis 연결 재시도
+        console.log('Redis 연결 재시도 중...');
+        setTimeout(async () => {
+            try {
+                if (redisClient && !redisClient.isOpen) {
+                    await redisClient.connect();
+                    console.log('Redis 재연결 성공');
+                    logToFile('Redis 재연결 성공');
+                    redisEnabled = true;
+                }
+            } catch (error) {
+                console.error('Redis 재연결 실패:', error);
+                logToFile(`Redis 재연결 실패: ${error.message}`);
+                console.error('Redis는 필수 구성 요소입니다. 서버를 종료합니다.');
+                logToFile('Redis는 필수 구성 요소입니다. 서버를 종료합니다.');
+                process.exit(1);
+            }
+        }, 5000);
+    } else {
+        console.log('Redis 연결 상태: 정상');
+        logToFile('Redis 연결 상태: 정상');
+    }
     
     // 등록된 라우트 출력
     console.log('등록된 API 엔드포인트:');
@@ -1406,3 +1382,92 @@ app.use((req, res) => {
     // 그 외에는 메인 페이지로 리다이렉트
     res.redirect('/');
 });
+
+// Redis 연결 상태 확인 함수
+async function checkRedisConnection() {
+    try {
+        if (!redisClient || !redisClient.isOpen) {
+            console.error('Redis 연결이 끊어졌습니다. 재연결 시도 중...');
+            logToFile('Redis 연결이 끊어졌습니다. 재연결 시도 중...');
+            
+            // 기존 클라이언트가 있으면 종료
+            if (redisClient) {
+                try {
+                    await redisClient.quit();
+                } catch (e) {
+                    console.error('Redis 클라이언트 종료 오류:', e);
+                }
+            }
+            
+            // 새 클라이언트 생성 및 연결
+            const redisUrl = process.env.REDIS_URL || 'redis://localhost:6379';
+            redisClient = createClient({
+                url: redisUrl,
+                socket: {
+                    connectTimeout: 5000,
+                    reconnectStrategy: (retries) => {
+                        if (retries > 5) {
+                            return new Error('Redis 연결 실패');
+                        }
+                        return Math.min(retries * 500, 3000);
+                    }
+                }
+            });
+            
+            redisClient.on('error', (err) => {
+                console.error(`Redis 연결 오류: ${err}`);
+                logToFile(`Redis 연결 오류: ${err}`);
+                redisEnabled = false;
+            });
+            
+            redisClient.on('ready', () => {
+                console.log('Redis 서버 준비 완료');
+                logToFile('Redis 서버 준비 완료');
+                redisEnabled = true;
+            });
+            
+            await redisClient.connect();
+            console.log('Redis 재연결 성공');
+            logToFile('Redis 재연결 성공');
+            redisEnabled = true;
+            
+            // Redis 키 만료 모니터링 재설정
+            await setupRedisExpireMonitoring();
+            
+            return true;
+        }
+        
+        // PING 명령으로 연결 확인
+        const pong = await redisClient.ping();
+        if (pong === 'PONG') {
+            redisEnabled = true;
+            return true;
+        } else {
+            throw new Error('Redis PING 응답 없음');
+        }
+    } catch (error) {
+        console.error('Redis 연결 확인 오류:', error);
+        logToFile(`Redis 연결 확인 오류: ${error.message}`);
+        redisEnabled = false;
+        
+        // 치명적인 오류인 경우 서버 재시작
+        if (error.code === 'ECONNREFUSED' || error.code === 'CONNECTION_BROKEN') {
+            console.error('치명적인 Redis 오류 발생, 서버를 종료합니다.');
+            logToFile('치명적인 Redis 오류 발생, 서버를 종료합니다.');
+            process.exit(1);
+        }
+        
+        return false;
+    }
+}
+
+// Redis 연결 상태 주기적 확인
+setInterval(async () => {
+    const isConnected = await checkRedisConnection();
+    console.log(`Redis 연결 상태 확인: ${isConnected ? '정상' : '비정상'}`);
+    
+    if (!isConnected) {
+        console.error('Redis 연결이 활성화되지 않았습니다. 서버가 제대로 작동하지 않을 수 있습니다.');
+        logToFile('Redis 연결이 활성화되지 않았습니다. 서버가 제대로 작동하지 않을 수 있습니다.');
+    }
+}, 60000); // 1분마다 확인
